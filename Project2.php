@@ -1,11 +1,9 @@
 <?php
 //Penis! 123... Test
 //Luzi Banane im Gsicht :O
-<<<<<<< HEAD
-//artartasf
-=======
+
 //Blabl12kakaabla
->>>>>>> master
+
 class Person
 {
     private $name;
