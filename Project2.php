@@ -1,7 +1,6 @@
 <?php
 //Penis
 //Luzi Banane im Gsicht :O
-
 //Blabl12kakaabla
 
 class Person
