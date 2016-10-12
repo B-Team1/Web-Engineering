@@ -1,5 +1,5 @@
 <?php
-//Penis! 123... Test
+//Penis
 //Luzi Banane im Gsicht :O
 
 //Blabl12kakaabla
