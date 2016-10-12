@@ -1,5 +1,6 @@
 <?php
 //Penis!
+//Luzi Banane im Gsicht :O
 class Person
 {
     private $name;
