@@ -7,7 +7,7 @@
     <body>
         <div id="container">
         <header>
-            <h1 text align = center>Online-Verwaltungstool</h1> 
+            <h1 text align = center>Rechnung bearbeiten </h1> 
         </header>
         <!-- Linke Spalte -->
         <nav>        
@@ -25,14 +25,13 @@
         
         <!-- Mittlere Spalte ( Hauptinhalt -->
             <section id="content">
-                <h2>Miete erfassen</h2>
-                <form action="Miete_erfassen.php" method="POST">
+                <form id="form" action="Rechnung_bearbeiten.php" method="POST">
                     <label> Rechnungsdatum:</label>     
                     <input type="text" name="rechnungsdatum" value="" size="40" /><br/>
                     <label> Wohnung:</label>
                     <input type="text" name="wohnung" value="" size="40" /><br/>
                     <label> Grund:</label>
-                    <input type="text" name="grund" value="Miete" size="40" disabled /><br/>
+                    <input type="text" name="grund" value="" size="40" /><br/>
                     <label> Betrag:</label>
                     <input type="text" name="betrag" value="" size="40" /><br/>
                     <label> Zahlbar bis:</label>
@@ -44,7 +43,7 @@
                             <option class="red" value="verzug">Verzug</option>
                         </select><br/>
                 <input type="submit" name="submit" value="speichern" />
-                <input type="button" name="cancel" value="abbrechen" onclick="window.open('Mietzins.php')">
+                <input type="button" name="cancel" value="abbrechen" onclick="window.open('Heiz-Nebenkosten.php')">
                 </form><br/>        
         
             </section>

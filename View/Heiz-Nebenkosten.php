@@ -49,7 +49,11 @@
                                 <option class="red" value="verzug">Verzug</option>
                             </select>
                         </td>
-                        <td>IMG</td>
+                        <td>
+                            <a href="Rechnung_bearbeiten.php">
+                                <img src="bearbeiten_icon.png" alt="" style="width:10px; height:auto;">
+                            </a>
+                        </td>
                         <td>IMG</td>
                     </tr>
                     <td></td>
