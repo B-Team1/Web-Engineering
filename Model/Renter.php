@@ -13,6 +13,7 @@
  */
 class Renter {
 
+    private $renterId;
     private $name;
     private $firstname;
     private $phone;
@@ -22,7 +23,8 @@ class Renter {
     private $startDate;
     private $roomId;
 
-    public function __construct($name, $firstname, $phone, $street, $place, $plz, $startDate, $roomId) {
+    public function __construct($renterId, $name, $firstname, $phone, $street, $place, $plz, $startDate, $roomId) {
+        $this->renterId = $renterId;
         $this->name = $name;
         $this->firstname = $firstname;
         $this->phone = $phone;
@@ -31,6 +33,14 @@ class Renter {
         $this->plz = $plz;
         $this->startDate = $startDate;
         $this->roomId = $roomId;
+    }
+
+    public function getRenterId() {
+        return $this->renterId;
+    }
+
+    public function setRenterId($renterId) {
+        $this->renterId = $renterId;
     }
 
     public function getName() {

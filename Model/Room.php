@@ -13,18 +13,28 @@
  */
 class Room {
 
+    private $roomId;
     private $area;
     private $description;
     private $floor;
     private $rent;
     private $hirerId;
 
-    public function __construct($area, $description, $floor, $rent, $hirerId) {
+    public function __construct($roomId, $area, $description, $floor, $rent, $hirerId) {
+        $this->roomId = $roomId;
         $this->area = $area;
         $this->description = $description;
         $this->floor = $floor;
         $this->rent = $rent;
         $this->hirerId = $hirerId;
+    }
+
+    public function getRoomId() {
+        return $this->roomId;
+    }
+
+    public function setRoomId($roomId) {
+        $this->roomId = $roomId;
     }
 
     public function getArea() {
