@@ -66,6 +66,8 @@ class DBConnect {
         $insert = "UPDATE `mydb`.`vermieter` SET `EMail`='" . $hirer->getEmail() . "', `Passwort`='" . $hirer->getPassword() . "' WHERE `idVermieter`='3';";
         mysqli_query($this->link, $insert) or die(mysqli_error($this->link));
     }
+    
+    
 
     /**
      * 
@@ -117,9 +119,9 @@ class DBConnect {
      * @param Bill $bill
      */
     public function insertBill(Bill $bill) {
-        $insert = "INSERT INTO `mydb`.`rechnungen` (`Betrag`, `ZahlbarBis`, `Datum`, `Wohnung_idWohnung`, `Status_idStatus`, `Kostenart_idKostenart`) 
+        $insert = "INSERT INTO `mydb`.`rechnungen` (`Betrag`, `ZahlbarBis`, `Datum`, `Wohnung_idWohnung`, `Status_idStatus`, `Kostenart_idKostenart`, `Beschreibung`) 
             VALUES ('" . $bill->getAmout() . "', '" . $bill->getPayableUntill() . "', '" . $bill->getDate() . "',"
-                . " '" . $bill->getRoomId() . "', '" . $bill->getStatusId() . "', '" . $bill->getCostTypeId() . "');";
+                . " '" . $bill->getRoomId() . "', '" . $bill->getStatusId() . "', '" . $bill->getCostTypeId() . "', '" . $bill->getDescripton() . "');";
         mysqli_query($this->link, $insert) or die(mysqli_error($this->link));
     }
 
@@ -130,14 +132,36 @@ class DBConnect {
     public function updateBill(Bill $bill) {
         $sql = "UPDATE `mydb`.`rechnungen` SET `Betrag`='" . $bill->getAmout() . "', `ZahlbarBis`='" . $bill->getPayableUntill() . "', "
                 . "`Datum`='" . $bill->getDate() . "', `Wohnung_idWohnung`='" . $bill->getRoomId() . "', "
-                . "`Status_idStatus`='" . $bill->getStatusId() . "', `Kostenart_idKostenart`='" . $bill->getCostTypeId() . "' WHERE `idRechnungen`='" . $bill->getBillId() . "';";
+                . "`Status_idStatus`='" . $bill->getStatusId() . "', `Kostenart_idKostenart`='" . $bill->getCostTypeId() . "', `Beschreibung`='" . $bill->getDescripton() . "' WHERE `idRechnungen`='" . $bill->getBillId() . "';";
         mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
+    }
+    
+    /**
+     * 
+     * @return \Bill
+     */
+    public function selectAllBills(){
+        $sql = "SELECT * FROM mydb.rechnungen;";
+        $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
+        $arr = array();
+        $c = 0;
+
+        if ($result->num_rows > 0) {
+             // output data of each row
+             while($row = $result->fetch_assoc()) {
+                 $bill = new Bill($row["idRechnungen"], $row["Betrag"], $row["ZahlbarBis"], $row["Datum"], 
+                         $row["Wohnung_idWohnung"], $row["Status_idStatus"], $row["Kostenart_idKostenart"], $row["Beschreibung"]);
+                 $arr[$c] = $bill;
+                 $c++;
+             }
+        }
+        return $arr;
     }
 
 }
 
 $dbConnect = DBConnect::getInstance();
-$h = new Bill("1", "222", "tsrdfd", "11.1.1", "1", "1", "1");
 
-$t = $dbConnect->updateBill($h);
-echo $t;
+
+ $test = $dbConnect->selectAllBills();
+echo $test[0]->getDate();

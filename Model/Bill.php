@@ -9,8 +9,9 @@ class Bill {
     private $roomId;
     private $statusId;
     private $costTypeId;
+    private $descripton;
 
-    public function __construct($billId, $amout, $payableUntill, $date, $roomId, $statusId, $costTypeId) {
+    public function __construct($billId, $amout, $payableUntill, $date, $roomId, $statusId, $costTypeId, $descripton) {
         $this->billId = $billId;
         $this->amout = $amout;
         $this->payableUntill = $payableUntill;
@@ -18,6 +19,15 @@ class Bill {
         $this->roomId = $roomId;
         $this->statusId = $statusId;
         $this->costTypeId = $costTypeId;
+        $this->descripton = $descripton;
+    }
+
+    public function getDescripton() {
+        return $this->descripton;
+    }
+
+    public function setDescripton($descripton) {
+        $this->descripton = $descripton;
     }
 
     public function getBillId() {
