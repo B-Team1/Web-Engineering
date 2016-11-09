@@ -25,8 +25,8 @@
         
         <!-- Mittlere Spalte ( Hauptinhalt -->
             <section id="content">
-                <h2>Miete erfassen</h2>
-                <form action="Miete_erfassen.php" method="POST">
+                <h2>Miete bearbeiten</h2>
+                <form action="Miete_bearbeiten.php.php" method="POST">
                     <label> Rechnungsdatum:</label>     
                     <input type="text" name="rechnungsdatum" value="" size="40" /><br/>
                     <label> Wohnung:</label>

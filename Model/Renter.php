@@ -11,7 +11,7 @@
  *
  * @author Tobias
  */
-class Mieter {
+class Renter {
 
     private $name;
     private $firstname;

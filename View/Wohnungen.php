@@ -41,9 +41,21 @@
                         <td>Famillie Müller</td>
                         <td>Sonnenweg 6a</td>
                         <td>80</td>
-                        <td>IMG</td>
+                        <td>
+                            <a href="Wohnung_bearbeiten.php">
+                                <img src="bearbeiten_icon.png" alt="" style="width:10px; height:auto;">
+                            </a>
+                        </td>
                         <td>IMG</td>
                     </tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="Wohnung_erfassen.php" class="myButton">+</a></td>
                 </table>
            </section>
         </div>

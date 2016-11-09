@@ -11,7 +11,7 @@
  *
  * @author Tobias
  */
-class Vermieter {
+class Hirer {
 
     private $email;
     private $password;
