@@ -26,7 +26,7 @@
         <!-- Mittlere Spalte ( Hauptinhalt -->
             <section id="content">
                 <h2>Miete bearbeiten</h2>
-                <form action="Miete_bearbeiten.php.php" method="POST">
+                <form id="form" action="Miete_bearbeiten.php.php" method="POST">
                     <label> Rechnungsdatum:</label>     
                     <input type="text" name="rechnungsdatum" value="" size="40" /><br/>
                     <label> Wohnung:</label>
@@ -39,8 +39,8 @@
                     <input type="text" name="zahlbar_bis" value="" size="40" /><br/> 
                     <label> Status:</label>
                         <select name="status" style="width:313">
-                            <option class="yellow" value="offen">offen</option>
-                            <option class="green" value="bezahlt">bezahlt</option>
+                            <option class="yellow" value="offen">Offen</option>
+                            <option class="green" value="bezahlt">Bezahlt</option>
                             <option class="red" value="verzug">Verzug</option>
                         </select><br/>
                 <input type="submit" name="submit" value="speichern" />

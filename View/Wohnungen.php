@@ -9,7 +9,18 @@
         <header>
             <h1 text-algin="center">Online-Verwaltungstool</h1>
         </header>
-        
+            <script type =text/javascript>
+                function delete_room() {
+                    Check = confirm("Wollen Sie die Wohnung wirklich löschen?");
+                    if (Check == false){
+                        // löscht den Eintrag nicht
+                        alert("Wohnung xy wurde nicht gelöscht");
+                    } else {
+                        // Wohnung löschen
+                        alert("Wohnung xy wurde gelöscht");
+                    }
+                }
+             </script>
         <!-- Linke Spalte -->
         <nav>  
             <ul>
@@ -41,12 +52,13 @@
                         <td>Famillie Müller</td>
                         <td>Sonnenweg 6a</td>
                         <td>80</td>
-                        <td>
-                            <a href="Wohnung_bearbeiten.php">
-                                <img src="bearbeiten_icon.png" alt="" style="width:10px; height:auto;">
-                            </a>
+                        <td>                          
+                            <img src="bearbeiten_icon.png" alt="" style="width:10px; height:auto;">
                         </td>
-                        <td>IMG</td>
+                        <td>
+                            <a href="Wohnungen.php">
+                                <img src="loeschen_icon.png" alt="" style="width:15px; height:auto;" onClick="delete_room()">
+                            </a></td>
                     </tr>
                     <!-- letzte Zeile für Add-Button -->
                     <td></td>
