@@ -30,13 +30,17 @@
                     <label> Rechnungsdatum:</label>     
                     <input type="date" name="rechnungsdatum" value="" size="40" required oninvalid="this.setCustomValidity('Wählen Sie bitte das Rechnungsdatum aus!')" oninput="setCustomValidity('')"/><br/>
                     <label> Wohnung:</label>
-                    <input type="text" name="wohnung" value="" size="40" required/><br/>
-                    <label> Grund:</label>
-                    <input type="text" name="grund" value="Miete" size="40" disabled/><br/>
+                    <select name="apartment" style="width:313">
+                        <option value="Wohnung 1">Wohnung 1</option>
+                        <option value="Wohnung 2">Wohnung 2</option>
+                        <option value="Wohnung 3">Wohnung 3</option>                        
+                    </select><br/>
+                    <label> Beschreibung:</label>
+                    <input type="text" name="description" value="" size="40"/><br/>
                     <label> Betrag:</label>
-                    <input type="text" name="betrag" value="" size="40" required oninvalid="this.setCustomValidity('Geben Sie bitte den Betrag ein!')" oninput="setCustomValidity('')"/><br/>
+                    <input type="number" name="amount" value="" size="40" required oninvalid="this.setCustomValidity('Geben Sie bitte den Betrag ein!')" oninput="setCustomValidity('')"/><br/>
                     <label> Zahlbar bis:</label>
-                    <input type="date" name="zahlbar_bis" value="" size="40" required oninvalid="this.setCustomValidity('Wählen Sie bitte das Enddatum aus!')" oninput="setCustomValidity('')"/><br/>
+                    <input type="datetime" name="zahlbar_bis" value="" size="40" required oninvalid="this.setCustomValidity('Wählen Sie bitte das Enddatum aus!')" oninput="setCustomValidity('')"/><br/>
                     <label> Status:</label>
                         <select name="status" style="width:313">
                             <option class="yellow" value="offen">offen</option>
@@ -45,7 +49,7 @@
                         </select><br/>
                 <input type="submit" name="submit" value="speichern" />
                 <input type="button" name="cancel" value="abbrechen" onclick="window.open('Mietzins.php')">
-                </form><br/>        
+                </form><br/>     
         
             </section>
         </div>

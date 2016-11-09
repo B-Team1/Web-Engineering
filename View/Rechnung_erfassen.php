@@ -3,6 +3,9 @@
         <meta charset="UTF-8">
         <link type="text/css" href="style.css" rel="stylesheet" media="screen" />
         <title>Verwaltungstool</title>
+        <script type="text/javascript">
+    
+        </script>
     </head>
     <body>
         <div id="container">
@@ -26,17 +29,21 @@
         <!-- Mittlere Spalte ( Hauptinhalt -->
             <section id="content">
                 <h2> Rechnung erfassen</h2>
-                <form id="form" action="Rechnung_erfassen.php" method="POST">
+                <form name="newBill" id="form" action="Rechnung_erfassen.php" method="POST">
                     <label> Rechnungsdatum:</label>     
-                    <input type="text" name="rechnungsdatum" value="" size="40" /><br/>
+                    <input type="date" name="rechnungsdatum" value="" size="40" required oninvalid="this.setCustomValidity('Wählen Sie bitte das Rechnungsdatum aus!')" oninput="setCustomValidity('')"/><br/>
                     <label> Wohnung:</label>
-                    <input type="text" name="wohnung" value="" size="40" /><br/>
-                    <label> Grund:</label>
-                    <input type="text" name="grund" value="" size="40" /><br/>
-                    <label> Betrag:</label>
-                    <input type="text" name="betrag" value="" size="40" /><br/>
+                    <select name="apartment" style="width:313">
+                        <option value="Wohnung 1">Wohnung 1</option>
+                        <option value="Wohnung 2">Wohnung 2</option>
+                        <option value="Wohnung 3">Wohnung 3</option>                        
+                    </select><br/>
+                    <label> Beschreibung:</label>
+                    <input type="text" name="description" value="" size="40"/><br/>
+                    <label> Betrag [Fr.]:</label>
+                    <input type="number" name="amount" value="" size="40" required oninvalid="this.setCustomValidity('Geben Sie bitte den Betrag ein!')" oninput="setCustomValidity('')" /><br/>
                     <label> Zahlbar bis:</label>
-                    <input type="text" name="zahlbar_bis" value="" size="40" /><br/> 
+                    <input type="date" name="zahlbar_bis" value="" size="40" required oninvalid="this.setCustomValidity('Wählen Sie bitte das Enddatum aus!')" oninput="setCustomValidity('')"/><br/>
                     <label> Status:</label>
                         <select name="status" style="width:313">
                             <option class="yellow" value="offen">offen</option>
