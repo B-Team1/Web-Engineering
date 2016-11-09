@@ -52,13 +52,16 @@
                         <td>Famillie Müller</td>
                         <td>Sonnenweg 6a</td>
                         <td>80</td>
-                        <td>                          
+                        <td> 
+                            <a href="Wohnung_bearbeiten.php">
                             <img src="bearbeiten_icon.png" alt="" style="width:10px; height:auto;">
+                            </a>
                         </td>
                         <td>
                             <a href="Wohnungen.php">
                                 <img src="loeschen_icon.png" alt="" style="width:15px; height:auto;" onClick="delete_room()">
-                            </a></td>
+                            </a>
+                        </td>
                     </tr>
                     <!-- letzte Zeile für Add-Button -->
                     <td></td>
