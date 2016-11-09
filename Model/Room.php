@@ -11,19 +11,20 @@
  *
  * @author Tobias
  */
-class Wohnung {
+class Room {
+
     private $area;
     private $description;
     private $floor;
     private $rent;
-    private $vermieterId;
-    
-    public function __construct($area, $description, $floor, $rent, $vermieterId) {
+    private $hirerId;
+
+    public function __construct($area, $description, $floor, $rent, $hirerId) {
         $this->area = $area;
         $this->description = $description;
         $this->floor = $floor;
         $this->rent = $rent;
-        $this->vermieterId = $vermieterId;
+        $this->hirerId = $hirerId;
     }
 
     public function getArea() {
@@ -42,8 +43,12 @@ class Wohnung {
         return $this->rent;
     }
 
-    public function getVermieterId() {
-        return $this->vermieterId;
+    public function getHirerId() {
+        return $this->hirerId;
+    }
+
+    public function setHirerId($hirerId) {
+        $this->hirerId = $hirerId;
     }
 
     public function setArea($area) {
@@ -62,7 +67,4 @@ class Wohnung {
         $this->rent = $rent;
     }
 
-    public function setVermieterId($vermieterId) {
-        $this->vermieterId = $vermieterId;
-    }
-}   
+}
