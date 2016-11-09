@@ -7,7 +7,7 @@
     <body>
         <div id="container">
         <header>
-            <h1 text align = center>Rechnung bearbeiten </h1> 
+            <h1 text align = center>Online-Verwaltungstool</h1> 
         </header>
         <!-- Linke Spalte -->
         <nav>        
@@ -25,6 +25,7 @@
         
         <!-- Mittlere Spalte ( Hauptinhalt -->
             <section id="content">
+                <h2> Rechnung bearbeiten</h2>
                 <form id="form" action="Rechnung_bearbeiten.php" method="POST">
                     <label> Rechnungsdatum:</label>     
                     <input type="text" name="rechnungsdatum" value="" size="40" /><br/>
