@@ -2,6 +2,7 @@
 
 class Bill {
 
+    private $billId;
     private $amout;
     private $payableUntill;
     private $date;
@@ -9,13 +10,22 @@ class Bill {
     private $statusId;
     private $costTypeId;
 
-    public function __construct($amout, $payableUntill, $date, $roomId, $statusId, $costTypeId) {
+    public function __construct($billId, $amout, $payableUntill, $date, $roomId, $statusId, $costTypeId) {
+        $this->billId = $billId;
         $this->amout = $amout;
         $this->payableUntill = $payableUntill;
         $this->date = $date;
         $this->roomId = $roomId;
         $this->statusId = $statusId;
         $this->costTypeId = $costTypeId;
+    }
+
+    public function getBillId() {
+        return $this->billId;
+    }
+
+    public function setBillId($billId) {
+        $this->billId = $billId;
     }
 
     public function getAmout() {
@@ -30,7 +40,6 @@ class Bill {
         return $this->date;
     }
 
-
     public function getRoomId() {
         return $this->roomId;
     }
@@ -39,7 +48,7 @@ class Bill {
         $this->roomId = $roomId;
     }
 
-        public function getStatusId() {
+    public function getStatusId() {
         return $this->statusId;
     }
 
@@ -51,7 +60,6 @@ class Bill {
         $this->costTypeId = $typeOfCostId;
     }
 
-    
     public function setAmout($amout) {
         $this->amout = $amout;
     }
@@ -64,12 +72,8 @@ class Bill {
         $this->date = $date;
     }
 
-
-
     public function setStatusId($statusId) {
         $this->statusId = $statusId;
     }
-
-    
 
 }

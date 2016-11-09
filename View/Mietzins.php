@@ -42,8 +42,8 @@
                         <td>12.12.2016</td>
                         <td>
                             <select name="status">
-                                <option class="yellow" value="offen">offen</option>
-                                <option class="green" value="bezahlt">bezahlt</option>
+                                <option class="yellow" value="offen">Offen</option>
+                                <option class="green" value="bezahlt">Bezahlt</option>
                                 <option class="red" value="verzug">Verzug</option>
                             </select>
                         </td>

@@ -1,104 +1,143 @@
 <?php
+
 require_once('Hirer.php');
 require_once('Renter.php');
 require_once('Room.php');
 require_once('Bill.php');
 
+class DBConnect {
 
-class DBConnect{
     private $user = "root";
     private $password = "";
     private $database = "mydb";
     private $link;
     protected static $_instance = null;
-    
-    
-   
+
     /**
      * 
      * @return DBConnect
      */
-    public static function getInstance()
-   {
-       if (null === self::$_instance)
-       {
-           self::$_instance = new DBConnect();
-       }
-       return self::$_instance;
-   }
-   
-   /**
-    * clone
-    *
-    * Kopieren der Instanz von aussen ebenfalls verbieten
-    */
-   protected function __clone() {}
- 
-   /**
-    * constructor
-    *
-    * externe Instanzierung verbieten
-    */
-   protected function __construct() {
-       $this->connectDB();
-       
-   }
-    
-    private function connectDB(){
+    public static function getInstance() {
+        if (null === self::$_instance) {
+            self::$_instance = new DBConnect();
+        }
+        return self::$_instance;
+    }
+
+    /**
+     * clone
+     *
+     * Kopieren der Instanz von aussen ebenfalls verbieten
+     */
+    protected function __clone() {
+        
+    }
+
+    /**
+     * constructor
+     *
+     * externe Instanzierung verbieten
+     */
+    protected function __construct() {
+        $this->connectDB();
+    }
+
+    private function connectDB() {
         $this->link = mysqli_connect("localhost", $this->user, $this->password);
         mysqli_select_db($this->link, $this->database);
 
-        mysqli_query($this->link, "SET NAMES 'utf8'");        
+        mysqli_query($this->link, "SET NAMES 'utf8'");
     }
 
-     /**
-      * 
-      * @param Hirer $vermieter
-      */
-    public function insertHirer(Hirer $vermieter){
-        $insert = "INSERT INTO `mydb`.`vermieter` (`EMail`, `Passwort`) VALUES ('".$vermieter->getEmail()."', '".$vermieter->getPassword()."');";
+    /**
+     * 
+     * @param Hirer $vermieter
+     */
+    public function insertHirer(Hirer $hirer) {
+        $insert = "INSERT INTO `mydb`.`vermieter` (`EMail`, `Passwort`) VALUES ('" . $hirer->getEmail() . "', '" . $hirer->getPassword() . "');";
         mysqli_query($this->link, $insert) or die(mysqli_error($this->link));
     }
-     
+
+    /**
+     * 
+     * @param Hirer $hirer
+     */
+    public function updateHirer(Hirer $hirer) {
+        $insert = "UPDATE `mydb`.`vermieter` SET `EMail`='" . $hirer->getEmail() . "', `Passwort`='" . $hirer->getPassword() . "' WHERE `idVermieter`='3';";
+        mysqli_query($this->link, $insert) or die(mysqli_error($this->link));
+    }
+
     /**
      * 
      * @param Renter $renter
      */
-    public function insertRenter(Renter $renter){
+    public function insertRenter(Renter $renter) {
         $insert = "INSERT INTO `mydb`.`mieter` (`Name`, `Vorname`, `Telefon`, `Strasse`, `Ort`, `PLZ`, `Vertragsstart`, `Wohnung_idWohnung`) "
-                . "VALUES ('".$renter->getName()."', '".$renter->getFirstname()."', '".$renter->getPhone()."', '".$renter->getStreet()."',"
-                . " '".$renter->getPlace()."','".$renter->getPlz()."', '".$renter->getStartDate()."', '".$renter->getRoomId()."');";
+                . "VALUES ('" . $renter->getName() . "', '" . $renter->getFirstname() . "', '" . $renter->getPhone() . "', '" . $renter->getStreet() . "',"
+                . " '" . $renter->getPlace() . "','" . $renter->getPlz() . "', '" . $renter->getStartDate() . "', '" . $renter->getRoomId() . "');";
         mysqli_query($this->link, $insert) or die(mysqli_error($this->link));
     }
-    
+
+    /**
+     * 
+     * @param Renter $renter
+     */
+    public function updateRenter(Renter $renter) {
+        $sql = "UPDATE `mydb`.`mieter` SET `Name`='" . $renter->getName() . "', `Vorname`='" . $renter->getFirstname() . "', "
+                . "`Telefon`='" . $renter->getPhone() . "', `Strasse`='" . $renter->getStreet() . "', `Ort`='" . $renter->getPlace() . "', "
+                . "`PLZ`='" . $renter->getPlz() . "', `Vertragsstart`='" . $renter->getStartDate() . "', `Wohnung_idWohnung`='" . $renter->getRoomId() . "' "
+                . "WHERE `idMieter`='" . $renter->getRenterId() . "';";
+        mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
+    }
+
     /**
      * 
      * @param Room $room
      */
-    public function insertRoom(Room $room){
+    public function insertRoom(Room $room) {
         $insert = "INSERT INTO `mydb`.`wohnung` (`Bezeichnung`, `Fläche`, `Stockwerk`, `Mietzins`, `Vermieter_idVermieter`) "
-                . "VALUES ('".$room->getDescription()."', '".$room->getArea()."', '".$room->getFloor()."',"
-                . " '".$room->getRent()."', '".$room->getHirerId()."');";
+                . "VALUES ('" . $room->getDescription() . "', '" . $room->getArea() . "', '" . $room->getFloor() . "',"
+                . " '" . $room->getRent() . "', '" . $room->getHirerId() . "');";
         mysqli_query($this->link, $insert) or die(mysqli_error($this->link));
     }
-    
+
+    /**
+     * 
+     * @param Room $room
+     */
+    public function updateRoom(Room $room) {
+        $sql = "UPDATE `mydb`.`wohnung` SET `Bezeichnung`='" . $room->getDescription() . "', `Fläche`='" . $room->getArea() . "', "
+                . "`Stockwerk`='" . $room->getFloor() . "', `Mietzins`='" . $room->getRent() . "', "
+                . "`Vermieter_idVermieter`='" . $room->getHirerId() . "' WHERE `idWohnung`='" . $room->getHirerId() . "';";
+        mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
+    }
+
     /**
      * 
      * @param Bill $bill
      */
-    public function insertBill(Bill $bill){
+    public function insertBill(Bill $bill) {
         $insert = "INSERT INTO `mydb`.`rechnungen` (`Betrag`, `ZahlbarBis`, `Datum`, `Wohnung_idWohnung`, `Status_idStatus`, `Kostenart_idKostenart`) 
-            VALUES ('".$bill->getAmout()."', '".$bill->getPayableUntill()."', '".$bill->getDate()."',"
-                . " '".$bill->getRoomId()."', '".$bill->getStatusId()."', '".$bill->getCostTypeId()."');";
+            VALUES ('" . $bill->getAmout() . "', '" . $bill->getPayableUntill() . "', '" . $bill->getDate() . "',"
+                . " '" . $bill->getRoomId() . "', '" . $bill->getStatusId() . "', '" . $bill->getCostTypeId() . "');";
         mysqli_query($this->link, $insert) or die(mysqli_error($this->link));
+    }
+
+    /**
+     * 
+     * @param Bill $bill
+     */
+    public function updateBill(Bill $bill) {
+        $sql = "UPDATE `mydb`.`rechnungen` SET `Betrag`='" . $bill->getAmout() . "', `ZahlbarBis`='" . $bill->getPayableUntill() . "', "
+                . "`Datum`='" . $bill->getDate() . "', `Wohnung_idWohnung`='" . $bill->getRoomId() . "', "
+                . "`Status_idStatus`='" . $bill->getStatusId() . "', `Kostenart_idKostenart`='" . $bill->getCostTypeId() . "' WHERE `idRechnungen`='" . $bill->getBillId() . "';";
+        mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
     }
 
 }
 
+$dbConnect = DBConnect::getInstance();
+$h = new Bill("1", "222", "tsrdfd", "11.1.1", "1", "1", "1");
 
-
-
- $dbConnect = DBConnect::getInstance();
- $h = new Bill("111", "11.1.1", "11.1.1", "1", "1", "1");
-
-$dbConnect->insertBill($h);
+$t = $dbConnect->updateBill($h);
+echo $t;
