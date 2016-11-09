@@ -31,10 +31,7 @@
                         <th>Grund</th>
                         <th>Betrag</th>
                         <th>Bezahlen bis</th>
-                        <th>Status</th>
-                        <th>Bearbeiten</th>
-                        <th>Löschen</th>
-                        
+                        <th>Status</th>                     
                     </tr>
                     <tr>
                         <td>08.11.2016</td>
@@ -43,8 +40,6 @@
                         <td>500.-</td>
                         <td>12.12.2016</td>
                         <td>Bezahlt</td>
-                        <td>IMG</td>
-                        <td>IMG</td>
                     </tr>                    
                 </table>
            </section>

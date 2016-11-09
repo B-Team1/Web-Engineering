@@ -6,7 +6,7 @@
     <body>
         <div id="container">
         <header>
-            <h1>Online Verwaltungstool</h1> 
+            <h1>Online-Verwaltungstool</h1> 
         </header>
         <!-- Linke Spalte -->
         <nav>        

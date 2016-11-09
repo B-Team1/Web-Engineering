@@ -26,7 +26,7 @@
         <!-- Mittlere Spalte ( Hauptinhalt -->
             <section id="content">
                 <h2> Wohnung erfassen</h2>
-                <form id="form" action="Rechnung_erfassen.php" method="POST">
+                <form id="form" action="Wohnung_erfassen.php" method="POST">
                     <label> Name:</label>     
                     <input type="text" name="lastname" value="" size="40" /><br/>
                     <label> Vorname:</label>
@@ -40,7 +40,7 @@
                     <label> Vertragsstart:</label>
                     <input type="date" name="contractstart" value="" size="40" /><br/>  
                 <input type="submit" name="submit" value="speichern" />
-                <input type="button" name="cancel" value="abbrechen" onclick="window.open('Heiz-Nebenkosten.php')">
+                <input type="button" name="cancel" value="abbrechen" onclick="window.open('Wohnungen.php')">
                 </form><br/>        
         
             </section>
