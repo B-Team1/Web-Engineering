@@ -91,6 +91,12 @@ class DBConnect {
                 . "WHERE `idMieter`='" . $renter->getRenterId() . "';";
         mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
     }
+    
+    public function selectRenterById($id){
+        $sql = "SELECT * FROM mydb.mieter WHERE mydb.mieter.idMieter = ".$id.";";
+        $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
+        return mysqli_fetch_array($result);
+    }
 
     /**
      * 
@@ -157,11 +163,36 @@ class DBConnect {
         }
         return $arr;
     }
+    
+
+    
+    /**
+     * foreach($array As $row){echo $row["Name"];}
+     * @return type
+     */
+    public function selectAdditionalAndHeadingCotsIncRenter(){
+        $sql = "SELECT Datum, Name, Vorname, mydb.rechnungen.Beschreibung, Betrag, ZahlbarBis, Status_idStatus FROM mydb.rechnungen 
+                inner join mydb.mieter on mydb.mieter.Wohnung_idWohnung = mydb.rechnungen.Wohnung_idWohnung
+                where mydb.rechnungen.Kostenart_idKostenart = 2;";
+        $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
+        $arr = array();
+        $c = 0;
+       
+        while($row = $result->fetch_assoc()) {
+                 $arr[$c] = $row;
+                 $c++;
+             }
+        return $arr;
+    }
+   
 
 }
+
 
 $dbConnect = DBConnect::getInstance();
 
 
- $test = $dbConnect->selectAllBills();
-echo $test[0]->getDate();
+ $test = $dbConnect->selectRenterById(3);
+ 
+echo $test[0];
+
