@@ -10,7 +10,7 @@
         <header>
             <h1 text align="center">Online-Verwaltungstool</h1>
         </header>
-        
+         
         <!-- Linke Spalte -->
         <nav>  
             <ul>
