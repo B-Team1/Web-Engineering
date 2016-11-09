@@ -1,8 +1,8 @@
 <?php
-require_once('Vermieter.php');
-require_once('Mieter.php');
-require_once('Wohnung.php');
-require_once('Rechnung.php');
+require_once('Hirer.php');
+require_once('Renter.php');
+require_once('Room.php');
+require_once('Bill.php');
 
 
 class DBConnect{
@@ -53,43 +53,43 @@ class DBConnect{
 
      /**
       * 
-      * @param Vermieter $vermieter
+      * @param Hirer $vermieter
       */
-    public function insertVermieter(Vermieter $vermieter){
+    public function insertHirer(Hirer $vermieter){
         $insert = "INSERT INTO `mydb`.`vermieter` (`EMail`, `Passwort`) VALUES ('".$vermieter->getEmail()."', '".$vermieter->getPassword()."');";
         mysqli_query($this->link, $insert) or die(mysqli_error($this->link));
     }
      
     /**
      * 
-     * @param Mieter $mieter
+     * @param Renter $renter
      */
-    public function insertMieter(Mieter $mieter){
+    public function insertRenter(Renter $renter){
         $insert = "INSERT INTO `mydb`.`mieter` (`Name`, `Vorname`, `Telefon`, `Strasse`, `Ort`, `PLZ`, `Vertragsstart`, `Wohnung_idWohnung`) "
-                . "VALUES ('".$mieter->getName()."', '".$mieter->getFirstname()."', '".$mieter->getPhone()."', '".$mieter->getStreet()."',"
-                . " '".$mieter->getPlace()."','".$mieter->getPlz()."', '".$mieter->getStartDate()."', '".$mieter->getRoomId()."');";
+                . "VALUES ('".$renter->getName()."', '".$renter->getFirstname()."', '".$renter->getPhone()."', '".$renter->getStreet()."',"
+                . " '".$renter->getPlace()."','".$renter->getPlz()."', '".$renter->getStartDate()."', '".$renter->getRoomId()."');";
         mysqli_query($this->link, $insert) or die(mysqli_error($this->link));
     }
     
     /**
      * 
-     * @param Wohnung $wohnung
+     * @param Room $room
      */
-    public function insertWohnung(Wohnung $wohnung){
+    public function insertRoom(Room $room){
         $insert = "INSERT INTO `mydb`.`wohnung` (`Bezeichnung`, `Fläche`, `Stockwerk`, `Mietzins`, `Vermieter_idVermieter`) "
-                . "VALUES ('".$wohnung->getDescription()."', '".$wohnung->getArea()."', '".$wohnung->getFloor()."',"
-                . " '".$wohnung->getRent()."', '".$wohnung->getVermieterId()."');";
+                . "VALUES ('".$room->getDescription()."', '".$room->getArea()."', '".$room->getFloor()."',"
+                . " '".$room->getRent()."', '".$room->getHirerId()."');";
         mysqli_query($this->link, $insert) or die(mysqli_error($this->link));
     }
     
     /**
      * 
-     * @param Rechnung $rechnung
+     * @param Bill $bill
      */
-    public function insertRechnung(Rechnung $rechnung){
+    public function insertBill(Bill $bill){
         $insert = "INSERT INTO `mydb`.`rechnungen` (`Betrag`, `ZahlbarBis`, `Datum`, `Wohnung_idWohnung`, `Status_idStatus`, `Kostenart_idKostenart`) 
-            VALUES ('".$rechnung->getAmout()."', '".$rechnung->getPayableTill()."', '".$rechnung->getDate()."',"
-                . " '".$rechnung->getWohnungId()."', '".$rechnung->getStatusId()."', '".$rechnung->getKostenartId()."');";
+            VALUES ('".$bill->getAmout()."', '".$bill->getPayableUntill()."', '".$bill->getDate()."',"
+                . " '".$bill->getRoomId()."', '".$bill->getStatusId()."', '".$bill->getCostTypeId()."');";
         mysqli_query($this->link, $insert) or die(mysqli_error($this->link));
     }
 
@@ -99,6 +99,6 @@ class DBConnect{
 
 
  $dbConnect = DBConnect::getInstance();
- $h = new Rechnung("111", "11.1.1", "11.1.1", "1", "1", "1");
+ $h = new Bill("111", "11.1.1", "11.1.1", "1", "1", "1");
 
-$dbConnect->insertRechnung($h);
+$dbConnect->insertBill($h);
