@@ -24,10 +24,7 @@ color:#564b47;
 pre, code {
 font-size: 1.3em;
 }
-a {color: #DB7093;}
-a:visited {color:#DB7093;}
-a:hover {color: #564b47;}
-a:active { color:#000000;}
+
 
 h1{
 text-align: center;
@@ -85,6 +82,26 @@ nav {
 float: left;
 width: 250px;
 padding:25px;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #A9BCF5;
+}
+
+li a {
+    display: block;
+    color:#564b47;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color on hover */
+li a:hover {
+    background-color: #555;
+    color: white;
 }
 /* -------------- side infos ------------- */
 aside{

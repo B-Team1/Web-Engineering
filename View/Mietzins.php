@@ -41,15 +41,15 @@
                         <td>1500.-</td>
                         <td>12.12.2016</td>
                         <td>
-                             <select name="status">
-                                <option value="offen">offen</option>
-                                <option value="bezahlt">bezahlt</option>
-                                <option value="verzug">Verzug</option>
+                            <select name="status">
+                                <option class="yellow" value="offen">offen</option>
+                                <option class="green" value="bezahlt">bezahlt</option>
+                                <option class="red" value="verzug">Verzug</option>
                             </select>
                         </td>
                         <td>
                             <a href="Miete_bearbeiten.php">
-                                <img src="bearbeiten_icon.png" alt="" style="width:10px; height:auto;">
+                            <img src="bearbeiten_icon.png" alt="" style="width:10px; height:auto;">
                             </a>
                         </td>
                         <td>IMG</td>

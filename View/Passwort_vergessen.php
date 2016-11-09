@@ -7,7 +7,7 @@
     <body>
         <div id="container">
         <header>
-            <h1 text align = center>Passwort vergessen / neues Passwort anfordern</h1>
+            <h1 text align="center">Online-Verwaltungstool</h1>
         </header>
         <!-- Linke Spalte -->
         <nav>        
@@ -20,6 +20,7 @@
         
         <!-- Mittlere Spalte ( Hauptinhalt -->
             <section id="content">
+                <h2>Passwort vergessen</h2>
                 Ihr Passwort wird per Mail zugestellt:
                   
         

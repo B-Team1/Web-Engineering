@@ -15,7 +15,7 @@
                 <li><a href="Wohnungen.php">Wohnungen</a></li>
                 <li><a href="Heiz-Nebenkosten.php">Heiz & Nebenkosten</a></li>
                 <li><a href="Mietzins.php">Mietzins</a></li>
-                <li> <a href="">Jahresabrechnung</a></li>
+                <li> <a href="Jahresabrechnung.php">Jahresabrechnung</a></li>
             </ul>	
         </nav>
         <!-- Rechte Spalte -->

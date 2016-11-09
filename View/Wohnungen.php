@@ -48,8 +48,7 @@
                         </td>
                         <td>IMG</td>
                     </tr>
-                    <td></td>
-                    <td></td>
+                    <!-- letzte Zeile für Add-Button -->
                     <td></td>
                     <td></td>
                     <td></td>
