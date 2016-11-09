@@ -41,7 +41,7 @@
                     <label> Beschreibung:</label>
                     <input type="text" name="description" value="" size="40"/><br/>
                     <label> Betrag [Fr.]:</label>
-                    <input type="number" name="amount" value="" size="40" required oninvalid="this.setCustomValidity('Geben Sie bitte den Betrag ein!')" oninput="setCustomValidity('')" /><br/>
+                    <input type="number" name="amount" value="" size="40" pattern= "[0-9]" required oninvalid="this.setCustomValidity('Geben Sie bitte den Betrag in Zahlen ein!')" oninput="setCustomValidity('')" /><br/>
                     <label> Zahlbar bis:</label>
                     <input type="date" name="zahlbar_bis" value="" size="40" required oninvalid="this.setCustomValidity('Wählen Sie bitte das Enddatum aus!')" oninput="setCustomValidity('')"/><br/>
                     <label> Status:</label>
