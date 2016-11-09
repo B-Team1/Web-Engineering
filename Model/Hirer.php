@@ -13,12 +13,22 @@
  */
 class Hirer {
 
+    private $hirerId;
     private $email;
     private $password;
 
-    public function __construct($email, $password) {
+    public function __construct($hirerId, $email, $password) {
+        $this->hirerId = $hirerId;
         $this->email = $email;
         $this->password = $password;
+    }
+
+    public function getHirerId() {
+        return $this->hirerId;
+    }
+
+    public function setHirerId($hirerId) {
+        $this->hirerId = $hirerId;
     }
 
     public function getEmail() {
