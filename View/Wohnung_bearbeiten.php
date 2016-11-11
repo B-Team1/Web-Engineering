@@ -7,7 +7,45 @@
     <body>
         <div id="container">
         <header>
-            <h1 text align = center>Online-Verwaltungstool</h1> 
+            <h1 text align = center>Online-Verwaltungstool</h1>
+            <?php
+            $nameErr = $expanseErr = $floorErr = $rentErr = "";
+            $name = $expanse = $floor = $rent = "";
+            
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if (empty($_POST["name"])) {
+                    $nameErr = "Wohnungsname ist erforderlich";
+                } else {
+                    $name = test_input($_POST["name"]);
+                }
+                                
+                if (empty($_POST["expanse"])) {
+                    $expanseErr = "Fläche ist erforderlich";
+                } else {
+                    $expanse = test_input($_POST["expanse"]);
+                }
+                
+                if (empty($_POST["floor"])) {
+                    $floorErr = "Stockwerk ist erforderlich";
+                } else {
+                    $floor = test_input($_POST["floor"]);   
+                }
+                                
+                if (empty($_POST["rent"])) {
+                    $rentErr = "Miete ist erforderlich";
+                } else {
+                    $rent = test_input($_POST["rent"]);
+                }            
+            }
+            
+            function test_input($data) {
+                $data = trim($data);
+                $data = stripslashes($data);
+                $data = htmlspecialchars($data);
+                return $data;
+            }
+            
+            ?>
         </header>
         <!-- Linke Spalte -->
         <nav>        
@@ -26,23 +64,42 @@
         <!-- Mittlere Spalte ( Hauptinhalt -->
             <section id="content">
                 <h2> Wohnung bearbeiten</h2>
-                <form id="form" action="Wohnung_bearbeiten.php" method="POST">
-                    <label> Name:</label>     
-                    <input type="text" name="lastname" value="" size="40" /><br/>
-                    <label> Vorname:</label>
-                    <input type="text" name="firstname" value="" size="40" /><br/>
-                    <label> Telefon:</label>
-                    <input type="text" name="phone" value="" size="40" /><br/>
-                    <label> Strasse:</label>
-                    <input type="text" name="street" value="" size="40" /><br/>
-                    <label> Ort:</label>
-                    <input type="text" name="plz" value="" size="40" /><br/> 
-                    <label> Vertragsstart:</label>
-                    <input type="date" name="contractstart" value="" size="40" /><br/>  
-                <input type="submit" name="submit" value="speichern" />
-                <input type="button" name="cancel" value="abbrechen" onclick="window.open('Wohnungen.php')">
-                </form><br/>        
-        
+                <form action="Wohnung_erfassen.php" action="<?php htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+                    <table>
+                    <tr>
+                    <td> Wohnungsname:</td>     
+                    <td><input type="text" name="name" id="name" value="<?php if (isset($_POST['name'])) echo $_POST['name']; ?>" 
+                               size="40" required oninvalid="this.setCustomValidity('Geben Sie bitte den Namen der Wohnung ein!')" oninput="setCustomValidity('')"/>
+                        <span class="error">* <?php echo $nameErr;?></span>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td> Fläche [m^2]:</td>
+                    <td><input type="number" name="expanse" id="expanse" value="<?php if (isset($_POST['expanse'])) echo $_POST['expanse']; ?>"
+                               size="40" required pattern="[0-9]" oninvalid="this.setCustomValidity('Geben Sie bitte die Fläche als Zahl ein!')" oninput="setCustomValidity('')"/>
+                        <span class="error">* <?php echo $expanseErr;?></span>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td> Stockwerk:</td>
+                    <td><input type="number" name="floor" id="floor"  value="<?php if (isset($_POST['floor'])) echo $_POST['floor']; ?>"    
+                               size="40" required pattern="[0-9]" oninvalid="this.setCustomValidity('Geben Sie bitte das Stockwerk als Zahl ein!')" oninput="setCustomValidity('')" />
+                        <span class="error">* <?php echo $floorErr;?></span>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td> Mietzins [Fr.]:</td>
+                    <td><input type="number" name="rent" id="rent" value="<?php if (isset($_POST['rent'])) echo $_POST['rent']; ?>"
+                               size="40" required pattern="[0-9]" oninvalid="this.setCustomValidity('Geben Sie bitte den Mietzins pro Monat ein!')" oninput="setCustomValidity('')"/>
+                        <span class="error">* <?php echo $rentErr;?></span>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td><input type="submit" name="submit" value="speichern" /></td>
+                    <td><input type="button" name="cancel" value="abbrechen" onclick="window.open('Wohnungen.php')"></td>
+                    </tr>
+                    </table>
+                </form><br/>
             </section>
         </div>
     </body>

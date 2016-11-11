@@ -9,7 +9,18 @@
             <header>
             <h1 text align="center">Online-Verwaltungstool</h1>
         </header>
-        
+        <script type =text/javascript>
+                function delete_RentalFee() {
+                    Check = confirm("Wollen Sie die Miet-Rechnung wirklich löschen?");
+                    if (Check == false){
+                        // löscht den Eintrag nicht
+                        alert("Miet-Rechnung xy wurde nicht gelöscht");
+                    } else {
+                        // Wohnung löschen
+                        alert("Miet-Rechnung xy wurde gelöscht");
+                    }
+                }
+             </script>
         <!-- Linke Spalte -->
         <nav>  
             <ul>
@@ -52,7 +63,11 @@
                             <img src="bearbeiten_icon.png" alt="" style="width:10px; height:auto;">
                             </a>
                         </td>
-                        <td>IMG</td>
+                        <td>
+                            <a href="Mietzins.php">
+                                <img src="loeschen_icon.png" alt="" style="width:15px; height:auto;" onClick="delete_RentalFee()">
+                            </a>
+                        </td>
                     </tr>
                     <td></td>
                     <td></td>

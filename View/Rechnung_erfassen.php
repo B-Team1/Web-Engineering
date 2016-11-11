@@ -3,6 +3,9 @@
         <meta charset="UTF-8">
         <link type="text/css" href="style.css" rel="stylesheet" media="screen" />
         <title>Verwaltungstool</title>
+        <script type="text/javascript">
+    
+        </script>
     </head>
     <body>
         <div id="container">
@@ -26,7 +29,7 @@
         <!-- Mittlere Spalte ( Hauptinhalt -->
             <section id="content">
                 <h2> Rechnung erfassen</h2>
-                <form id="form" action="Rechnung_erfassen.php" method="POST">
+                <form action="Rechnung_erfassen.php" method="POST">
                     <table>
                         <tr>
                             <td>Rechnungsdatum</td>

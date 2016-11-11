@@ -26,7 +26,7 @@
         <!-- Mittlere Spalte ( Hauptinhalt -->
             <section id="content">
                 <h2> Rechnung bearbeiten</h2>
-                <form id="form" action="Rechnung_bearbeiten.php" method="POST">
+                <form action="Rechnung_bearbeiten.php" method="POST">
                     <table>
                         <tr>
                             <td>Rechnungsdatum:</td>

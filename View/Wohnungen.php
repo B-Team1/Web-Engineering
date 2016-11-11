@@ -48,7 +48,7 @@
                         <th>Löschen</th>
                     </tr>
                     <tr>
-                        <td>Erdgeschoss 1 </td>
+                        <td><a href=Wohnung_Detailansicht.php>Erdgeschoss 1</a></td>
                         <td>Famillie Müller</td>
                         <td>Sonnenweg 6a</td>
                         <td>80</td>

@@ -23,11 +23,25 @@
                     
         
                 <form id ="form" action="Wohnungen.php" method="POST">
-                <label>E-Mail:</label>
-                <input type="text" name="email" value="" size="40" /><br/>
-                <label>Passwort:</label>
-                <input type="password" name="password" value="" size="40" /><br/><br/>
-                <input type="submit" name="submit" value="login" />
+                    <table>
+                        <tr>
+                            <td>E-Mail:</td>
+                            <td>
+                                <input type="text" name="email" value="" size="40" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Passwort:</td>
+                            <td>
+                                <input type="password" name="password" value="" size="40" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="submit" name="submit" value="login" />
+                            </td>
+                        </tr>
+                    </table>
                 </form><br/>
                 <a href="login_erfassen.php">Registieren </a><br/>
                 <a href="Passwort_vergessen.php">Passwort vergessen</a><br/>
