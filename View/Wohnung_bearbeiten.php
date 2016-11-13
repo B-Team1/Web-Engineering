@@ -76,7 +76,7 @@
                     <tr>
                     <td> Fläche [m^2]:</td>
                     <td><input type="number" name="expanse" id="expanse" value="<?php if (isset($_POST['expanse'])) echo $_POST['expanse']; ?>"
-                               size="40" required pattern="[0-9]" oninvalid="this.setCustomValidity('Geben Sie bitte die Fläche als Zahl ein!')" oninput="setCustomValidity('')"/>
+                               size="40" required pattern="[0-9]" step="any" oninvalid="this.setCustomValidity('Geben Sie bitte die Fläche als Zahl ein!')" oninput="setCustomValidity('')"/>
                         <span class="error">* <?php echo $expanseErr;?></span>
                     </td>
                     </tr>
@@ -90,7 +90,7 @@
                     <tr>
                     <td> Mietzins [Fr.]:</td>
                     <td><input type="number" name="rent" id="rent" value="<?php if (isset($_POST['rent'])) echo $_POST['rent']; ?>"
-                               size="40" required pattern="[0-9]" oninvalid="this.setCustomValidity('Geben Sie bitte den Mietzins pro Monat ein!')" oninput="setCustomValidity('')"/>
+                               size="40" required pattern="[0-9]" step="any" oninvalid="this.setCustomValidity('Geben Sie bitte den Mietzins pro Monat ein!')" oninput="setCustomValidity('')"/>
                         <span class="error">* <?php echo $rentErr;?></span>
                     </td>
                     </tr>

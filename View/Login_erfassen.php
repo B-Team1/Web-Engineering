@@ -126,7 +126,7 @@
                     <tr>
                     <td>E-Mail Adresse:</td>
                     <td><input type="email" name="email" value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>" placeholder="me@example.com"
-                               size="40" required oninvalid="this.setCustomValidity('Geben Sie bitte Ihre E-Mail Adresse ein!')" oninput="setCustomValidity('')" />
+                               size="40" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required oninvalid="this.setCustomValidity('Geben Sie bitte Ihre E-Mail Adresse ein!')" oninput="setCustomValidity('')" />
                         <span class="error">* <?php echo $emailErr;?></span>
                     </td>
                     </tr>
