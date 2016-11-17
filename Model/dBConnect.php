@@ -54,6 +54,7 @@ class DBConnect {
      * @param Hirer $vermieter
      */
     public function insertHirer(Hirer $hirer) {
+        $hirer->escapeString();
         $insert = "INSERT INTO `mydb`.`vermieter` (`EMail`, `Passwort`) VALUES ('" . $hirer->getEmail() . "', '" . $hirer->getPassword() . "');";
         mysqli_query($this->link, $insert) or die(mysqli_error($this->link));
     }
@@ -68,6 +69,16 @@ class DBConnect {
     }
     
     
+    public function checkLogin(Hirer $hirer){
+        $sql = "SELECT * FROM mydb.vermieter where mydb.vermieter.EMail = '" . $hirer->getEmail() . "' and mydb.vermieter.Passwort = '" . $hirer->getPassword() . "';";
+        $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
+        
+        if(mysqli_num_rows($result) == 1){
+            return TRUE;
+        }
+        
+        return FALSE;
+    }
 
     /**
      * 
@@ -92,6 +103,11 @@ class DBConnect {
         mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
     }
     
+    /**
+     * 
+     * @param int $id
+     * @return Array
+     */
     public function selectRenterById($id){
         $sql = "SELECT * FROM mydb.mieter WHERE mydb.mieter.idMieter = ".$id.";";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
@@ -119,6 +135,17 @@ class DBConnect {
                 . "`Vermieter_idVermieter`='" . $room->getHirerId() . "' WHERE `idWohnung`='" . $room->getHirerId() . "';";
         mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
     }
+    
+    /**
+     * 
+     * @param int $id
+     * @return Array
+     */
+    public function selectRoomById($id){
+        $sql = "SELECT * FROM mydb.wohnung WHERE mydb.wohnung.idWohnung = ".$id.";";
+        $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
+        return mysqli_fetch_array($result);
+    }
 
     /**
      * 
@@ -144,7 +171,7 @@ class DBConnect {
     
     /**
      * 
-     * @return \Bill
+     * @return Bill Array
      */
     public function selectAllBills(){
         $sql = "SELECT * FROM mydb.rechnungen;";
@@ -164,11 +191,20 @@ class DBConnect {
         return $arr;
     }
     
-
+    /**
+     * 
+     * @param int $id
+     * @return Array
+     */
+    public function selectBillById($id){
+        $sql = "SELECT * FROM mydb.rechnungen WHERE mydb.rechnungen.idRechnungen = ".$id.";";
+        $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
+        return mysqli_fetch_array($result);
+    }
     
     /**
      * foreach($array As $row){echo $row["Name"];}
-     * @return type
+     * @return Array
      */
     public function selectAdditionalAndHeadingCotsIncRenter(){
         $sql = "SELECT Datum, Name, Vorname, mydb.rechnungen.Beschreibung, Betrag, ZahlbarBis, Status_idStatus FROM mydb.rechnungen 
@@ -191,8 +227,8 @@ class DBConnect {
 
 $dbConnect = DBConnect::getInstance();
 
-
- $test = $dbConnect->selectRenterById(3);
+$dbConnect->insertHirer(new Hirer(0, "test", "1234"));
+ $test = $dbConnect->checkLogin(new Hirer(0, "' or ''='", "' or ''='"));
  
-echo $test[0];
+echo $test;
 
