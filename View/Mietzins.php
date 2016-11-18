@@ -88,7 +88,7 @@
                                 <tr>
                                     <th>Datum</th>
                                     <th>Mieter</th>
-                                    <th>Grund</th>
+                                    <th>Beschreibung</th>
                                     <th>Betrag</th>
                                     <th>Bezahlen bis</th>
                                     <th>Status</th>
@@ -112,12 +112,12 @@
                                     </td>
                                     <td>
                                         <a href="Miete_bearbeiten.php">
-                                            <img src="bearbeiten_icon.png" alt="" style="width:10px; height:auto;">
+                                            <img src="img/bearbeiten_icon.png" alt="" style="width:10px; height:auto;">
                                         </a>
                                     </td>
                                     <td>
                                         <a href="Mietzins.php">
-                                            <img src="loeschen_icon.png" alt="" style="width:15px; height:auto;" onClick="delete_RentalFee()">
+                                            <img src="img/loeschen_icon.png" alt="" style="width:15px; height:auto;" onClick="delete_RentalFee()">
                                         </a>
                                     </td>
                                 </tr>

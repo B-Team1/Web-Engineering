@@ -102,12 +102,12 @@
                                     <td>80</td>
                                     <td> 
                                         <a href="Wohnung_bearbeiten.php">
-                                            <img src="bearbeiten_icon.png" alt="" style="width:10px; height:auto;">
+                                            <img src="img/bearbeiten_icon.png" alt="" style="width:10px; height:auto;">
                                         </a>
                                     </td>
                                     <td>
                                         <a href="Wohnungen.php">
-                                            <img src="loeschen_icon.png" alt="" style="width:15px; height:auto;" onClick="delete_room()">
+                                            <img src="img/loeschen_icon.png" alt="" style="width:15px; height:auto;" onClick="delete_room()">
                                         </a>
                                     </td>
                                 </tr>
@@ -118,12 +118,12 @@
                                     <td>80</td>
                                     <td> 
                                         <a href="Wohnung_bearbeiten.php">
-                                            <img src="bearbeiten_icon.png" alt="" style="width:10px; height:auto;">
+                                            <img src="img/bearbeiten_icon.png" alt="" style="width:10px; height:auto;">
                                         </a>
                                     </td>
                                     <td>
                                         <a href="Wohnungen.php">
-                                            <img src="loeschen_icon.png" alt="" style="width:15px; height:auto;" onClick="delete_room()">
+                                            <img src="img/loeschen_icon.png" alt="" style="width:15px; height:auto;" onClick="delete_room()">
                                         </a>
                                     </td>
                                 </tr>
