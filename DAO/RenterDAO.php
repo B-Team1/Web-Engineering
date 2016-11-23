@@ -1,4 +1,5 @@
 <?php
+
 include "AbstractDAO.php";
 include_once '../model/Renter.php';
 /*
@@ -12,7 +13,8 @@ include_once '../model/Renter.php';
  *
  * @author Tobias
  */
-class RenterDAO extends AbstractDAO{
+class RenterDAO extends AbstractDAO {
+
     /**
      * 
      * @param Renter $renter
@@ -35,15 +37,29 @@ class RenterDAO extends AbstractDAO{
                 . "WHERE `idMieter`='" . $renter->getRenterId() . "';";
         mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
     }
+
+    /**
+     * 
+     * @param type $id
+     * @return \Renter
+     */
+    public function selectRenterById($id) {
+        $sql = "SELECT * FROM mydb.mieter WHERE mydb.mieter.idMieter = " . $id . ";";
+        $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
+        $renter = null;
+        while ($row = $result->fetch_object()) {
+            $renter = new Renter($row->idMieter, $row->Name, $row->Vorname, $row->Telefon, $row->Strasse, $row->Ort, $row->PLZ, $row->Vertragsstart, $row->Wohnung_idWohnung);
+        }
+        return $renter;
+    }
     
     /**
      * 
-     * @param int $id
-     * @return Array
+     * @param type $id
      */
-    public function selectRenterById($id){
-        $sql = "SELECT * FROM mydb.mieter WHERE mydb.mieter.idMieter = ".$id.";";
+    public function deleteBillById($id){
+        $sql = "DELETE FROM `mydb`.`mieter` WHERE `idMieter` = ".$id.";";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
-        return mysqli_fetch_array($result);
     }
+
 }

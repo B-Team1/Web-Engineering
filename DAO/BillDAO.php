@@ -55,13 +55,18 @@ class BillDAO extends AbstractDAO {
 
     /**
      * 
-     * @param int $id
-     * @return Array
+     * @param type $id
+     * @return \Bill
      */
     public function selectBillById($id) {
         $sql = "SELECT * FROM mydb.rechnungen WHERE mydb.rechnungen.idRechnungen = " . $id . ";";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
-        return mysqli_fetch_array($result);
+        $bill = null;
+         while ($row = $result->fetch_assoc()) {
+                $bill = new Bill($row["idRechnungen"], $row["Betrag"], $row["ZahlbarBis"], $row["Datum"], $row["Wohnung_idWohnung"], $row["Status_idStatus"], $row["Kostenart_idKostenart"], $row["Beschreibung"]);
+               
+        }
+        return $bill;
     }
 
     /**
@@ -81,6 +86,15 @@ class BillDAO extends AbstractDAO {
             $c++;
         }
         return $arr;
+    }
+    
+    /**
+     * 
+     * @param type $id
+     */
+    public function deleteBillById($id){
+        $sql = "DELETE FROM `mydb`.`rechnungen` WHERE `idRechnungen` = ".$id.";";
+        $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
     }
 
 }
