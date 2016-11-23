@@ -67,7 +67,7 @@
                                 <input type="number" name="rent" id="rent" class="form-control" value="<?php if (isset($_POST['rent'])) echo $_POST['rent']; ?>" required pattern="[0-9]" step="any" oninvalid="this.setCustomValidity('Geben Sie bitte den Mietzins pro Monat ein!')" oninput="setCustomValidity('')"/>
                                     <span class="error"><?php echo $rentErr;?></span>
                             </div>
-                            
+                            <!-- test -->
                             <button type="submit" name="submit" value="speichern" class="btn btn-primary">Speichern</button>
                             <button type="button" name="cancel" value="abbrechen" class="btn btn-primary" onclick="window.open('Wohnungen.php')">Abbrechen</button>
                         </form>
