@@ -1,8 +1,6 @@
 <?php 
 include_once "Header.php";
-
-session_start();
-include 'login_pruefen.inc.php';
+include '../Validator/login_pruefen.inc.php';
 ?>
 <script type =text/javascript>
     function delete_room() {
