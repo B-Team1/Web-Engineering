@@ -66,6 +66,7 @@
                                 <select name="apartment" id="apartment" class="form-control" style="width: 270px" required>
                                    
                                     <?php
+                                        //So sollte es nicht sein!
                                         //$sql = mysqli_query($connection, "SELECT name FROM apartement");
                                         //while ($row = $sql->fetch_assoc()){
                                         //    echo "<option value=\"owner1\">" . $row['username'] . "</option>";
