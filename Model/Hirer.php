@@ -22,6 +22,10 @@ class Hirer {
         $this->email = $email;
         $this->password = $password;
     }
+    
+    public function escapeString(){
+        
+    }
 
     public function getHirerId() {
         return $this->hirerId;
@@ -31,18 +35,34 @@ class Hirer {
         $this->hirerId = $hirerId;
     }
 
+    /**
+     * 
+     * @return type
+     */
     public function getEmail() {
         return $this->email;
     }
 
+    /**
+     * 
+     * @return type
+     */
     public function getPassword() {
         return $this->password;
     }
 
+    /**
+     * 
+     * @param type $email
+     */
     public function setEmail($email) {
         $this->email = $email;
     }
 
+    /**
+     * 
+     * @param type $password
+     */
     public function setPassword($password) {
         $this->password = $password;
     }
