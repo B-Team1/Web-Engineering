@@ -6,7 +6,7 @@
         <div class="row">
             <div class="box">
                  <div class="col-lg-12">
-                    <form role="form" action="Wohnungen.php" method="POST">
+                     <form role="form" action="checkLogin.php" method="POST">
                     <div class="col-lg-4">    
                         <div class="row">
                             <div class="form-group">

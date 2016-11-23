@@ -44,6 +44,7 @@ class HirerDAO extends AbstractDAO {
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
         $fa = mysqli_fetch_assoc($result);
         
+        
         if(password_verify($hirer->getPassword(), $fa["Passwort"])){
             return TRUE;
         }

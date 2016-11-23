@@ -12,3 +12,7 @@ include_once '../DAO/dBConnect.php';
 class RenterController {
     //put your code here
 }
+
+$d = new RenterDAO(DBConnect::getInstance()->getLink());
+
+echo $d->selectRenterById(4)->getFirstname();

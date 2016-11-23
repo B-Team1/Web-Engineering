@@ -10,8 +10,16 @@ include_once '../DAO/dBConnect.php';
  * @author Tobias
  */
 class HirerController {
-    //put your code here
+    
+    private $db;
+    
+    public function __construct()
+    {
+        $this->db = new HirerDAO(DBConnect::getInstance()->getLink());
+    }
+    
+    public function checkLogin($email, $password){
+        return $this->db->checkLogin(new Hirer(0, $email, $password));
+    }
 }
-
-
 

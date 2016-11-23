@@ -67,7 +67,7 @@
                                    
                                     <?php
                                         //$sql = mysqli_query($connection, "SELECT name FROM apartement");
-                                        //while ($row = $sql->fetch_assoc()){
+                                        //while ($row = new RenterDAO(DBConnect::getInstance()->getLink())->selectRenterById($id)){
                                         //    echo "<option value=\"owner1\">" . $row['username'] . "</option>";
                                         //}
                                     ?>

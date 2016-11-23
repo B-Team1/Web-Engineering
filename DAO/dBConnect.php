@@ -3,9 +3,9 @@
 
 class DBConnect {
 
-    private $user = "root";
-    private $password = "";
-    private $database = "mydb";
+    private $user;
+    private $password;
+    private $database;
     private $link;
     protected static $_instance = null;
 
@@ -35,6 +35,12 @@ class DBConnect {
      * externe Instanzierung verbieten
      */
     protected function __construct() {
+        $iniFile = "../config/config.ini";
+        $databaseConfig = parse_ini_file($iniFile, true)["database"];
+        $this->user = $databaseConfig ["db_user"];
+        $this->password = $databaseConfig ["db_password"];
+        $this->database = $databaseConfig ["db_name"];
+        
         $this->connectDB();
     }
 
