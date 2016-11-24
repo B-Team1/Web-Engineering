@@ -1,4 +1,7 @@
-    <?php include_once "Header.php"; ?>
+    <?php 
+    include_once "Header.php";
+    include_once '../Controller/HirerController.php';
+    ?>
     <script type="text/javascript">
         window.onload = function() {
             document.getElementById("password1").onchange = validatePassword;
@@ -18,9 +21,14 @@
     <?php
             $lastnameErr = $firstnameErr = $password1Err = $password2Err = $emailErr = "";
             $lastname = $firstname = $password1 = $password2 = $email = "";
+            $checkField = true;
             
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 include_once '../Validator/UserValidator';
+                if($checkField){
+                    $hc = new HirerController();
+                    $hc->insertHirer($_POST["email"], $_POST["password1"]);
+                }
             }
                         
             ?>

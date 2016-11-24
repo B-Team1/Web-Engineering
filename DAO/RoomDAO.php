@@ -52,5 +52,12 @@ class RoomDAO extends AbstractDAO{
         $sql = "DELETE FROM `mydb`.`wohnung` WHERE `idWohnung` = ".$id.";";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
     }
+    
+    /**
+     * 
+     */
+    public function selectAllRoomsByHirer(){
+        
+    }
 
 }

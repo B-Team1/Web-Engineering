@@ -11,15 +11,29 @@ include_once '../DAO/dBConnect.php';
  */
 class HirerController {
     
-    private $db;
+    protected $db;
     
     public function __construct()
     {
         $this->db = new HirerDAO(DBConnect::getInstance()->getLink());
     }
     
+    /**
+     * 
+     * @param type $email
+     * @param type $password
+     * @return type
+     */
     public function checkLogin($email, $password){
         return $this->db->checkLogin(new Hirer(0, $email, $password));
+    }
+    
+    public function insertHirer($email, $password){
+        $hirer = new Hirer(0, $email, $password);
+        if (!$this->db->checkHirerByMail($hirer)) {
+             $this->db->insertHirer($hirer);
+        }
+       
     }
 }
 

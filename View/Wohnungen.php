@@ -1,15 +1,16 @@
 <?php 
 include_once "Header.php";
+include_once '../Controller/RoomController.php';
 include '../Validator/login_pruefen.inc.php';
 ?>
 <script type =text/javascript>
-    function delete_room() {
+    function delete_room(roomId) {
         Check = confirm("Wollen Sie die Wohnung wirklich löschen?");
+        
         if (Check == false) {
             // löscht den Eintrag nicht
             alert("Wohnung xy wurde nicht gelöscht");
         } else {
-            // Wohnung löschen
             alert("Wohnung xy wurde gelöscht");
         }
     }
@@ -63,7 +64,7 @@ include '../Validator/login_pruefen.inc.php';
                                 </td>
                                 <td>
                                     <a href="Wohnungen.php">
-                                        <img src="img/loeschen_icon.png" alt="" style="width:15px; height:auto;" onClick="delete_room()">
+                                        <img src="img/loeschen_icon.png" alt="" style="width:15px; height:auto;" onClick="delete_room(2)">
                                     </a>
                                 </td>
                             </tr>

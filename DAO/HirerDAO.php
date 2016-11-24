@@ -18,6 +18,7 @@ class HirerDAO extends AbstractDAO {
      * @param Hirer $vermieter
      */
     public function insertHirer(Hirer $hirer) {
+        $t = $hirer->getPassword();
         $password = password_hash($hirer->getPassword(), PASSWORD_DEFAULT);
         $insert = "INSERT INTO `mydb`.`vermieter` (`EMail`, `Passwort`) VALUES ('" . $hirer->getEmail() . "', '" . $password . "');";
         mysqli_query($this->link, $insert) or die(mysqli_error($this->link));
@@ -50,5 +51,21 @@ class HirerDAO extends AbstractDAO {
         }
         
         return FALSE;
+    }
+    
+    /**
+     * 
+     * @param Hirer $hirer
+     * @return boolean
+     */
+    public function checkHirerByMail(Hirer $hirer){
+        $sql = "SELECT * FROM mydb.vermieter where mydb.vermieter.EMail = '" . $hirer->getEmail() . "';";
+        $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
+        
+        if(mysqli_num_rows($result) >= 1){
+            return TRUE;
+        }else{
+            return FALSE;
+        }
     }
 }
