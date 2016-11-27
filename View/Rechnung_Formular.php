@@ -6,11 +6,15 @@
 </div>
 <div class="form-group">
     <label for="apartment">Wohnung: *</label>
-    <select name="apartment" id="apartment" class="form-control" style="width: 270px" required>
+    <select name="apartment" id="apartment" class="form-control" style="width: 270px" <!--required-->>
 
         <?php
+        
+        
         //So sollte es nicht sein!
         //$sql = mysqli_query($connection, "SELECT name FROM apartement");
+        //
+        
         //while ($row = $sql->fetch_assoc()){
         //    echo "<option value=\"owner1\">" . $row['username'] . "</option>";
         //}
@@ -25,7 +29,7 @@
 <div class="form-group">
     <label for="amount">Betrag: *</label>
     <input type="number" name="amount" id="amount" class="form-control" value="<?php if (isset($_POST['amount'])) echo $_POST['amount']; ?>"
-           size="80" style="width:270px" required pattern="[0-9]" step="any" oninvalid="this.setCustomValidity('Geben Sie bitte den Betrag ein!')" oninput="setCustomValidity('')"/>
+           size="80" style="width:270px"  pattern="[0-9]" step="any" oninvalid="this.setCustomValidity('Geben Sie bitte den Betrag ein!')" oninput="setCustomValidity('')"/>
     <span class="error"><?php echo $amountErr; ?></span>                              
 </div> 
 <div class="form-group">

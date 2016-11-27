@@ -1,62 +1,81 @@
 <?php
 
-if (empty($_POST["lastname"])) {
-    $lastnameErr = "Name ist erforderlich";
-    $checkField = false;
-} else {
-    $lastname = test_input($_POST["lastname"]);
-}
+include_once '../Model/Hirer.php';
 
-if (empty($_POST["firstname"])) {
-    $firstnameErr = "Vorname ist erforderlich";
-    $checkField = false;
-} else {
-    $firstname = test_input($_POST["firstname"]);
-}
+class UserValidator {
 
-if (empty($_POST["password1"])) {
-    $password1Err = "Ein Passwort ist erforderlich";
-    $checkField = false;
-} else {
-    if (strlen($_POST["password1"]) < 6) {
-        $password1Err = "Mindestens 6 Zeichen";
-        $checkField = false;
-    } else {
-        $password1 = test_input($_POST["password1"]);
+    private $hirer;
+    private $valid = true;
+    private $emailError = null;
+    private $pwError = null;
+    private $pw2Error = null;
+
+    public function __construct(Hirer $hirer = null) {
+        $this->hirer = $hirer;
+        $this->checkUser();
     }
-}
 
-if (empty($_POST["password2"])) {
-    $password2Err = "Das Passwort muss widerholt werden";
-    $checkField = false;
-} else {
-    if ($_POST["password1"] != $_POST["password2"]) {
-        $password2Err = "Das Passwort stimmt nicht überein";
-        $checkField = false;
-    } else {
-        $password2 = test_input($_POST["password2"]);
+    public function checkUser() {
+
+        if (!is_null($this->hirer)) {
+            if (empty($this->hirer->getEmail())) {
+                $this->emailError = 'Geben Sie eine E-Mail Adresse ein';
+                $this->valid = false;
+            } else if (!filter_var($this->hirer->getEmail(), FILTER_VALIDATE_EMAIL)) {
+                $this->emailError = 'Geben Sie bitte eine gültige E-Mail Adresse ein';
+                $this->valid = false;
+            }
+
+            if (empty($this->hirer->getPassword())) {
+                $this->pwError = 'Geben Sie bitte ein Passwort ein';
+                $this->valid = false;
+            } else if (strlen($this->hirer->getEmail()) < 6) {
+                $this->pwError = 'Passwort benötigt mindestens 6 Zeichen';
+                $this->valid = false;
+            }
+            
+            if (empty($this->hirer->getPassword2())) {
+                $this->pw2Error = 'Widerholen Sie bitte das Passwort';
+                $this->valid = false;
+            } else if($this->hirer->getPassword() != $this->hirer->getPassword2()) {
+                $this->pw2Error = 'Passwörter stimmen nicht überein';
+                $this->valid = false;
+            }
+            
+        } else {
+            $this->valid = false;
+        }
+        return $this->valid;
+
+        /*
+          function test_input($data) {
+          $data = trim($data);
+          $data = stripslashes($data);
+          $data = htmlspecialchars($data);
+          return $data;
+          } */
     }
-}
 
-if (empty($_POST["email"])) {
-    $emailErr = "E-Mail ist erforderlich";
-    $checkField = false;
-} else {
-    if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-        $emailErr = "kein korrektes E-Mail Format";
-        $checkField = false;
-    } else {
-        $email = test_input($_POST["email"]);
+    public function getHirer() {
+        return $this->hirer;
     }
-}
 
+    public function isValid() {
+        return $this->valid;
+    }
 
+    public function getEmailError() {
+        return $this->emailError;
+    }
 
-function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
+    public function getPwError() {
+        return $this->pwError;
+    }
+    
+    public function getPw2Error() {
+        return $this->pw2Error;
+    }
+
 }
 
 ?>

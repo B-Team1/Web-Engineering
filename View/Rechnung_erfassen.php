@@ -1,10 +1,13 @@
-<?php include_once "Header.php"; ?>
+<?php include_once "Header.php";
+include_once "../Validator/BillValidator.php"?>
 <?php
 $invoicedateErr = $amountErr = $datetopayErr = "";
-$invoicedate = $amount = $datetopay = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    include_once '../Validator/BillValidator.php';
+    $billvalidator = new BillValidator();
+    $test = $_POST["amount"];
+    $billvalidator->__checkbill(($test));
+    //include_once '../Validator/BillValidator.php';
 }
 ?>
 </head>
