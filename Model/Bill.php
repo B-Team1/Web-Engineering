@@ -11,15 +11,23 @@ class Bill {
     private $costTypeId;
     private $descripton;
 
-    public function __construct($billId, $amout, $payableUntill, $date, $roomId, $statusId, $costTypeId, $descripton) {
-        $this->billId = $billId;
-        $this->amout = $amout;
-        $this->payableUntill = $payableUntill;
-        $this->date = $date;
-        $this->roomId = $roomId;
-        $this->statusId = $statusId;
-        $this->costTypeId = $costTypeId;
-        $this->descripton = $descripton;
+    public function __construct($billId=null, $amout=null, $payableUntill=null, $date=null, $roomId=null, $statusId=null, $costTypeId=null, $descripton=null) {
+        if (isset($billId))
+            $this->billId = $billId;
+        if (isset($amout))
+            $this->amout = $amout;
+        if (isset($payableUntill))
+            $this->payableUntill = $payableUntill;
+        if (isset($date))
+            $this->date = $date;
+        if (isset($roomId))
+            $this->roomId = $roomId;
+        if (isset($statusId))
+            $this->statusId = $statusId;
+        if (isset($costTypeId))
+            $this->costTypeId = $costTypeId;
+        if (isset($descripton))
+            $this->descripton = $descripton;
     }
 
     public function getDescripton() {

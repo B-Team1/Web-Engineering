@@ -1,15 +1,23 @@
-<?php include_once "Header.php";
-include_once "../Validator/BillValidator.php"?>
 <?php
-$invoicedateErr = $amountErr = $datetopayErr = "";
+include_once "Header.php";
+include_once '../Controller/BillController.php';
+include_once "../Validator/BillValidator.php";
+include_once '../Model/Bill.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $billvalidator = new BillValidator();
-    $test = $_POST["amount"];
-    $billvalidator->__checkbill(($test));
-    //include_once '../Validator/BillValidator.php';
+$bill = new Bill();
+$billValidator = new BillValidator();
+
+if (!empty($_POST)) {
+    $bill = new Bill(null, $_POST['amount'], $_POST['datetopay'], $_POST['invoicedate'], $_POST['apartment'], $_POST['status'], null, $_POST['description']);
+    $billValidator = new BillValidator($bill);
+    
+    if ($billValidator->isValid()) {
+        
+    }
 }
+
 ?>
+
 </head>
 <body>
     <div class="brand">Online-Verwaltungstool</div>
