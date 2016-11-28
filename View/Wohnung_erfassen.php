@@ -1,19 +1,23 @@
-<?php include_once "Header.php"; ?>
 <?php
-$nameErr = $expanseErr = $floorErr = $rentErr = "";
-$name = $expanse = $floor = $rent = "";
+include_once "Header.php";
+include_once '../Controller/RoomController.php';
+include_once '../Validator/RoomValidator.php';
+include_once '../Model/Room.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    include_once("../Validator/RoomValidator.php");
+$room = new Room();
+$roomValidator = new RoomValidator();
+
+if (!empty($_POST)) {
+
+    $room = new Room(null, $_POST['expanse'], $_POST['name'], $_POST['floor'], $_POST['rent'], null);
+    $roomValidator = new RoomValidator($room);
+
+    if ($roomValidator->isValid()) {
+        
+    }
 }
-
-/*function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}*/
 ?>
+
 </head>
 <div class="brand">Online-Verwaltungstool</div>
 <?php include_once "Navigation.php"; ?>

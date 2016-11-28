@@ -20,13 +20,19 @@ class Room {
     private $rent;
     private $hirerId;
 
-    public function __construct($roomId, $area, $description, $floor, $rent, $hirerId) {
-        $this->roomId = $roomId;
-        $this->area = $area;
-        $this->description = $description;
-        $this->floor = $floor;
-        $this->rent = $rent;
-        $this->hirerId = $hirerId;
+    public function __construct($roomId=null, $area=null, $description=null, $floor=null, $rent=null, $hirerId=null) {
+        if (isset($roomId))
+            $this->roomId = $roomId;
+        if (isset($area))
+            $this->area = $area;
+        if (isset($description))
+            $this->description = $description;
+        if (isset($floor))
+            $this->floor = $floor;
+        if (isset($rent))
+            $this->rent = $rent;
+        if (isset($hirerId))
+            $this->hirerId = $hirerId;
     }
 
     public function getRoomId() {

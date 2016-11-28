@@ -1,36 +1,89 @@
 <?php
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty($_POST["name"])) {
-        $nameErr = "Wohnungsname ist erforderlich";
-    } else {
-        $name = test_input($_POST["name"]);
+include_once '../Model/Room.php';
+
+class RoomValidator {
+
+    private $room;
+    private $valid = true;
+    private $descriptionError = null;
+    private $areaError = null;
+    private $floorError = null;
+    private $rentError = null;
+
+    public function __construct(Room $room = null) {
+        $this->room = $room;
+        $this->checkRoom();
     }
 
-    if (empty($_POST["expanse"])) {
-        $expanseErr = "Fläche ist erforderlich";
-    } else {
-        $expanse = test_input($_POST["expanse"]);
+    public function checkRoom() {
+
+        if (!is_null($this->room)) {
+            if (empty($this->room->getDescription())) {
+                $this->descriptionError = 'Geben Sie den Wohnungsnamen ein';
+                $this->valid = false;
+            }
+
+            if (empty($this->room->getArea())) {
+                $this->areaError = 'Geben Sie die Wohnungsfläche ein';
+                $this->valid = false;
+            } else if (!is_numeric($this->room->getArea())) {
+                $this->areaError = 'Geben Sie die Fläche als Zahl ein';
+                $this->valid = false;
+            }
+
+            if (empty($this->room->getFloor())) {
+                $this->floorError = 'Geben Sie das Stockwerk ein';
+                $this->valid = false;
+            } else if (!is_numeric($this->room->getFloor())) {
+                $this->floorError = 'Geben Sie das Stockwerk als ganze Zahl ein';
+                $this->valid = false;
+            }
+
+            if (empty($this->room->getRent())) {
+                $this->rentError = 'Geben Sie den Mietzins ein';
+                $this->valid = false;
+            } else if (!is_numeric($this->room->getRent())) {
+                $this->floorError = 'Geben Sie den Mietzins als Zahl ein';
+                $this->valid = false;
+            }
+        } else {
+            $this->valid = false;
+        }
+        return $this->valid;
+
+        /* function test_input($data) {
+          $data = trim($data);
+          $data = stripslashes($data);
+          $data = htmlspecialchars($data);
+          return $data;
+          } */
+    }
+    
+    function getRoom() {
+        return $this->room;
     }
 
-    if (empty($_POST["floor"])) {
-        $floorErr = "Stockwerk ist erforderlich";
-    } else {
-        $floor = test_input($_POST["floor"]);
+    function isValid() {
+        return $this->valid;
     }
 
-    if (empty($_POST["rent"])) {
-        $rentErr = "Miete ist erforderlich";
-    } else {
-        $rent = test_input($_POST["rent"]);
+    function getDescriptionError() {
+        return $this->descriptionError;
     }
-}
 
-function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
+    function getAreaError() {
+        return $this->areaError;
+    }
+
+    function getFloorError() {
+        return $this->floorError;
+    }
+
+    function getRentError() {
+        return $this->rentError;
+    }
+
 }
 
 ?>

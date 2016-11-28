@@ -34,11 +34,7 @@ if (!empty($_POST)) {
         }
     }
 </script>
-<?php
-$lastnameErr = $firstnameErr = $password1Err = $password2Err = $emailErr = "";
-$lastname = $firstname = $password1 = $password2 = $email = "";
 
-?>
 </head>
 <body>
     <div class="brand">Online-Verwaltungstool</div>
