@@ -9,12 +9,16 @@ $userValidator = new UserValidator();
 
 if (!empty($_POST)) {
 
-    $hirer = new Hirer(null, $_POST['email'], $_POST['password1']);
+    $hirer = new Hirer(null, $_POST['email'], $_POST['password1'], $_POST['password2']);
     $userValidator = new UserValidator($hirer);
 
     if ($userValidator->isValid()) {
         $hc = new HirerController();
-        $hc->insertHirer($_POST["email"], $_POST["password1"]);
+        if($hc->insertHirer($_POST["email"], $_POST["password1"])){
+            //Erfolgsmeldung
+        }else{
+            //Penismeldung
+        }
     }
 }
 ?>

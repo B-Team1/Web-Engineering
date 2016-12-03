@@ -32,8 +32,9 @@ class HirerController {
         $hirer = new Hirer(0, $email, $password);
         if (!$this->db->checkHirerByMail($hirer)) {
              $this->db->insertHirer($hirer);
+             return TRUE;
         }
-       
+        return FALSE;       
     }
 }
 
