@@ -36,5 +36,14 @@ class HirerController {
         }
         return FALSE;       
     }
+    
+    /**
+     * 
+     * @param type $email
+     * @return Hirer
+     */
+    public function getHirerByMail($email){
+        return $this->db->getHirerByMail(new Hirer(0, $email));
+    }
 }
 

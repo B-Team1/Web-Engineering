@@ -68,4 +68,22 @@ class HirerDAO extends AbstractDAO {
             return FALSE;
         }
     }
+    
+    /**
+     * 
+     * @param Hirer $hirer
+     * @return \Hirer
+     */
+    public function getHirerByMail(Hirer $hirer){
+        $sql = "SELECT * FROM mydb.vermieter where mydb.vermieter.EMail = '" . $hirer->getEmail() . "';";
+        $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
+        
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while ($row = $result->fetch_assoc()) {
+                $hirer = new Hirer($row["idVermieter"], $row["EMail"], $row["Passwort"]);
+            }
+        }
+        return $hirer; 
+    }
 }
