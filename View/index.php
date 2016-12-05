@@ -11,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $hirerController = new HirerController();
         if ($hirerController->checkLogin($_POST['email'], $_POST['password'])) {
             $_SESSION['eingeloggt'] = true;
+            $_SESSION['hirerId'] = $hirerController->getHirerByMail($_POST['email'])->getHirerId();
             header("Location: Wohnungen.php");
             exit();
         } else {
