@@ -25,7 +25,12 @@ class RoomController {
         $this->db->deleteRoomById($id);
     }
     
+    /**
+     * 
+     * @return type
+     */
     public function selectAllRoomsByHirer(){
+        return $this->db->selectAllRoomsByHirer();
         
     }
 }

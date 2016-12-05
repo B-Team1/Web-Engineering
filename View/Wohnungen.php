@@ -24,6 +24,38 @@ include '../Validator/login_pruefen.inc.php';
             <div class="box">
                 <div class="col-lg-12">
                     <h4>Wohnungsübersicht</h4>
+                    <!--- test -->
+                    <table class="table-responsive" width="100%">
+                         <thead>
+                            <tr>
+                                <th>Wohnung</th>
+                                <th>Mieter</th>
+                                <th>Adresse</th>
+                                <th>Fläche m2</th>
+                                <th>Bearbeiten</th>
+                                <th>Löschen</th>
+                            </tr>
+                        </thead>
+                    
+                    <?php
+                  //  $rc = new RoomController();
+                  //  echo $rc->selectAllRoomsByHirer()[0][0];
+                    
+                    /*tabelle generieren*/  
+                 //   foreach ($zeile as $rc->selectAllRoomsByHirer()) {
+                        echo "<tr>";
+                        echo "<td>" . $zeile['Bezeichnung'] . "</td>";
+                        echo "<td>" . $zeile['Name'] . "</td>";
+                        echo "<td>" . $zeile['Strasse'] . "</td>";
+                        echo "<td>" . $zeile['Fläche'] . "</td>";
+                        echo "<td>" . $zeile['strasse'] . "</td>";
+                        echo "</tr>";
+                  //  }
+                    ?>
+                    </table>
+                    
+                    
+                    
                     <table class="table-responsive" width="100%">
                         <thead>
                             <tr>
