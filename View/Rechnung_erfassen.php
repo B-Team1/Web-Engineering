@@ -4,14 +4,17 @@ include_once '../Controller/BillController.php';
 include_once "../Validator/BillValidator.php";
 include_once '../Model/Bill.php';
 
-$bill = new Bill();
+//$bill = new Bill();
 $billValidator = new BillValidator();
 
 if (!empty($_POST)) {
     $bill = new Bill(null, $_POST['amount'], $_POST['datetopay'], $_POST['invoicedate'], $_POST['apartment'], $_POST['status'], null, $_POST['description']);
+    $bill->setRoomId(1);
     $billValidator = new BillValidator($bill);
     
     if ($billValidator->isValid()) {
+        
+        $bc = new BillController();
         
     }
 }

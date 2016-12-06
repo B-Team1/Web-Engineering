@@ -75,6 +75,12 @@ class UserValidator {
     public function getPw2Error() {
         return $this->pw2Error;
     }
+    
+    public function setEmailError($emailError) {
+        $this->emailError = $emailError;
+    }
+
+
 
 }
 

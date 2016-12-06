@@ -14,11 +14,7 @@ if (!empty($_POST)) {
 
     if ($userValidator->isValid()) {
         $hc = new HirerController();
-        if($hc->insertHirer($_POST["email"], $_POST["password1"])){
-            //Erfolgsmeldung
-        }else{
-            //Penismeldung
-        }
+        $userValidator = $hc->insertHirer($_POST["email"], $_POST["password1"], $userValidator);
     }
 }
 ?>

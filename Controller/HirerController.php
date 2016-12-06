@@ -28,13 +28,14 @@ class HirerController {
         return $this->db->checkLogin(new Hirer(0, $email, $password));
     }
     
-    public function insertHirer($email, $password){
+    public function insertHirer($email, $password, UserValidator $userValidator){
         $hirer = new Hirer(0, $email, $password);
         if (!$this->db->checkHirerByMail($hirer)) {
              $this->db->insertHirer($hirer);
-             return TRUE;
+             header("Location: index.php");
         }
-        return FALSE;       
+        $userValidator->setEmailError("Benutzer ist bereits vorhanden!");
+        return $userValidator;       
     }
     
     /**

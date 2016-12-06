@@ -25,7 +25,13 @@ class RoomController {
         $this->db->deleteRoomById($id);
     }
     
+    public function insertRoom(Room $room){
+        $room->setHirerId($_SESSION['hirerId']);
+        $this->db->insertRoom($room);
+        //header("Location: Wohnungen.php");
+    }
+    
     public function selectAllRoomsByHirer(){
-        
+        return $this->db->selectAllRoomsByHirer();
     }
 }
