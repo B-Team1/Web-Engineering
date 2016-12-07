@@ -1,4 +1,7 @@
-    <?php include_once "Header.php"; ?>
+    <?php 
+    include_once "Header.php"; 
+    include_once '../Controller/BillController.php';
+    ?>
         </head>
     <body>
         <div class="brand">Online-Verwaltungstool</div>
@@ -11,23 +14,27 @@
                         <table class="table-responsive" width="100%">
                             <thead>
                                 <tr>
-                                    <th>Datum</th>
+                                    <th>Rechnungsdatum</th>
                                     <th>Mieter</th>
-                                    <th>Grund</th>
                                     <th>Betrag</th>
                                     <th>Bezahlen bis</th>
                                     <th>Status</th> 
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>08.11.2016</td>
-                                    <td>Famillie Müller</td>
-                                    <td>Reparaturen</td>
-                                    <td>500.-</td>
-                                    <td>12.12.2016</td>
-                                    <td>Bezahlt</td>
-                                </tr>  
+                                <?php
+                                $bc = new BillController();
+                                $sql = $bc->selectYearBillTable();
+
+                                for ($i = 0; $i < count($sql); $i++) {
+                                    $b = $sql[$i];
+                                    echo "<tr>";
+                                    for ($c = 1; $c < count($b); $c++) {
+                                        echo "<td>" . $b[$c] . "</td>";
+                                    }
+                                    echo "</tr>";
+                                }
+                                ?>
                             </tbody>
                         </table>
                         <a href='../Pdf/PdfGenerator.php'<button>PDF erzeugen</button></a>

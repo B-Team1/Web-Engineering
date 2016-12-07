@@ -35,6 +35,21 @@ class BillController {
     public function selectAllBills(){
         return $this->db->selectAllBills();
     }
-            
+    
+    public function selectHNBillTable(){
+        return $this->db->selectHNBillTable();
+    }
+    
+    public function selectRoomBillTable(){
+        return $this->db->selectRoomBillTable();
+    }
+    
+    public function selectYearBillTable(){
+        return $this->db->selectYearBillTable();
+    }
+    
+    public function selectBillTablePdfGenerator(){
+        return $this->db->selectBillTablePdfGenerator();
+    }
 }
 

@@ -97,4 +97,89 @@ class BillDAO extends AbstractDAO {
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
     }
 
+
+
+
+public function selectHNBillTable() {
+        $c = 0;
+        $sql = "SELECT idRechnungen,kostenart.idKostenart, Datum, mieter.Name, Betrag, ZahlbarBis, status.Beschreibung "
+                . "FROM mydb.rechnungen inner join mydb.status on mydb.rechnungen.Status_idStatus = mydb.status.idStatus "
+                . "inner join mydb.kostenart on mydb.rechnungen.Kostenart_idKostenart = mydb.kostenart.idKostenart "
+                . "inner join mydb.wohnung on mydb.rechnungen.Wohnung_idWohnung = mydb.wohnung.idWohnung "
+                . "inner join mydb.mieter on mydb.wohnung.idWohnung = mydb.mieter.Wohnung_idWohnung "
+                . "where kostenart.idKostenart = 2";
+        $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while ($row = $result->fetch_assoc()) {
+                $arr1 = array($row["idRechnungen"], $row["Datum"], $row["Name"], $row["Betrag"], $row["ZahlbarBis"],$row["Beschreibung"]);
+                
+                $arr[$c] = $arr1;
+                $c++;
+            }
+        }
+        return $arr;
+    }
+
+public function selectRoomBillTable() {
+        $c = 0;
+        $sql = "SELECT idRechnungen,kostenart.idKostenart, Datum, mieter.Name, Betrag, ZahlbarBis, status.Beschreibung "
+                . "FROM mydb.rechnungen inner join mydb.status on mydb.rechnungen.Status_idStatus = mydb.status.idStatus "
+                . "inner join mydb.kostenart on mydb.rechnungen.Kostenart_idKostenart = mydb.kostenart.idKostenart "
+                . "inner join mydb.wohnung on mydb.rechnungen.Wohnung_idWohnung = mydb.wohnung.idWohnung "
+                . "inner join mydb.mieter on mydb.wohnung.idWohnung = mydb.mieter.Wohnung_idWohnung "
+                . "where kostenart.idKostenart = 1";
+        $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while ($row = $result->fetch_assoc()) {
+                $arr1 = array($row["idRechnungen"], $row["Datum"], $row["Name"], $row["Betrag"], $row["ZahlbarBis"],$row["Beschreibung"]);
+                
+                $arr[$c] = $arr1;
+                $c++;
+            }
+        }
+        return $arr;
+    }    
+
+public function selectYearBillTable() {
+        $c = 0;
+        $sql = "SELECT idRechnungen,kostenart.idKostenart, Datum, mieter.Name, Betrag, ZahlbarBis, status.Beschreibung "
+                . "FROM mydb.rechnungen inner join mydb.status on mydb.rechnungen.Status_idStatus = mydb.status.idStatus "
+                . "inner join mydb.kostenart on mydb.rechnungen.Kostenart_idKostenart = mydb.kostenart.idKostenart "
+                . "inner join mydb.wohnung on mydb.rechnungen.Wohnung_idWohnung = mydb.wohnung.idWohnung "
+                . "inner join mydb.mieter on mydb.wohnung.idWohnung = mydb.mieter.Wohnung_idWohnung; ";
+        $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while ($row = $result->fetch_assoc()) {
+                $arr1 = array($row["idRechnungen"], $row["Datum"], $row["Name"], $row["Betrag"], $row["ZahlbarBis"],$row["Beschreibung"]);
+                
+                $arr[$c] = $arr1;
+                $c++;
+            }
+        }
+        return $arr;
+    }  
+
+public function selectBillTablePdfGenerator() {
+        $c = 0;
+        $sql = "Select mieter.Name, mieter.Vorname, rechnungen.Datum, kostenart.Beschreibung, rechnungen.ZahlbarBis, rechnungen.Betrag,"
+                . " status.Beschreibung from rechnungen "
+                . "inner join mydb.kostenart on mydb.rechnungen.Kostenart_idKostenart = mydb.kostenart.idKostenart "
+                . "inner join mydb.status on mydb.rechnungen.Status_idStatus = mydb.status.idStatus "
+                . "inner join mydb.wohnung on mydb.rechnungen.Wohnung_idWohnung = mydb.wohnung.idWohnung "
+                . "inner join mydb.mieter on mydb.wohnung.idWohnung = mydb.mieter.Wohnung_idWohnung; ";
+        $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while ($row = $result->fetch_assoc()) {
+                $arr1 = array($row["Name"],$row["Vorname"], $row["Datum"], $row["Beschreibung"], $row["ZahlbarBis"], $row["Betrag"],$row["Beschreibung"]);
+                $arr[$c] = $arr1;
+                $c++;
+            }
+        }
+        return $arr;
+    }        
 }
+

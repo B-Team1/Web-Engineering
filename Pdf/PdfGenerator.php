@@ -8,8 +8,7 @@ class PdfGenerator extends FPDF
 function LoadData()
 {
     $bc = new BillController();
-    $data = $bc->selectAllBills();
-    echo $data;
+    $data = $bc->selectBillTablePdfGenerator();
     return $data;
 }
 
@@ -23,7 +22,7 @@ function FancyTable($header, $data)
     $this->SetLineWidth(.3);
     $this->SetFont('','B');
     // Header
-    $w = array(40, 35, 40, 45);
+    $w = array(40, 40, 40, 40, 40, 40, 40);
     for($i=0;$i<count($header);$i++)
         $this->Cell($w[$i],7,$header[$i],1,0,'C',true);
     $this->Ln();
@@ -33,31 +32,33 @@ function FancyTable($header, $data)
     $this->SetFont('');
     // Data
     $fill = false;
-    foreach($data as $row)
-    {
-        $this->Cell($w[0],6,$row[0],'LR',0,'L',$fill);
-        $this->Cell($w[1],6,$row[1],'LR',0,'L',$fill);
-        $this->Cell($w[2],6,number_format($row[2]),'LR',0,'R',$fill);
-        $this->Cell($w[3],6,number_format($row[3]),'LR',0,'R',$fill);
+    for($i=0; $i<count($data); $i++) {
+                        $b = $data[$i];
+                        
+        $this->Cell($w[0],6,$b[0],'LR',0,'R',$fill);
+        $this->Cell($w[1],6,$b[1],'LR',0,'R',$fill);
+        $this->Cell($w[2],6,$b[2],'LR',0,'R',$fill);
+        $this->Cell($w[3],6,$b[3],'LR',0,'R',$fill);
+        $this->Cell($w[4],6,$b[4],'LR',0,'R',$fill);
+        $this->Cell($w[5],6,number_format($b[5]),'LR',0,'R',$fill);
+        $this->Cell($w[6],6,$b[6],'LR',0,'R',$fill);
         $this->Ln();
         $fill = !$fill;
-    }
+}
+
     // Closing line
     $this->Cell(array_sum($w),0,'','T');
 }
 }
 
-$pdf = new FPDF();
+$pdf = new PdfGenerator();
 // Column headings
-$header = array('Rechnungsdatum', 'Wohnung', 'Typ', 'Beschreibung', 'Betrag', 'Zahlbar bis', 'Status');
+$header = array('M-Name', 'M-Vorname', 'Rechnungsdatum', 'Kostenart', 'Zahlbar bis', 'Betrag', 'Status');
 // Data loading
 $data = $pdf->LoadData();
 $pdf->SetFont('Arial','',14);
-$pdf->AddPage();
-$pdf->BasicTable($header,$data);
-$pdf->AddPage();
-$pdf->ImprovedTable($header,$data);
-$pdf->AddPage();
+$pdf->AddPage(["L"]);
 $pdf->FancyTable($header,$data);
+
 $pdf->Output();
 ?>

@@ -54,6 +54,14 @@ include '../Validator/login_pruefen.inc.php';
                         echo "</tr>";
                     }
                     ?>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a href="Wohnung_erfassen.php" class="myButton">+</a></td>
                         </tbody>    
                     </table>
                 </div>
