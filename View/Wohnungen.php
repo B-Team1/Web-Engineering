@@ -49,6 +49,7 @@ include '../Validator/login_pruefen.inc.php';
                         echo "<td>" . $zeile['Strasse'] . "</td>";
                         echo "<td>" . $zeile['Fläche'] . "</td>";
                         echo "<td>" . $zeile['strasse'] . "</td>";
+                        
                         echo "</tr>";
                    }
                     ?>
