@@ -36,13 +36,13 @@ include '../Validator/login_pruefen.inc.php';
                                 <th>Löschen</th>
                             </tr>
                         </thead>
-                    
+                        <tbody>
                     <?php
-                  //  $rc = new RoomController();
-                  //  echo $rc->selectAllRoomsByHirer()[0][0];
+                     $rc = new RoomController();
+                    echo $rc->selectAllRoomsByHirer()[0][0];
                     
                     /*tabelle generieren*/  
-                 //   foreach ($zeile as $rc->selectAllRoomsByHirer()) {
+                    foreach ($zeile as $rc->selectAllRoomsByHirer()) {
                         echo "<tr>";
                         echo "<td>" . $zeile['Bezeichnung'] . "</td>";
                         echo "<td>" . $zeile['Name'] . "</td>";
@@ -50,8 +50,9 @@ include '../Validator/login_pruefen.inc.php';
                         echo "<td>" . $zeile['Fläche'] . "</td>";
                         echo "<td>" . $zeile['strasse'] . "</td>";
                         echo "</tr>";
-                  //  }
+                   }
                     ?>
+                        </tbody>    
                     </table>
                     
                     
@@ -114,4 +115,5 @@ include '../Validator/login_pruefen.inc.php';
         </div>
     </div>
     <!-- /.container -->
-    <?php include_once "Footer.php"; ?>
+    <?php include_once "Footer.php"; 
+    ?>

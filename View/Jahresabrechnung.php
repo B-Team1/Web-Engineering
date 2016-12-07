@@ -30,6 +30,7 @@
                                 </tr>  
                             </tbody>
                         </table>
+                        <a href='../Pdf/PdfGenerator.php'<button>PDF erzeugen</button></a>
                     </div>
                 </div>
             </div>

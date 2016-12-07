@@ -11,6 +11,20 @@ include_once '../DAO/dBConnect.php';
  */
 class BillController {
     //put your code here
+    
+    /**
+     * 
+     * @return type
+     */
+    public function selectBillById(){
+        return $this->db->selectBillById();
+        
+    }
+    
+    public function selectAllBills(){
+        return $this->db->selectAllBills();
+    }
+            
 }
 
 $dao = new BillDAO(DBConnect::getInstance()->getLink());
