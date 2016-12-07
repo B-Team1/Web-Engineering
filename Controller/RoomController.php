@@ -28,10 +28,18 @@ class RoomController {
     public function insertRoom(Room $room){
         $room->setHirerId($_SESSION['hirerId']);
         $this->db->insertRoom($room);
-        //header("Location: Wohnungen.php");
+        header("Location: Wohnungen.php");
     }
     
     public function selectRoomTable(){
         return $this->db->selectRoomTable();
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function selectRoomsByHirer(){
+        return $this->db->selectRoomsByHirer($_SESSION['hirerId']);
     }
 }

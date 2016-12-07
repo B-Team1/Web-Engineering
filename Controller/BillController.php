@@ -18,10 +18,11 @@ class BillController {
     }
     
     public function insertBill(Bill $bill) {
-        $this->db->insertBill($bill);
         
+        $this->db->insertBill($bill);
+        header("Location: Mietzins.php");
     }
-    //put your code here
+    
     
     /**
      * 

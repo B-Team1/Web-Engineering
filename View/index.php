@@ -1,6 +1,8 @@
 <?php
 include_once "Header.php";
-include_once '../Controller/HirerController.php';
+require_once  '../Controller/HirerController.php';
+
+
 
 $loginErr = "";
 

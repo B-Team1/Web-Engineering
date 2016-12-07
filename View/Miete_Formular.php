@@ -14,10 +14,16 @@
     <select name="apartment" id="apartment" class="form-control" style="width: 270px" required>
 
         <?php
-        //$sql = mysqli_query($connection, "SELECT name FROM apartement");
-        //while ($row = $sql->fetch_assoc()){
-        //    echo "<option value=\"owner1\">" . $row['username'] . "</option>";
-        //}
+        $sql= $rc->selectRoomsByHirer();
+        
+        
+        for($i=0; $i<count($sql); $i++) {
+                       $b = $sql[$i];
+                       
+                           echo "<option value= " . $b[0] .  ">" . $b[1] . "</option>";
+                       
+        }
+
         ?>
 
     </select>
@@ -46,8 +52,8 @@
 <div class="form-group">
     <label for="status">Status:</label>
     <select name="status" id="status" class="form-control" style="width: 270px">
-        <option class="yellow" value="offen">Offen</option>
-        <option class="green" value="bezahlt">Bezahlt</option>
-        <option class="red" value="verzug">Verzug</option>
+        <option class="yellow" value=1>Offen</option>
+        <option class="green" value=2>Bezahlt</option>
+        <option class="red" value=3>Verzug</option>
     </select>
 </div>

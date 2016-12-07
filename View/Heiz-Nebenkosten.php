@@ -1,5 +1,6 @@
 <?php 
 include_once "Header.php";
+include '../Validator/login_pruefen.inc.php';
 include_once '../Controller/BillController.php';
 ?>
         <script type =text/javascript>

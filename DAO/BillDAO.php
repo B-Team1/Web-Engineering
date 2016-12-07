@@ -1,6 +1,6 @@
 <?php
 
-include "AbstractDAO.php";
+include_once "AbstractDAO.php";
 include_once '../model/Bill.php';
 
 /**
