@@ -1,16 +1,15 @@
 <?php
 require('fpdf.php');
+include_once '../Controller/BillController.php';
 
 class PdfGenerator extends FPDF
 {
 // Load data
-function LoadData($file)
+function LoadData()
 {
-    // Read file lines
-    $lines = file($file);
-    $data = array();
-    foreach($lines as $line)
-        $data[] = explode(';',trim($line));
+    $bc = new BillController();
+    $data = $bc->selectAllBills();
+    echo $data;
     return $data;
 }
 
@@ -48,11 +47,11 @@ function FancyTable($header, $data)
 }
 }
 
-$pdf = new PDF();
+$pdf = new FPDF();
 // Column headings
 $header = array('Rechnungsdatum', 'Wohnung', 'Typ', 'Beschreibung', 'Betrag', 'Zahlbar bis', 'Status');
 // Data loading
-$data = $pdf->LoadData('rechnungen.txt');
+$data = $pdf->LoadData();
 $pdf->SetFont('Arial','',14);
 $pdf->AddPage();
 $pdf->BasicTable($header,$data);

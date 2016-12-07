@@ -17,7 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             $_SESSION['eingeloggt'] = false;
             $loginErr = "E-Mail oder Passwort ungültig!";
-        }
+        } 
+        
     }
 }
 

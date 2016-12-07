@@ -31,7 +31,7 @@ class RoomController {
         //header("Location: Wohnungen.php");
     }
     
-    public function selectAllRoomsByHirer(){
-        return $this->db->selectAllRoomsByHirer();
+    public function selectRoomTable(){
+        return $this->db->selectRoomTable();
     }
 }
