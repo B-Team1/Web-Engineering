@@ -45,7 +45,12 @@ include '../Validator/login_pruefen.inc.php';
                         $b = $sql[$i];
                         echo "<tr>";
                         for($c=1; $c<count($b); $c++){
-                            echo "<td>". $b[$c] . "</td>";
+                            if ($c != 1){
+                                echo "<td>". $b[$c] . "</td>"; 
+                            }else{ 
+                                echo "<td><a href='Wohnung_Detailansicht.php'>". $b[$c] . "</a></td>";
+                            }
+                            
                             
                             
                         }
