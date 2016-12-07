@@ -11,7 +11,7 @@
 </div>
 <div class="form-group">
     <label for="apartment">Wohnung: *</label>
-    <select name="apartment" id="apartment" class="form-control" style="width: 270px" required>
+    <select name="apartment" id="apartment" class="form-control" style="width: 270px" >
 
         <?php
         

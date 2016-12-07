@@ -3,6 +3,7 @@ include_once "Header.php";
 include_once '../Controller/RoomController.php';
 include_once '../Validator/RoomValidator.php';
 include_once '../Model/Room.php';
+include '../Validator/login_pruefen.inc.php';
 
 $room = new Room();
 $roomValidator = new RoomValidator();
@@ -13,6 +14,19 @@ if (!empty($_POST)) {
     $roomValidator = new RoomValidator($room);
 
     if ($roomValidator->isValid()) {
+        $rc = new RoomController();
+        $rc->insertRoom($room);
+        
+        
+        $test = $rc->selectAllRoomsByHirer();
+        
+        for($i=0; $i<count($test); $i++) {
+            $b = $test[$i];
+            for($c=0; $c<count($b); $c++){
+                echo $b[$c];
+            }
+            echo "--";
+        }
         
     }
 }

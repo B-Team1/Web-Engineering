@@ -10,6 +10,17 @@ include_once '../DAO/dBConnect.php';
  * @author Tobias
  */
 class BillController {
+    protected $db;
+    
+    public function __construct()
+    {
+        $this->db = new BillDAO(DBConnect::getInstance()->getLink());
+    }
+    
+    public function insertBill(Bill $bill) {
+        $this->db->insertBill($bill);
+        
+    }
     //put your code here
     
     /**
@@ -27,6 +38,3 @@ class BillController {
             
 }
 
-$dao = new BillDAO(DBConnect::getInstance()->getLink());
-
-$dao->deleteBillById(4);
