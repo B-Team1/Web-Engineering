@@ -15,19 +15,7 @@ if (!empty($_POST)) {
 
     if ($roomValidator->isValid()) {
         $rc = new RoomController();
-        $rc->insertRoom($room);
-        
-        
-        $test = $rc->selectAllRoomsByHirer();
-        
-        for($i=0; $i<count($test); $i++) {
-            $b = $test[$i];
-            for($c=0; $c<count($b); $c++){
-                echo $b[$c];
-            }
-            echo "--";
-        }
-        
+        $rc->insertRoom($room);        
     }
 }
 ?>

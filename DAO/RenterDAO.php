@@ -1,6 +1,6 @@
 <?php
 
-include "AbstractDAO.php";
+include_once "AbstractDAO.php";
 include_once '../model/Renter.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
