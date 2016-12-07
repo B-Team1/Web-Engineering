@@ -1,5 +1,6 @@
 <?php 
 include_once "Header.php";
+include '../Validator/login_pruefen.inc.php';
 ?>
         <script type =text/javascript>
             function delete_Bill() {

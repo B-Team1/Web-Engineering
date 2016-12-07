@@ -21,5 +21,6 @@ class BillController {
         $this->db->insertBill($bill);
         
     }
+    
 }
 

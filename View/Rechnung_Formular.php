@@ -14,6 +14,9 @@
     <select name="apartment" id="apartment" class="form-control" style="width: 270px" >
 
         <?php
+        $rc = new RoomController();
+        $arr = $rc->selectAllRoomsByHirer();
+        
         
         
         //So sollte es nicht sein!
