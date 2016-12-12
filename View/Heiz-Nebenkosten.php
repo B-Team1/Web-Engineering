@@ -3,18 +3,7 @@ include_once "Header.php";
 include '../Validator/login_pruefen.inc.php';
 include_once '../Controller/BillController.php';
 ?>
-        <script type =text/javascript>
-            function delete_Bill() {
-                Check = confirm("Wollen Sie die Rechnung xy wirklich löschen?");
-                if (Check == false) {
-                    // löscht den Eintrag nicht
-                    alert("Rechnung xy wurde nicht gelöscht");
-                } else {
-                    // Rechnung löschen
-                    alert("Rechnung xy wurde gelöscht");
-                }
-            }
-        </script>
+        <script type =text/javascript src="js/deletFunction.js"></script>
         </head>
     <body>
         <div class="brand">Online-Verwaltungstool</div>
@@ -47,7 +36,7 @@ include_once '../Controller/BillController.php';
                                         echo "<td>" . $b[$c] . "</td>";
                                     }
                                     echo "<td><a href='Rechnung_bearbeiten.php'><img src='img/bearbeiten_icon.png' alt='' style='width:10px; height:auto;'></a></td>";
-                                    echo "<td><a href='Heiz-Nebenkosten.php'><img src='img/loeschen_icon.png' alt='' style='width:15px; height:auto;' onClick='delete_Bill()'></a></td>";
+                                    echo "<td><a href='Heiz-Nebenkosten.php'><img src='img/loeschen_icon.png' alt='' style='width:15px; height:auto;' onClick='deleteObject(". $b[0] .", 1)'></a></td>";
                                     echo "</tr>";
                                 }
                                 ?>
