@@ -74,7 +74,7 @@ class RoomDAO extends AbstractDAO{
     }
     
     public function selectRoomsByHirer($id){
-        $sql = "SELECT * FROM mydb.wohnung WHERE mydb.wohnung.Vermieter_idVermieter =  ".$id.";";
+        $sql = "SELECT * FROM mydb.wohnung inner join mydb.mieter on mydb.wohnung.idWohnung = mydb.mieter.Wohnung_idWohnung WHERE mydb.wohnung.Vermieter_idVermieter =  ".$id.";";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
         $arr = array();
         $c = 0;

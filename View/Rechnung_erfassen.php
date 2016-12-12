@@ -1,6 +1,7 @@
 <?php
 include_once "Header.php";
 include_once '../Controller/BillController.php';
+include_once '../Controller/RoomController.php';
 include_once "../Validator/BillValidator.php";
 include_once '../Model/Bill.php';
 include '../Validator/login_pruefen.inc.php';
@@ -8,16 +9,14 @@ include '../Validator/login_pruefen.inc.php';
 //$bill = new Bill();
 $billValidator = new BillValidator();
 $bc = new BillController();
+$rc = new RoomController();
 
 if (!empty($_POST)) {
-    $bill = new Bill(null, $_POST['amount'], $_POST['datetopay'], $_POST['invoicedate'], $_POST['apartment'], $_POST['status'], null, $_POST['description']);
-    $bill->setRoomId(1);
+    $bill = new Bill(null, $_POST['amount'], $_POST['datetopay'], $_POST['invoicedate'], $_POST['apartment'], $_POST['status'], 2, $_POST['description']);
     $billValidator = new BillValidator($bill);
     
     if ($billValidator->isValid()) {
-        
-        
-        
+        $bc->insertBill($bill); 
     }
 }
 

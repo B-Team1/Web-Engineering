@@ -46,7 +46,7 @@
                                     for ($c = 1; $c < count($b); $c++) {
                                         echo "<td>" . $b[$c] . "</td>";
                                     }
-                                    echo "<td><a href='Rechnung_bearbeiten.php'><img src='img/bearbeiten_icon.png' alt='' style='width:10px; height:auto;'></a></td>";
+                                    echo "<td><a href='Miete_bearbeiten.php'><img src='img/bearbeiten_icon.png' alt='' style='width:10px; height:auto;'></a></td>";
                                     echo "<td><a href='Mietzins.php'><img src='img/loeschen_icon.png' alt='' style='width:15px; height:auto;' onClick='delete_Bill()'></a></td>";
                                     echo "</tr>";
                                 }
