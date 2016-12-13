@@ -2,7 +2,8 @@
     include_once "Header.php"; 
     include_once '../Controller/BillController.php';
     ?>
-        </head>
+    <script type="text/javascript" src="js/TableSort.js"></script>
+    </head>
     <body>
         <div class="brand">Online-Verwaltungstool</div>
         <?php include_once "Navigation.php"; ?>
@@ -11,14 +12,14 @@
                 <div class="box">
                     <div class="col-lg-12">
                         <h4>Jahresabrechnung</h4>
-                        <table class="table-responsive" width="100%">
+                            <table class=" table table-responsive  table-bordered table-condensed table-hover sortierbar">
                             <thead>
                                 <tr>
-                                    <th>Rechnungsdatum</th>
-                                    <th>Mieter</th>
-                                    <th>Betrag</th>
-                                    <th>Bezahlen bis</th>
-                                    <th>Status</th> 
+                                    <th class="sortierbar vorsortiert+">Rechnungsdatum</th>
+                                    <th class="sortierbar">Mieter</th>
+                                    <th class="sortierbar">Betrag</th>
+                                    <th class="sortierbar">Bezahlen bis</th>
+                                    <th class="sortierbar">Status</th> 
                                 </tr>
                             </thead>
                             <tbody>

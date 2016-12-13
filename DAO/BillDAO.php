@@ -164,7 +164,7 @@ public function selectYearBillTable() {
 
 public function selectBillTablePdfGenerator() {
         $c = 0;
-        $sql = "Select mieter.Name, mieter.Vorname, rechnungen.Datum, kostenart.Beschreibung, rechnungen.ZahlbarBis, rechnungen.Betrag,"
+        $sql = "Select mieter.Name, mieter.Vorname, rechnungen.Datum, kostenart.Beschreibung as KBeschreibung, rechnungen.ZahlbarBis, rechnungen.Betrag,"
                 . " status.Beschreibung from rechnungen "
                 . "inner join mydb.kostenart on mydb.rechnungen.Kostenart_idKostenart = mydb.kostenart.idKostenart "
                 . "inner join mydb.status on mydb.rechnungen.Status_idStatus = mydb.status.idStatus "
@@ -174,7 +174,7 @@ public function selectBillTablePdfGenerator() {
         if ($result->num_rows > 0) {
             // output data of each row
             while ($row = $result->fetch_assoc()) {
-                $arr1 = array($row["Name"],$row["Vorname"], $row["Datum"], $row["Beschreibung"], $row["ZahlbarBis"], $row["Betrag"],$row["Beschreibung"]);
+                $arr1 = array($row["Name"],$row["Vorname"], $row["Datum"], $row["KBeschreibung"], $row["ZahlbarBis"], $row["Betrag"],$row["Beschreibung"]);
                 $arr[$c] = $arr1;
                 $c++;
             }

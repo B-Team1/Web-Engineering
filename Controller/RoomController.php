@@ -42,4 +42,21 @@ class RoomController {
     public function selectRoomsByHirer(){
         return $this->db->selectRoomsByHirer($_SESSION['hirerId']);
     }
+    /**
+     * 
+     * @param type $id
+     */
+    public function selectRoomById($id){
+        return $this->db->selectRoomById($id);
+    }
+    
+    /**
+     * 
+     * @param type $room
+     * @return type
+     */
+    public function updateRoom($room){
+        return $this->db->updateRoom($room);
+    }
+    
 }

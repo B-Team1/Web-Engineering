@@ -2,7 +2,10 @@
 include_once "Header.php";
 include_once '../Controller/RoomController.php';
 include '../Validator/login_pruefen.inc.php';
+
+
 ?>
+<script type="text/javascript" src="js/TableSort.js"></script>
 <script type =text/javascript>
     function delete_room(roomId) {
         Check = confirm("Wollen Sie die Wohnung wirklich löschen?");
@@ -25,15 +28,16 @@ include '../Validator/login_pruefen.inc.php';
                 <div class="col-lg-12">
                     <h4>Wohnungsübersicht</h4>
                     <!--- test -->
-                    <table class="table-responsive" width="100%">
-                         <thead>
+                    
+                    <table class="table table-responsive table-bordered table-condensed table-hover sortierbar" >
+                        <thead>
                             <tr>
-                                <th>Wohnung</th>
-                                <th>Mieter</th>
-                                <th>Adresse</th>
-                                <th>Fläche m2</th>
-                                <th>Bearbeiten</th>
-                                <th>Löschen</th>
+                                <th class="sortierbar vorsortiert+">Wohnung</th>
+                                <th class="sortierbar">Mieter</th>
+                                <th class="sortierbar">Adresse</th>
+                                <th class="sortierbar">Fläche m2</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,31 +48,27 @@ include '../Validator/login_pruefen.inc.php';
                     for($i=0; $i<count($sql); $i++) {
                         $b = $sql[$i];
                         echo "<tr>";
-                        for($c=1; $c<count($b); $c++){
-                            if ($c != 1){
-                                echo "<td>". $b[$c] . "</td>"; 
-                            }else{ 
-                                echo "<td><a href='Wohnung_Detailansicht.php'>". $b[$c] . "</a></td>";
+                        for($c=0; $c<count($b); $c++){
+                            if ($c !=0 & $c !=1){
+                                echo "<td>". $b[$c] . "</td>";     
+                            }elseif($c == 0){
+                                echo "<form action='Wohnung_bearbeiten.php' method='POST'>";
+                                echo "<input type='hidden' name='wohnungID' id='wohnungID' value='".$b[$c]."'></input>";
+                                
+                            }else{
+                                echo "<td><a href='Wohnung_Detailansicht.php'>". $b[$c] . "</a></td>";    
                             }
                             
-                            
-                            
-                        }
-                        echo "<td><a href='Wohnung_bearbeiten.php'><img src='img/bearbeiten_icon.png' alt='' style='width:10px; height:auto;'></a></td>";
-                        echo "<td><a href='Wohnungen.php'><img src='img/loeschen_icon.png' alt='' style='width:15px; height:auto;' onClick='delete_room()'></a></td>";
+                    }   echo "<td><button class='btn-success' type='submit' name='bearbeiten'>Bearbeiten</button></td>";
+                        echo "<td><button class='btn-danger' onClick='delete_room()'>Löschen</button></td>";
+                        echo "</form>";
                         echo "</tr>";
                     }
-                    ?>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><a href="Wohnung_erfassen.php" class="myButton">+</a></td>
-                        </tbody>    
+                    ?>    
+                        
+                        </tbody>   
                     </table>
+                    <a href="Wohnung_erfassen.php" style="float: right;" class="myButton">+</a>
                 </div>
             </div>
         </div>

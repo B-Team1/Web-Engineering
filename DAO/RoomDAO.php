@@ -28,7 +28,7 @@ class RoomDAO extends AbstractDAO{
     public function updateRoom(Room $room) {
         $sql = "UPDATE `mydb`.`wohnung` SET `Bezeichnung`='" . $room->getDescription() . "', `Fläche`='" . $room->getArea() . "', "
                 . "`Stockwerk`='" . $room->getFloor() . "', `Mietzins`='" . $room->getRent() . "', "
-                . "`Vermieter_idVermieter`='" . $room->getHirerId() . "' WHERE `idWohnung`='" . $room->getHirerId() . "';";
+                . "`Vermieter_idVermieter`='" . $room->getHirerId() . "' WHERE `idWohnung`='" . $room->getRoomId() . "';";
         mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
     }
     
@@ -38,9 +38,18 @@ class RoomDAO extends AbstractDAO{
      * @return Array
      */
     public function selectRoomById($id){
+        $room = null;
         $sql = "SELECT * FROM mydb.wohnung WHERE mydb.wohnung.idWohnung = ".$id.";";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
-        return mysqli_fetch_array($result);
+        
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while ($row = $result->fetch_assoc()) {
+                $room = new Room($row["idWohnung"], $row["Fläche"], $row["Bezeichnung"], $row["Stockwerk"], $row["Mietzins"], $row["Vermieter_idVermieter"]);
+            }
+        }
+        
+        return $room;
     }
     
     

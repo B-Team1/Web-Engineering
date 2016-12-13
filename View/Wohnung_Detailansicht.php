@@ -1,4 +1,7 @@
-    <?php include_once "Header.php";?>
+    <?php 
+    include_once "Header.php";
+    
+?>
         <script type =text/javascript>
             window.onload = function() {
                 document.getElementById("room").disabled= true;    
@@ -47,7 +50,7 @@
                                         <tr>
                                             <td> Wohnung:</td>
                                             <td>
-                                                <input type="text" name="room" id="room" class="form-control" value="Erdgeschoss 1"/>
+                                                <input type="text" name="room" id="room" class="form-control" value="<?php echo $roomName; ?>"/>
                                             </td>
                                         </tr>
                                         <tr>

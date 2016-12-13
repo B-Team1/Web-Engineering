@@ -4,16 +4,12 @@ include_once '../Controller/RoomController.php';
 include_once '../Validator/RoomValidator.php';
 include_once '../Model/Room.php';
 
-$room = new Room();
-$roomValidator = new RoomValidator();
-
-if (!empty($_POST)) {
-
-    $room = new Room(null, $_POST['expanse'], $_POST['name'], $_POST['floor'], $_POST['rent'], null);
+if(isset($_POST['submit'])) {
+    $room = new Room($_POST['wohnungID'], $_POST['expanse'], $_POST['name'], $_POST['floor'], $_POST['rent'], null);
     $roomValidator = new RoomValidator($room);
-
+    $rm = new RoomController();
     if ($roomValidator->isValid()) {
-        
+    $rm->updateRoom($room);
     }
 }
 ?>
