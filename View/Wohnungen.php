@@ -5,19 +5,7 @@ include '../Validator/login_pruefen.inc.php';
 
 
 ?>
-<script type="text/javascript" src="js/TableSort.js"></script>
-<script type =text/javascript>
-    function delete_room(roomId) {
-        Check = confirm("Wollen Sie die Wohnung wirklich löschen?");
-        
-        if (Check == false) {
-            // löscht den Eintrag nicht
-            alert("Wohnung xy wurde nicht gelöscht");
-        } else {
-            alert("Wohnung xy wurde gelöscht");
-        }
-    }
-</script>
+<script type =text/javascript src="js/deletFunction.js"></script>
 </head>
 <body>
     <div class="brand">Online-Verwaltungstool</div>

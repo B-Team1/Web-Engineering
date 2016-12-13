@@ -5,7 +5,7 @@
     <label for="invoicedate">Rechnungsdatum (tt.mm.jjjj): *</label>
     <input type="date" name="invoicedate" id="invoicedate" class="form-control" pattern="\d{1,2}.\d{1,2}.\d{4}" value="<?php if (isset($_POST['invoicedate'])) echo $_POST['invoicedate']; ?>" 
            style="width:270px" required oninvalid="this.setCustomValidity('Wählen Sie bitte das Rechnungsdatum aus!')" oninput="setCustomValidity('')"/>
-    <?php if (!empty($billValidator->getDateError())): ?>
+           <?php if (!empty($billValidator->getDateError())): ?>
         <span class="help-inline"><?php echo $billValidator->getDateError(); ?></span>
     <?php endif; ?> 
 </div>
@@ -14,16 +14,12 @@
     <select name="apartment" id="apartment" class="form-control" style="width: 270px" required>
 
         <?php
-        $sql= $rc->selectRoomsByHirer();
-        
-        
-        for($i=0; $i<count($sql); $i++) {
-                       $b = $sql[$i];
-                       
-                           echo "<option value= " . $b[0] .  ">" . $b[1] . "</option>";
-                       
-        }
+        $sql = $rc->selectRoomsByHirer();
 
+        for ($i = 0; $i < count($sql); $i++) {
+            $b = $sql[$i];
+            echo "<option value= " . $b[0] . ">" . $b[1] . "</option>";
+        }
         ?>
 
     </select>
@@ -37,17 +33,17 @@
     <label for="amount">Betrag:</label>
     <input type="number" name="amount" id="amount" class="form-control" value="<?php if (isset($_POST['amount'])) echo $_POST['amount']; ?>"
            style="width:270px" required pattern="[0-9]" step="any" oninvalid="this.setCustomValidity('Geben Sie bitte den Betrag ein!')" oninput="setCustomValidity('')"/>
-    <?php if (!empty($billValidator->getAmountError())): ?>
+<?php if (!empty($billValidator->getAmountError())): ?>
         <span class="help-inline"><?php echo $billValidator->getAmountError(); ?></span>
-    <?php endif; ?>     
+           <?php endif; ?>     
 </div>
 <div class="form-group">
     <label for="datetopay">Zahlbar bis (tt.mm.jjjj): *</label>
     <input type="date" name="datetopay" id="datetopay" class="form-control" value="<?php if (isset($_POST['datetopay'])) echo $_POST['datetopay']; ?>" 
            style="width:270px" required oninvalid="this.setCustomValidity('Wählen Sie bitte das Enddatum aus!')" oninput="setCustomValidity('')"/>
-    <?php if (!empty($billValidator->getPayableUntilError())): ?>
+<?php if (!empty($billValidator->getPayableUntilError())): ?>
         <span class="help-inline"><?php echo $billValidator->getPayableUntilError(); ?></span>
-    <?php endif; ?>  
+           <?php endif; ?>  
 </div>
 <div class="form-group">
     <label for="status">Status:</label>
