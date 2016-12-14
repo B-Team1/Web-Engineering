@@ -1,26 +1,10 @@
-<?php
-
-    if (!isset($_POST['submit'])) {
-        $room = new Room();
-        $roomValidator = new RoomValidator();
-        $rm = new RoomController();
-        $roomID = $_POST['wohnungID'];
-        $room = $rm->selectRoomById($roomID);
-        $roomName = $room->getDescription();
-        $roomExpanse = $room->getArea();
-        $roomFloor = $room->getFloor();
-        $roomRent = $room->getRent(); 
-    }
-
-
-?>
 <div class="row">
     <label>* = Pflichtfelder</label>
 </div>
 <div class="form-group">
     <label for="name">Wohnungsname: *</label>
     <input type='hidden' name='wohnungID' id='wohnungID' value="<?php if (isset($_POST['wohnungID'])){ echo $_POST['wohnungID']; }else { echo $roomID; }?>"/>;
-    <input type="text" name="name" id="name" class="form-control" value="<?php if (isset($_POST['name'])){ echo $_POST['name']; }else { echo $roomName; }?>"
+    <input type="text" name="name" id="name" class="form-control" value="<?php if (isset($_POST['name'])){ echo $_POST['name']; }elseif(isset($roomName)) { echo $roomName; }?>"
         
            required oninvalid="this.setCustomValidity('Geben Sie bitte den Namen der Wohnung ein!')" oninput="setCustomValidity('')"/>
     <?php if (!empty($roomValidator->getDescriptionError())): ?>

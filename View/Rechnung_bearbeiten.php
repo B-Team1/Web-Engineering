@@ -11,14 +11,34 @@ $billValidator = new BillValidator();
 $bc = new BillController();
 $rc = new RoomController();
 
-if (!empty($_POST)) {
-    $bill = new Bill(null, $_POST['amount'], $_POST['datetopay'], $_POST['invoicedate'], $_POST['apartment'], $_POST['status'], null, $_POST['description']);
+
+if(isset($_POST['submit'])) {
+    $bill = new Bill($_POST['billID'], $_POST['amount'], $_POST['datetopay'], $_POST['invoicedate'], $_POST['apartment'], $_POST['status'], $_POST['costType'], $_POST['description']);
     $billValidator = new BillValidator($bill);
-    
+    var_dump($bill);
     if ($billValidator->isValid()) {
-        
+    $bc->updateBild($bill);
+    if($_POST['costType']==2){
+    header("Location: Heiz-Nebenkosten.php");    
+    }else{
+    header("Location: Mietzins.php");       
+    }
+       
     }
 }
+
+if (!isset($_POST['submit'])) {
+        $billID = $_POST['billID'];
+        $bill = new Bill();
+        $bill = $bc->selectBillById($billID);
+        $invoiceDate = $bill->getDate();
+        $description = $bill->getDescripton();
+        $amount = $bill->getAmout();
+        $datetopay = $bill->getPayableUntill();
+        $status = $bill->getStatusId();
+        $wohnungID = $bill->getRoomId();
+        $costType = $bill->getCostTypeId();
+    }
 ?>
 </head>
 <body>
@@ -35,7 +55,7 @@ if (!empty($_POST)) {
                             <?php include_once("Rechnung_Formular.php"); ?>
 
                             <div class="form-group">
-                                <button type="submit" name="submit" class="btn btn-primary">Speichern</button>
+                                <button type="submit" name="submit" id="submit" class="btn btn-primary">Speichern</button>
                                 <button type="button" name="cancel" value="abbrechen" onclick="window.open('Heiz-Nebenkosten.php')"class="btn btn-primary">Abbrechen</button>
                             </div>
                         </form>

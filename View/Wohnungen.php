@@ -15,8 +15,6 @@ include '../Validator/login_pruefen.inc.php';
             <div class="box">
                 <div class="col-lg-12">
                     <h4>Wohnungsübersicht</h4>
-                    <!--- test -->
-                    
                     <table class="table table-responsive table-bordered table-condensed table-hover sortierbar" >
                         <thead>
                             <tr>
