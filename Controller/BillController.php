@@ -19,7 +19,7 @@ class BillController {
         $this->db = new BillDAO(DBConnect::getInstance()->getLink());
     }
     
-    public function insertBill(Bill $bill) {
+    public function insertBill(Bill $bill, $isBill) {
         
         $this->db->insertBill($bill);
         if ($bill->getCostTypeId()==1){

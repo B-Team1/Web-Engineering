@@ -1,7 +1,6 @@
 <?php 
 include_once "Header.php";
 include_once '../Controller/RenterController.php';
-include '../Validator/login_pruefen.inc.php';
 ?>
 <script type =text/javascript src="js/deletFunction.js"></script>
 </head>

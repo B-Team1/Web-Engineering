@@ -4,7 +4,6 @@ include_once '../Controller/BillController.php';
 include_once '../Controller/RoomController.php';
 include_once "../Validator/BillValidator.php";
 include_once '../Model/Bill.php';
-include '../Validator/login_pruefen.inc.php';
 
 //$bill = new Bill();
 $billValidator = new BillValidator();

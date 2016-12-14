@@ -1,3 +1,6 @@
+<?php 
+    include '../Validator/login_pruefen.inc.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 

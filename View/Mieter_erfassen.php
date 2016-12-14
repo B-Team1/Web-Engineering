@@ -1,6 +1,5 @@
 <?php
 include_once "Header.php";
-include '../Validator/login_pruefen.inc.php';
 include_once '../Controller/RenterController.php';
 include_once '../Model/Renter.php';
 
