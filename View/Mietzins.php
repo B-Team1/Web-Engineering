@@ -47,7 +47,7 @@ include_once '../Controller/BillController.php';
                             ?>
                         </tbody>
                     </table>
-                    <a href="Rechnung_erfassen.php" style="float: right;" class="myButton">+</a>
+                    <a href="Miete_erfassen.php" style="float: right;" class="myButton">+</a>
                 </div>
             </div>
         </div>

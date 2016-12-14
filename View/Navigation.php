@@ -17,12 +17,19 @@
                     <ul class="nav navbar-nav">
                         <li>
                             <a href="Wohnungen.php">Wohnungen</a>
+                            
+                        </li>
+                        <li>
+                            <a href="Mieter.php">Mieter</a>
                         </li>
                         <li>
                             <a href="Heiz-Nebenkosten.php">Heiz- & Nebenkosten</a>
                         </li>
                         <li>
                             <a href="Mietzins.php">Mietzins</a>
+                        </li>
+                        <li>
+                            <a href="Mieter_Spiegel.php">Mieter-Spiegel</a>
                         </li>
                         <li>
                             <a href="Jahresabrechnung.php">Jahresabrechnung</a>

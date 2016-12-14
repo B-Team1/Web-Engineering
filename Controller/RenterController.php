@@ -10,9 +10,20 @@ include_once '../DAO/dBConnect.php';
  * @author Tobias
  */
 class RenterController {
-    //put your code here
+    private $db;
+    
+    public function __construct()
+    {
+        $this->db = new RenterDAO(DBConnect::getInstance()->getLink());
+    }
+    
+    public function selectRenterTable($hirerID){
+        return $this->db->selectRenterTable($hirerID);
+    }
+    
+    public function insertRenter($renter){
+        $this->db->insertRenter($renter);
+        header("Location: Mieter.php"); 
+    }
+    
 }
-
-$d = new RenterDAO(DBConnect::getInstance()->getLink());
-
-echo $d->selectRenterById(4)->getFirstname();

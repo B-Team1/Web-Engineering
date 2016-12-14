@@ -35,14 +35,12 @@ include '../Validator/login_pruefen.inc.php';
                         $b = $sql[$i];
                         echo "<tr>";
                         for($c=0; $c<count($b); $c++){
-                            if ($c !=0 & $c !=1){
+                            if ($c !=0  ){
                                 echo "<td>". $b[$c] . "</td>";     
                             }elseif($c == 0){
                                 echo "<form action='Wohnung_bearbeiten.php' method='POST'>";
                                 echo "<input type='hidden' name='wohnungID' id='wohnungID' value='".$b[$c]."'></input>";
                                 
-                            }else{
-                                echo "<td><a href='Wohnung_Detailansicht.php'>". $b[$c] . "</a></td>";    
                             }
                             
                     }   echo "<td><button class='btn-success' type='submit' name='bearbeiten'>Bearbeiten</button></td>";

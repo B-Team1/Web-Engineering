@@ -22,7 +22,12 @@ class BillController {
     public function insertBill(Bill $bill) {
         
         $this->db->insertBill($bill);
-        header("Location: Mietzins.php");
+        if ($bill->getCostTypeId()==1){
+        header("Location: Mietzins.php");    
+        }else{
+        header("Location: Heiz-Nebenkosten.php");    
+        }
+        
     }
     
     
