@@ -43,8 +43,8 @@ include_once '../Controller/RoomController.php';
                                 echo "<td><a href='Wohnung_Detailansicht.php'>". $b[$c] . "</a></td>";    
                             }
                             
-                    }   echo "<td><button class='btn-success' type='submit' name='bearbeiten'>Bearbeiten</button></td>";
-                        echo "<td><button class='btn-danger' onClick='delete_room()'>Löschen</button></td>";
+                    }   echo "<td><button class='btn-success' type='submit' name='bearbeiten'>Bearbeiten</button></td> </form>";
+                        echo "<td><button class='btn-danger' onClick='deleteObject(". $b[0] .", 3)'>Löschen</button></td>";
                         echo "</form>";
                         echo "</tr>";
                     }

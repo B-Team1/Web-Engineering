@@ -39,7 +39,7 @@ include_once '../Controller/BillController.php';
                                         echo "<input type='hidden' name='billID' id='billID' value='" . $b[$c] . "'></input>";
                                     } 
                                     }
-                                    echo "<td><button class='btn-success' type='submit' name='bearbeiten'>Bearbeiten</button></td>";
+                                    echo "<td><button class='btn-success' type='submit' name='bearbeiten'>Bearbeiten</button></td> </form>";
                                     echo "<td><button class='btn-danger' onClick='deleteObject(". $b[0] .", 1)'>Löschen</button></td>";
                                     echo "</tr>";
                                 }

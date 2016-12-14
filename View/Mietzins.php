@@ -35,7 +35,7 @@ include_once '../Controller/BillController.php';
                                 for ($c = 1; $c < count($b); $c++) {
                                     echo "<td>" . $b[$c] . "</td>";
                                 }
-                                echo "<td><button class='btn-success' type='submit' name='bearbeiten'>Bearbeiten</button></td>";
+                                echo "<td><button class='btn-success' type='submit' name='bearbeiten'>Bearbeiten</button></td> </form>";
                                 echo "<td><button class='btn-danger' onClick='deleteObject(". $b[0] .", 2)'>Löschen</button></td>";
                                 echo "</tr>";
                             }
