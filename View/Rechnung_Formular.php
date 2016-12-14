@@ -2,8 +2,8 @@
     <label>* = Pflichtfelder</label>
 </div>
 <div class="form-group">
-    <input type='hidden' name='billID' id='billID' value="<?php if (isset($_POST['billID'])){ echo $_POST['billID']; }else{ echo $billID; }?>"/>
-    <input type='hidden' name='costType' id='costType' value="<?php if (isset($_POST['costType'])){ echo $_POST['costType']; }else { echo $costType; }?>"/>
+    <input type='hidden' name='billID' id='billID' value="<?php if (isset($_POST['billID'])){ echo $_POST['billID']; }elseif(isset($billID)){ echo $billID; }?>"/>
+    <input type='hidden' name='costType' id='costType' value="<?php if (isset($_POST['costType'])){ echo $_POST['costType']; }elseif(isset($costType)) { echo $costType; }?>"/>
     <label for="invoicedate">Rechnungsdatum (tt.mm.jjjj): *</label>
     <input type="date" name="invoicedate" id="invoicedate" class="form-control" pattern="\d{1,2}.\d{1,2}.\d{4}" value="<?php if (isset($_POST['invoicedate'])){ echo $_POST['invoicedate']; }else { echo $invoiceDate; } ?>" 
            style="width:270px" required oninvalid="this.setCustomValidity('Wählen Sie bitte das Rechnungsdatum aus!')" oninput="setCustomValidity('')"/>

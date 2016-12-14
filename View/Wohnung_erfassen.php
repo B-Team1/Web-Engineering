@@ -34,7 +34,7 @@ if (!empty($_POST)) {
 
                         <div class="form-actions">
                             <button type="submit" name="submit" value="speichern" class="btn btn-primary">Speichern</button>
-                            <button type="button" name="cancel" value="abbrechen" class="btn btn-primary" onclick="window.open('Wohnungen.php')">Abbrechen</button>
+                            <a href="Wohnungen.php"><button type="button" name="cancel" value="abbrechen" class="btn btn-primary">Abbrechen</button></a>
                         </div>
                     </form>   
                 </div>

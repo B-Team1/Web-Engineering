@@ -15,7 +15,7 @@ if (!empty($_POST)) {
     $billValidator = new BillValidator($rent);
 
     if ($billValidator->isValid()) {
-        $bc->insertBill($rent, FALSE);
+        $bc->insertBill($rent);
     }
 }
 ?>
@@ -36,7 +36,7 @@ if (!empty($_POST)) {
 
                             <div class="form-group">
                                 <button type="submit" name="submit" class="btn btn-primary">Speichern</button>
-                                <button type="button" name="cancel" value="abbrechen" onclick="window.open('Mietzins.php')"class="btn btn-primary">Abbrechen</button>
+                                <a href="Mietzins.php"><button type="button" name="cancel" value="abbrechen" class="btn btn-primary">Abbrechen</button></a>
                             </div>
                         </form>
                     </div>

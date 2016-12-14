@@ -19,13 +19,13 @@ class BillController {
         $this->db = new BillDAO(DBConnect::getInstance()->getLink());
     }
     
-    public function insertBill(Bill $bill, $isBill) {
+    public function insertBill(Bill $bill) {
         
         $this->db->insertBill($bill);
-        if($isBill){
-            header("Location: Heiz-Nebenkosten.php"); 
+        if ($bill->getCostTypeId()==1){
+        header("Location: Mietzins.php");    
         }else{
-           header("Location: Mietzins.php"); 
+        header("Location: Heiz-Nebenkosten.php");    
         }
         
     }
