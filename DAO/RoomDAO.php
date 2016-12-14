@@ -89,7 +89,7 @@ class RoomDAO extends AbstractDAO{
         if ($result->num_rows > 0) {
             // output data of each row
             while ($row = $result->fetch_assoc()) {
-                $arr1 = array($row["idWohnung"], $row["Bezeichnung"], $row["FlÃ¤che"], $row["Stockwerk"], $row["Mietzins"], $row["Vermieter_idVermieter"]);
+                $arr1 = array($row["idWohnung"], $row["Bezeichnung"], $row["Fläche"], $row["Stockwerk"], $row["Mietzins"], $row["Vermieter_idVermieter"]);
                 
                 $arr[$c] = $arr1;
                 $c++;
