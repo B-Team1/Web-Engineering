@@ -15,15 +15,9 @@ $rc = new RoomController();
 if(isset($_POST['submit'])) {
     $bill = new Bill($_POST['billID'], $_POST['amount'], $_POST['datetopay'], $_POST['invoicedate'], $_POST['apartment'], $_POST['status'], $_POST['costType'], $_POST['description']);
     $billValidator = new BillValidator($bill);
-    var_dump($bill);
     if ($billValidator->isValid()) {
-    $bc->updateBild($bill);
-    if($_POST['costType']==2){
-    header("Location: Heiz-Nebenkosten.php");    
-    }else{
-    header("Location: Mietzins.php");       
-    }
-       
+    $bc->updateBill($bill);
+    header("Location: Heiz-Nebenkosten.php");  
     }
 }
 

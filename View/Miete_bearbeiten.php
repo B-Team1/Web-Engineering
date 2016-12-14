@@ -6,19 +6,32 @@ include_once '../Validator/BillValidator.php';
 include_once '../Model/Bill.php';
 include '../Validator/login_pruefen.inc.php';
 
-$rent = new Bill();
 $billValidator = new BillValidator();
-$rc = new RoomController();
 $bc = new BillController();
+$rc = new RoomController();
 
-if (!empty($_POST)) {
-    $rent = new Bill(null, $_POST['amount'], $_POST['datetopay'], $_POST['invoicedate'], $_POST['apartment'], $_POST['status'], null, $_POST['description']);
-    $billValidator = new BillValidator($rent);
 
+if(isset($_POST['submit'])) {
+    $bill = new Bill($_POST['billID'], $_POST['amount'], $_POST['datetopay'], $_POST['invoicedate'], $_POST['apartment'], $_POST['status'], $_POST['costType'], $_POST['description']);
+    $billValidator = new BillValidator($bill);
     if ($billValidator->isValid()) {
-        
+    $bc->updateBill($bill);
+    header("Location: Mietzins.php");  
     }
 }
+
+if (!isset($_POST['submit'])) {
+        $billID = $_POST['billID'];
+        $bill = new Bill();
+        $bill = $bc->selectBillById($billID);
+        $invoiceDate = $bill->getDate();
+        $description = $bill->getDescripton();
+        $amount = $bill->getAmout();
+        $datetopay = $bill->getPayableUntill();
+        $status = $bill->getStatusId();
+        $wohnungID = $bill->getRoomId();
+        $costType = $bill->getCostTypeId();
+    }
 ?>
 
 <body>
