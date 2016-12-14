@@ -3,13 +3,15 @@ include_once "Header.php";
 include_once '../Controller/RoomController.php';
 include_once '../Validator/RoomValidator.php';
 include_once '../Model/Room.php';
+include '../Validator/login_pruefen.inc.php';
 
 if(isset($_POST['submit'])) {
-    $room = new Room($_POST['wohnungID'], $_POST['expanse'], $_POST['name'], $_POST['floor'], $_POST['rent'], null);
+    $room = new Room($_POST['wohnungID'], $_POST['expanse'], $_POST['name'], $_POST['floor'], $_POST['rent'], $_SESSION['hirerId']);
     $roomValidator = new RoomValidator($room);
     $rm = new RoomController();
     if ($roomValidator->isValid()) {
     $rm->updateRoom($room);
+    header("Location: Wohnungen.php");
     }
 }
 ?>

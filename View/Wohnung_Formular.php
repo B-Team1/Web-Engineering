@@ -1,4 +1,5 @@
 <?php
+
     if (!isset($_POST['submit'])) {
         $room = new Room();
         $roomValidator = new RoomValidator();
