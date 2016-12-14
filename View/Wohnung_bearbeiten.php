@@ -14,6 +14,18 @@ if(isset($_POST['submit'])) {
     header("Location: Wohnungen.php");
     }
 }
+
+if (!isset($_POST['submit'])) {
+        $room = new Room();
+        $roomValidator = new RoomValidator();
+        $rm = new RoomController();
+        $roomID = $_POST['wohnungID'];
+        $room = $rm->selectRoomById($roomID);
+        $roomName = $room->getDescription();
+        $roomExpanse = $room->getArea();
+        $roomFloor = $room->getFloor();
+        $roomRent = $room->getRent(); 
+    }
 ?>
 <body>
     <div class="brand">Online-Verwaltungstool</div>

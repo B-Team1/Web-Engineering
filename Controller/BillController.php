@@ -30,8 +30,8 @@ class BillController {
      * 
      * @return type
      */
-    public function selectBillById(){
-        return $this->db->selectBillById();
+    public function selectBillById($id){
+        return $this->db->selectBillById($id);
         
     }
     
@@ -57,6 +57,10 @@ class BillController {
     
     public function deleteBillById($id){
         $this->db->deleteBillById($id);
+    }
+    
+    public function updateBild($bill){
+        $this->db->updateBill($bill);
     }
 }
 

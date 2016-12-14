@@ -32,8 +32,13 @@ include_once '../Controller/BillController.php';
                                 for ($i = 0; $i < count($sql); $i++) {
                                     $b = $sql[$i];
                                     echo "<tr>";
-                                    for ($c = 1; $c < count($b); $c++) {
+                                    for ($c = 0; $c < count($b); $c++) {
+                                    if ($c != 0) {
                                         echo "<td>" . $b[$c] . "</td>";
+                                    } else {
+                                        echo "<form action='Rechnung_bearbeiten.php' method='POST'>";
+                                        echo "<input type='hidden' name='billID' id='billID' value='" . $b[$c] . "'></input>";
+                                    } 
                                     }
                                     echo "<td><button class='btn-success' type='submit' name='bearbeiten'>Bearbeiten</button></td>";
                                     echo "<td><button class='btn-danger' onClick='deleteObject(". $b[0] .", 1)'>Löschen</button></td>";
