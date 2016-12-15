@@ -4,6 +4,7 @@ include_once '../model/Room.php';
 include_once '../DAO/RoomDAO.php';
 include_once '../DAO/dBConnect.php';
 include_once '../Controller/BillController.php';
+include_once '../Controller/RenterController.php';
 
 /**
  * Description of RoomController
@@ -24,7 +25,9 @@ class RoomController {
      */
     public function deleteRoom($id){
         $bc = new BillController();
+        $rc = new RenterController();
         $bc->deleteBillByRoomId($id);
+        $rc->deleteRenterByRoomId($id);
         $this->db->deleteRoomById($id);
     }
     

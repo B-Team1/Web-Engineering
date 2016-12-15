@@ -59,8 +59,13 @@ class RenterDAO extends AbstractDAO {
      * 
      * @param type $id
      */
-    public function deleteBillById($id){
+    public function deleteRenterById($id){
         $sql = "DELETE FROM `mydb`.`mieter` WHERE `idMieter` = ".$id.";";
+        $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
+    }
+    
+    public function deleteRenterByRoomId($id){
+        $sql = "DELETE FROM `mydb`.`mieter` WHERE `Wohnung_idWohnung` = ".$id.";";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
     }
     
