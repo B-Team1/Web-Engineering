@@ -41,8 +41,8 @@ include_once '../Controller/RenterController.php';
                                     echo "<form action='Mieter_bearbeiten.php' method='POST'>";
                                     echo "<input type='hidden' name='renterID' id='renterID' value='" . $b[$c] . "'></input>";
                                 }
-                            } echo "<td><button class='btn-success' type='submit' name='bearbeiten'>Bearbeiten</button></td>";
-                            echo "<td><button class='btn-danger' onClick='delete_renter()'>Löschen</button></td>";
+                            } echo "<td><button class='btn-success' type='submit' name='bearbeiten'>Bearbeiten</button></td> </form>";
+                            echo "<td><button class='btn-danger' onClick='deleteObject(". $b[0] .", 4)'>Löschen</button></td>";
                             echo "</form>";
                             echo "</tr>";
                         }

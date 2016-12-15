@@ -15,6 +15,10 @@ function deleteObject(id, type) {
         output = "Wohnung";
         type = "room";
         break;
+    case 4:
+        output = "Mieter";
+        type = "renter";
+        break;
     }
     
     

@@ -38,4 +38,8 @@ class RenterController {
         $this->db->deleteRenterByRoomId($id);
     }
     
+    public function deleteRenterById($id){
+        $this->db->deleteRenterById($id);
+    }
+    
 }
