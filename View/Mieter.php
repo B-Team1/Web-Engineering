@@ -3,6 +3,7 @@ include_once "Header.php";
 include_once '../Controller/RenterController.php';
 ?>
 <script type =text/javascript src="js/deletFunction.js"></script>
+<script type="text/javascript" src="js/TableSort.js"></script>
 </head>
 <body>
     <div class="brand">Online-Verwaltungstool</div>
@@ -41,7 +42,7 @@ include_once '../Controller/RenterController.php';
                                     echo "<input type='hidden' name='renterID' id='renterID' value='" . $b[$c] . "'></input>";
                                 }
                             } echo "<td><button class='btn-success' type='submit' name='bearbeiten'>Bearbeiten</button></td>";
-                            echo "<td><button class='btn-danger' onClick='delete_room()'>Löschen</button></td>";
+                            echo "<td><button class='btn-danger' onClick='delete_renter()'>Löschen</button></td>";
                             echo "</form>";
                             echo "</tr>";
                         }

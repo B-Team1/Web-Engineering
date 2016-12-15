@@ -49,7 +49,7 @@ if (!isset($_POST['submit'])) {
 
                             <div class="form-group">
                                 <button type="submit" name="submit" id="submit" class="btn btn-primary">Speichern</button>
-                                <button type="button" name="cancel" value="abbrechen" onclick="window.open('Heiz-Nebenkosten.php')"class="btn btn-primary">Abbrechen</button>
+                                <a href="Heiz-Nebenkosten.php"><button type="button" name="cancel" value="abbrechen" class="btn btn-primary">Abbrechen</button></a>
                             </div>
                         </form>
                     </div>
