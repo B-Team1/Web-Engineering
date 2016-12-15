@@ -65,6 +65,7 @@ class RoomDAO extends AbstractDAO{
      */
     public function selectRoomTable(){
         $c = 0;
+        $arr = array();
         $sql = "SELECT idWohnung, Bezeichnung, Name, Strasse, Fläche FROM mydb.wohnung 
                 left join mydb.mieter on mydb.mieter.Wohnung_idWohnung = mydb.wohnung.idWohnung";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
@@ -100,6 +101,7 @@ class RoomDAO extends AbstractDAO{
     
     public function selectFreeRooms($hirerID){
         $c = 0;
+        $arr = array();
         $sql = "SELECT * FROM mydb.wohnung left join mydb.mieter on mydb.wohnung.idWohnung = mydb.mieter.Wohnung_idWohnung"
                 . " WHERE mydb.wohnung.Vermieter_idVermieter = ".$hirerID." and mydb.mieter.Wohnung_idWohnung is null;";
         echo $sql;

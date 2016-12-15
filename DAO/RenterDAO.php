@@ -71,6 +71,7 @@ class RenterDAO extends AbstractDAO {
     
     public function selectRenterTable($hirerID){
         $c = 0;
+        $arr = array();
         $sql = "SELECT idMieter, Name, Vorname, Telefon, Strasse, Ort, PLZ, Vertragsstart FROM `mydb`.`mieter`"
                 . " inner join `mydb`.`wohnung` on `wohnung`.`idWohnung`=`mieter`.`Wohnung_idWohnung` "
                 . "where `wohnung`.`Vermieter_idVermieter` =  ".$hirerID.";";

@@ -111,6 +111,7 @@ class BillDAO extends AbstractDAO {
 
 public function selectHNBillTable() {
         $c = 0;
+        $arr = array();
         $sql = "SELECT idRechnungen,kostenart.idKostenart, Datum, mieter.Name, Betrag, ZahlbarBis, status.Beschreibung "
                 . "FROM mydb.rechnungen inner join mydb.status on mydb.rechnungen.Status_idStatus = mydb.status.idStatus "
                 . "inner join mydb.kostenart on mydb.rechnungen.Kostenart_idKostenart = mydb.kostenart.idKostenart "
@@ -132,6 +133,7 @@ public function selectHNBillTable() {
 
 public function selectRoomBillTable() {
         $c = 0;
+        $arr = array();
         $sql = "SELECT idRechnungen,kostenart.idKostenart, Datum, mieter.Name, Betrag, ZahlbarBis, status.Beschreibung "
                 . "FROM mydb.rechnungen inner join mydb.status on mydb.rechnungen.Status_idStatus = mydb.status.idStatus "
                 . "inner join mydb.kostenart on mydb.rechnungen.Kostenart_idKostenart = mydb.kostenart.idKostenart "
@@ -153,6 +155,7 @@ public function selectRoomBillTable() {
 
 public function selectYearBillTable() {
         $c = 0;
+        $arr = array();
         $sql = "SELECT idRechnungen,kostenart.idKostenart, Datum, mieter.Name, Betrag, ZahlbarBis, status.Beschreibung "
                 . "FROM mydb.rechnungen inner join mydb.status on mydb.rechnungen.Status_idStatus = mydb.status.idStatus "
                 . "inner join mydb.kostenart on mydb.rechnungen.Kostenart_idKostenart = mydb.kostenart.idKostenart "
@@ -173,6 +176,7 @@ public function selectYearBillTable() {
 
 public function selectBillTablePdfGenerator() {
         $c = 0;
+        $arr = array();
         $sql = "Select mieter.Name, mieter.Vorname, rechnungen.Datum, kostenart.Beschreibung as KBeschreibung, rechnungen.ZahlbarBis, rechnungen.Betrag,"
                 . " status.Beschreibung from rechnungen "
                 . "inner join mydb.kostenart on mydb.rechnungen.Kostenart_idKostenart = mydb.kostenart.idKostenart "
