@@ -3,6 +3,7 @@ include_once "Header.php";
 include_once '../Controller/BillController.php';
 ?>
         <script type =text/javascript src="js/deletFunction.js"></script>
+        <script type="text/javascript" src="js/TableSort.js"></script>
         </head>
     <body>
         <div class="brand">Online-Verwaltungstool</div>

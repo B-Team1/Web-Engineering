@@ -26,4 +26,12 @@ class RenterController {
         header("Location: Mieter.php"); 
     }
     
+    public function updateRenter(Renter $renter){
+        return $this->db->updateRenter($renter);
+    }
+    
+    public function selectRenterById($id){
+        return $this->db->selectRenterById($id);
+    }
+    
 }

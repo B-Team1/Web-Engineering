@@ -62,4 +62,13 @@ class RoomController {
         return $this->db->updateRoom($room);
     }
     
+    /**
+     * 
+     * @param type $hirerID
+     * @return type
+     */
+    public function selectFreeRooms(){
+        return $this->db->selectFreeRooms($_SESSION['hirerId']);
+    }
+    
 }

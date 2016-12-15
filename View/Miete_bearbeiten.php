@@ -47,8 +47,8 @@ if (!isset($_POST['submit'])) {
                             <?php include_once("Miete_Formular.php"); ?>
 
                             <div class="form-group">
-                                <button type="submit" name="submit" value="speichern" class="btn btn-primary">Speichern</button>
-                                <button type="button" name="cancel" value="abbrechen" class="btn btn-primary" onclick="window.open('Mietzins.php')">Abbrechen</button>
+                                <button type="submit" name="submit" value="speichern" class="btn btn-primary">Speichern</button>  
+                                <a href="Mietzins.php"><button type="button" name="cancel" value="abbrechen" class="btn btn-primary" >Abbrechen</button></a>
                             </div>
                         </form>
                     </div>

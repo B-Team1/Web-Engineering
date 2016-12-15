@@ -22,7 +22,8 @@ class RenterDAO extends AbstractDAO {
     public function insertRenter(Renter $renter) {
         $insert = "INSERT INTO `mydb`.`mieter` (`Name`, `Vorname`, `Telefon`, `Strasse`, `Ort`, `PLZ`, `Vertragsstart`, `Wohnung_idWohnung`) "
                 . "VALUES ('" . $renter->getName() . "', '" . $renter->getFirstname() . "', '" . $renter->getPhone() . "', '" . $renter->getStreet() . "',"
-                . " '" . $renter->getPlace() . "','" . $renter->getPlz() . "', '" . $renter->getStartDate() . "', null);";
+                . " '" . $renter->getPlace() . "','" . $renter->getPlz() . "', '" . $renter->getStartDate() . "', '".$renter->getRoomId(). "' );";
+        var_dump($insert);
         mysqli_query($this->link, $insert) or die(mysqli_error($this->link));
         
     }
