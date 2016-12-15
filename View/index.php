@@ -55,7 +55,7 @@ if (ini_get("session.use_cookies")) {
                             <div class="row">
                                 <div class="form-group">
                                     <label>Passwort:</label>
-                                    <input type="text" name="password" class="form-control">
+                                    <input type="password" name="password" class="form-control">
                                 </div>
                             </div>
                             <div class="row">

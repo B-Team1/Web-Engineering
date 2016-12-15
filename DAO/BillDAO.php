@@ -96,6 +96,15 @@ class BillDAO extends AbstractDAO {
         $sql = "DELETE FROM `mydb`.`rechnungen` WHERE `idRechnungen` = ".$id.";";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
     }
+    
+    /**
+     * 
+     * @param type $id
+     */
+    public function deleteBillByRoomId($id){
+        $sql = "DELETE FROM `mydb`.`rechnungen` WHERE `Wohnung_idWohnung` = ".$id.";";
+        $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
+    }
 
 
 
