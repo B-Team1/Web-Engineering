@@ -87,5 +87,24 @@ class RenterDAO extends AbstractDAO {
         }
         return $arr;
     }
+    
+    public function selectRoomRenterTable($hirerID){
+        $c = 0;
+        $arr = array();
+        $sql = "SELECT * FROM mydb.wohnung "
+                . "inner join mydb.mieter on mydb.wohnung.idWohnung = mydb.mieter.Wohnung_idWohnung "
+                . "where `wohnung`.`Vermieter_idVermieter` =  ".$hirerID.";";
+        $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while ($row = $result->fetch_assoc()) {
+                $arr1 = array($row["Bezeichnung"], $row["Fläche"], $row["Mietzins"], $row["Name"], $row["Vorname"], $row["Telefon"], $row["Vertragsstart"], );
+                
+                $arr[$c] = $arr1;
+                $c++;
+            }
+        }
+        return $arr;
+    }
 
 }

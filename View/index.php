@@ -68,7 +68,7 @@ if (ini_get("session.use_cookies")) {
                         <a href="login_erfassen.php">Registieren </a>
                     </p>
                     <p>
-                        <a href="Passwort_vergessen.php">Passwort vergessen</a>    
+                        <a href="mailto:marco.loosli@students.fhnw.ch?subject=Passwort vergessen&body=Guten Tag, leider habe ich mein Passwort vergessen. Ich bitte Sie mir ein neues Passwort auf diese Mail-Adresse zu senden.">Passwort vergessen</a>    
                     </p>
                 </div>
             </div>

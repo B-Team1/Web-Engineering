@@ -21,6 +21,10 @@ class RenterController {
         return $this->db->selectRenterTable($hirerID);
     }
     
+    public function selectRenterRoomTable(){
+        return $this->db->selectRoomRenterTable($_SESSION['hirerId']);
+    }
+    
     public function insertRenter($renter){
         $this->db->insertRenter($renter);
         header("Location: Mieter.php"); 
