@@ -1,6 +1,6 @@
 <?php
 
-include_once '../model/Bill.php';
+include_once '../Model/Bill.php';
 include_once '../DAO/BillDAO.php';
 include_once '../DAO/dBConnect.php';
 

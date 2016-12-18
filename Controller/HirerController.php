@@ -1,5 +1,5 @@
 <?php
-include_once '../model/Hirer.php';
+include_once '../Model/Hirer.php';
 include_once '../DAO/HirerDAO.php';
 include_once '../DAO/dBConnect.php';
 

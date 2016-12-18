@@ -13,7 +13,7 @@
 </div>
 <div class="form-group">
     <label for="expanse">Fläche [m^2]: *</label>
-    <input type="number" name="expanse" id="expanse" class="form-control" value="<?php if (isset($_POST['expanse'])){ echo $_POST['expanse']; }elseif(isset ($roomExpanse)){ echo $roomExpanse;}?>"
+    <input type="number" name="expanse" id="expanse" class="form-control" value="<?php if (isset($_POST['expanse'])){ echo $_POST['expanse']; }elseif(isset($roomExpanse)){ echo $roomExpanse;}?>"
            required pattern="[0-9]" step="any" oninvalid="this.setCustomValidity('Geben Sie bitte die Fläche als Zahl ein!')" oninput="setCustomValidity('')"/>
     <?php if (!empty($roomValidator->getAreaError())): ?>
         <span class="help-inline"><?php echo $roomValidator->getAreaError(); ?></span>
@@ -21,7 +21,7 @@
 </div>    
 <div class="form-group">
     <label for="floor">Stockwerk: *</label>
-    <input type="number" name="floor" id="floor" class="form-control" value="<?php if (isset($_POST['floor'])){ echo $_POST['floor'];}elseif(isset ($roomFloor)){ echo $roomFloor;} ?>"
+    <input type="number" name="floor" id="floor" class="form-control" value="<?php if (isset($_POST['floor'])){ echo $_POST['floor']; }elseif(isset($roomFloor)){ echo $roomFloor;} ?>"
            required pattern="[0-9]" oninvalid="this.setCustomValidity('Geben Sie bitte das Stockwerk als Zahl ein!')" oninput="setCustomValidity('')" />
     <?php if (!empty($roomValidator->getFloorError())): ?>
         <span class="help-inline"><?php echo $roomValidator->getFloorError(); ?></span>

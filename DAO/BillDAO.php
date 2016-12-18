@@ -1,7 +1,7 @@
 <?php
 
 include_once "AbstractDAO.php";
-include_once '../model/Bill.php';
+include_once '../Model/Bill.php';
 
 /**
  * Description of BillDAO
