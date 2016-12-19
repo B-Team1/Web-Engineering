@@ -45,8 +45,9 @@ class DBConnect {
     }
 
     private function connectDB() {
-        $this->link = mysqli_connect("localhost", $this->user, $this->password);
-        mysqli_select_db($this->link, $this->database);
+         $this->link = new mysqli("localhost", $this->user, $this->password, $this->database);
+//        $this->link = mysqli_connect("localhost", $this->user, $this->password);
+//        mysqli_select_db($this->link, $this->database);
 
         mysqli_query($this->link, "SET NAMES 'utf8'");
     }

@@ -2,8 +2,17 @@
 
 abstract class AbstractDAO
 {
+    /**
+     *
+     * @var type 
+     */
     protected $link;
 
+    /**
+     * 
+     * @param type $mysqliInstance
+     * @throws Exception
+     */
     public function __construct($mysqliInstance)
     {
         $this->link = $mysqliInstance;

@@ -20,10 +20,12 @@ class RenterDAO extends AbstractDAO {
      * @param Renter $renter
      */
     public function insertRenter(Renter $renter) {
-        $insert = "INSERT INTO `ateam`.`mieter` (`Name`, `Vorname`, `Telefon`, `Strasse`, `Ort`, `PLZ`, `Vertragsstart`, `Wohnung_idWohnung`) "
-                . "VALUES ('" . $renter->getName() . "', '" . $renter->getFirstname() . "', '" . $renter->getPhone() . "', '" . $renter->getStreet() . "',"
-                . " '" . $renter->getPlace() . "','" . $renter->getPlz() . "', '" . $renter->getStartDate() . "', '".$renter->getRoomId(). "' );";
-        var_dump($insert);
+        $insert = "INSERT INTO `ateam`.`mieter` (`Name`, `Vorname`, `Telefon`, `Strasse`, `Ort`, `PLZ`, `Vertragsstart`, `wohnung_idWohnung`) "
+                . "VALUES ('" . mysqli_real_escape_string($this->link, $renter->getName()) . "', '" . mysqli_real_escape_string($this->link, $renter->getFirstname()) . "',"
+                . " '" . mysqli_real_escape_string($this->link, $renter->getPhone()) . "', '" . mysqli_real_escape_string($this->link, $renter->getStreet()) . "',"
+                . " '" . mysqli_real_escape_string($this->link, $renter->getPlace()) . "','" . mysqli_real_escape_string($this->link, $renter->getPlz()) . "',"
+                . " '" . mysqli_real_escape_string($this->link, $renter->getStartDate()) . "', '".mysqli_real_escape_string($this->link, $renter->getRoomId()). "' );";
+
         mysqli_query($this->link, $insert) or die(mysqli_error($this->link));
         
     }
@@ -33,9 +35,9 @@ class RenterDAO extends AbstractDAO {
      * @param Renter $renter
      */
     public function updateRenter(Renter $renter) {
-        $sql = "UPDATE `ateam`.`mieter` SET `Name`='" . $renter->getName() . "', `Vorname`='" . $renter->getFirstname() . "', "
-                . "`Telefon`='" . $renter->getPhone() . "', `Strasse`='" . $renter->getStreet() . "', `Ort`='" . $renter->getPlace() . "', "
-                . "`PLZ`='" . $renter->getPlz() . "', `Vertragsstart`='" . $renter->getStartDate() . "', `Wohnung_idWohnung`='" . $renter->getRoomId() . "' "
+        $sql = "UPDATE `ateam`.`mieter` SET `Name`='" . mysqli_real_escape_string($this->link, $renter->getName()) . "', `Vorname`='" . mysqli_real_escape_string($this->link, $renter->getFirstname()) . "', "
+                . "`Telefon`='" . mysqli_real_escape_string($this->link, $renter->getPhone()) . "', `Strasse`='" . mysqli_real_escape_string($this->link, $renter->getStreet()) . "', `Ort`='" . mysqli_real_escape_string($this->link, $renter->getPlace()) . "', "
+                . "`PLZ`='" . mysqli_real_escape_string($this->link, $renter->getPlz()) . "', `Vertragsstart`='" . mysqli_real_escape_string($this->link, $renter->getStartDate()) . "', `wohnung_idWohnung`='" . mysqli_real_escape_string($this->link, $renter->getRoomId()) . "' "
                 . "WHERE `idMieter`='" . $renter->getRenterId() . "';";
         mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
     }
@@ -50,7 +52,7 @@ class RenterDAO extends AbstractDAO {
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
         $renter = null;
         while ($row = $result->fetch_object()) {
-            $renter = new Renter($row->idMieter, $row->Name, $row->Vorname, $row->Telefon, $row->Strasse, $row->Ort, $row->PLZ, $row->Vertragsstart, $row->Wohnung_idWohnung);
+            $renter = new Renter($row->idMieter, $row->Name, $row->Vorname, $row->Telefon, $row->Strasse, $row->Ort, $row->PLZ, $row->Vertragsstart, $row->wohnung_idWohnung);
         }
         return $renter;
     }
@@ -65,7 +67,7 @@ class RenterDAO extends AbstractDAO {
     }
     
     public function deleteRenterByRoomId($id){
-        $sql = "DELETE FROM `ateam`.`mieter` WHERE `Wohnung_idWohnung` = ".$id.";";
+        $sql = "DELETE FROM `ateam`.`mieter` WHERE `wohnung_idWohnung` = ".$id.";";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
     }
     
@@ -73,8 +75,8 @@ class RenterDAO extends AbstractDAO {
         $c = 0;
         $arr = array();
         $sql = "SELECT idMieter, Name, Vorname, Telefon, Strasse, Ort, PLZ, Vertragsstart FROM `ateam`.`mieter`"
-                . " inner join `ateam`.`wohnung` on `wohnung`.`idWohnung`=`mieter`.`Wohnung_idWohnung` "
-                . "where `wohnung`.`Vermieter_idVermieter` =  ".$hirerID.";";
+                . " inner join `ateam`.`wohnung` on `wohnung`.`idWohnung`=`mieter`.`wohnung_idWohnung` "
+                . "where `wohnung`.`vermieter_idVermieter` =  ".$hirerID.";";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
         if ($result->num_rows > 0) {
             // output data of each row
@@ -92,8 +94,8 @@ class RenterDAO extends AbstractDAO {
         $c = 0;
         $arr = array();
         $sql = "SELECT * FROM ateam.wohnung "
-                . "inner join ateam.mieter on ateam.wohnung.idWohnung = ateam.mieter.Wohnung_idWohnung "
-                . "where `wohnung`.`Vermieter_idVermieter` =  ".$hirerID.";";
+                . "inner join ateam.mieter on ateam.wohnung.idWohnung = ateam.mieter.wohnung_idWohnung "
+                . "where `wohnung`.`vermieter_idVermieter` =  ".$hirerID.";";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
         if ($result->num_rows > 0) {
             // output data of each row

@@ -44,7 +44,7 @@
 </div>
 <div class="form-group">
     <label for="plz">PLZ: *</label>
-    <input type="text" name="plz" id="plz" value="<?php if (isset($_POST['plz'])){ echo $_POST['plz']; }elseif(isset($renterPLZ)) { echo $renterPLZ; } ?>" class="form-control" required oninvalid="this.setCustomValidity('Geben Sie bitte die PLZ ein!')" 
+    <input type="number" name="plz" id="plz" value="<?php if (isset($_POST['plz'])){ echo $_POST['plz']; }elseif(isset($renterPLZ)) { echo $renterPLZ; } ?>" class="form-control" required oninvalid="this.setCustomValidity('Geben Sie bitte die PLZ ein!')" 
            oninput="setCustomValidity('')" style="width:270px"/>
     <?php if (!empty($renterValidator->getPlzError())): ?>
         <span class="help-inline"><?php echo $renterValidator->getPlzError(); ?></span>

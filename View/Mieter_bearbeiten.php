@@ -3,8 +3,9 @@ include_once "Header.php";
 include_once '../Controller/RenterController.php';
 include_once '../Model/Renter.php';
 include_once '../Controller/RoomController.php';
+include_once '../Validator/RenterValidator.php';
 
-//$renterValidator = new RenterValidator();
+$renterValidator = new RenterValidator();
 $rc = new RenterController();
 $roomc = new RoomController();
 $new = false;
@@ -12,11 +13,11 @@ $new = false;
 
 if(isset($_POST['submit'])) {
     $renter =new Renter ($_POST['renterID'], $_POST['name'],$_POST['vorname'],$_POST['phone'],$_POST['street'],$_POST['city'],$_POST['plz'],$_POST['contractstart'],$_POST['apartment']);
-    //$renterValidator = new RenterValidator($renter);
-    //if ($billValidator->isValid()) {
+    $renterValidator = new RenterValidator($renter);
+    if ($renterValidator->isValid()) {
         $rc->updateRenter($renter);
         header("Location: Mieter.php"); 
-    //}
+    }
     
     
     
