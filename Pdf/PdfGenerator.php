@@ -34,7 +34,7 @@ function FancyTable($header, $data)
     $this->SetLineWidth(.3);
     $this->SetFont('','B');
     // Header
-    $w = array(45, 45, 45, 50, 40, 20, 25);
+    $w = array(45, 45, 45, 55, 40, 20, 25);
     for($i=0;$i<count($header);$i++)
         $this->Cell($w[$i],7,$header[$i],1,0,'C',true);
     $this->Ln();
