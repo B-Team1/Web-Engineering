@@ -109,7 +109,7 @@ class BillDAO extends AbstractDAO {
 
 
 
-public function selectHNBillTable() {
+public function selectHNBillTable($hirerID) {
         $c = 0;
         $arr = array();
         $sql = "SELECT idRechnungen,kostenart.idKostenart, Datum, mieter.Name, Betrag, ZahlbarBis, status.Beschreibung "
@@ -117,7 +117,7 @@ public function selectHNBillTable() {
                 . "inner join mydb.kostenart on mydb.rechnungen.Kostenart_idKostenart = mydb.kostenart.idKostenart "
                 . "inner join mydb.wohnung on mydb.rechnungen.Wohnung_idWohnung = mydb.wohnung.idWohnung "
                 . "inner join mydb.mieter on mydb.wohnung.idWohnung = mydb.mieter.Wohnung_idWohnung "
-                . "where kostenart.idKostenart = 2";
+                . "where kostenart.idKostenart = 2 and wohnung.Vermieter_idVermieter = ".$hirerID.";";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
         if ($result->num_rows > 0) {
             // output data of each row
@@ -131,7 +131,7 @@ public function selectHNBillTable() {
         return $arr;
     }
 
-public function selectRoomBillTable() {
+public function selectRoomBillTable($hirerID) {
         $c = 0;
         $arr = array();
         $sql = "SELECT idRechnungen,kostenart.idKostenart, Datum, mieter.Name, Betrag, ZahlbarBis, status.Beschreibung "
@@ -139,7 +139,7 @@ public function selectRoomBillTable() {
                 . "inner join mydb.kostenart on mydb.rechnungen.Kostenart_idKostenart = mydb.kostenart.idKostenart "
                 . "inner join mydb.wohnung on mydb.rechnungen.Wohnung_idWohnung = mydb.wohnung.idWohnung "
                 . "inner join mydb.mieter on mydb.wohnung.idWohnung = mydb.mieter.Wohnung_idWohnung "
-                . "where kostenart.idKostenart = 1";
+                . "where kostenart.idKostenart = 1 and wohnung.Vermieter_idVermieter = ".$hirerID.";";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
         if ($result->num_rows > 0) {
             // output data of each row
@@ -153,14 +153,15 @@ public function selectRoomBillTable() {
         return $arr;
     }    
 
-public function selectYearBillTable() {
+public function selectYearBillTable($hirerID) {
         $c = 0;
         $arr = array();
         $sql = "SELECT idRechnungen,kostenart.idKostenart, Datum, mieter.Name, Betrag, ZahlbarBis, status.Beschreibung "
                 . "FROM mydb.rechnungen inner join mydb.status on mydb.rechnungen.Status_idStatus = mydb.status.idStatus "
                 . "inner join mydb.kostenart on mydb.rechnungen.Kostenart_idKostenart = mydb.kostenart.idKostenart "
                 . "inner join mydb.wohnung on mydb.rechnungen.Wohnung_idWohnung = mydb.wohnung.idWohnung "
-                . "inner join mydb.mieter on mydb.wohnung.idWohnung = mydb.mieter.Wohnung_idWohnung; ";
+                . "inner join mydb.mieter on mydb.wohnung.idWohnung = mydb.mieter.Wohnung_idWohnung"
+                . " where wohnung.Vermieter_idVermieter = ". $hirerID .";";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
         if ($result->num_rows > 0) {
             // output data of each row
@@ -174,7 +175,7 @@ public function selectYearBillTable() {
         return $arr;
     }  
 
-public function selectBillTablePdfGenerator() {
+public function selectBillTablePdfGenerator($hirerID) {
         $c = 0;
         $arr = array();
         $sql = "Select mieter.Name, mieter.Vorname, rechnungen.Datum, kostenart.Beschreibung as KBeschreibung, rechnungen.ZahlbarBis, rechnungen.Betrag,"
@@ -182,7 +183,8 @@ public function selectBillTablePdfGenerator() {
                 . "inner join mydb.kostenart on mydb.rechnungen.Kostenart_idKostenart = mydb.kostenart.idKostenart "
                 . "inner join mydb.status on mydb.rechnungen.Status_idStatus = mydb.status.idStatus "
                 . "inner join mydb.wohnung on mydb.rechnungen.Wohnung_idWohnung = mydb.wohnung.idWohnung "
-                . "inner join mydb.mieter on mydb.wohnung.idWohnung = mydb.mieter.Wohnung_idWohnung; ";
+                . "inner join mydb.mieter on mydb.wohnung.idWohnung = mydb.mieter.Wohnung_idWohnung "
+                . " where wohnung.Vermieter_idVermieter = ". $hirerID .";";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
         if ($result->num_rows > 0) {
             // output data of each row

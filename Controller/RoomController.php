@@ -38,7 +38,7 @@ class RoomController {
     }
     
     public function selectRoomTable(){
-        return $this->db->selectRoomTable();
+        return $this->db->selectRoomTable($_SESSION['hirerId']);
     }
     
     /**
