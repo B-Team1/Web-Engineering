@@ -12,7 +12,7 @@ include_once '../Controller/RenterController.php';
         <div class="row">
             <div class="box">
                 <div class="col-lg-12">
-                    <h4>Wohnungsübersicht</h4>
+                    <h4>Mieter-Spiegel</h4>
                     <table class="table table-responsive table-bordered table-condensed table-hover sortierbar" >
                         <thead>
                             <tr>
