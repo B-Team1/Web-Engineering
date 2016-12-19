@@ -15,6 +15,7 @@ class RoomDAO extends AbstractDAO{
      * @param Room $room
      */
     public function insertRoom(Room $room) {
+        
         $insert = "INSERT INTO `mydb`.`wohnung` (`Bezeichnung`, `Fläche`, `Stockwerk`, `Mietzins`, `Vermieter_idVermieter`) "
                 . "VALUES ('" . $room->getDescription() . "', '" . $room->getArea() . "', '" . $room->getFloor() . "',"
                 . " '" . $room->getRent() . "', '" . $room->getHirerId() . "');";

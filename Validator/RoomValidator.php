@@ -51,15 +51,15 @@ class RoomValidator {
             $this->valid = false;
         }
         return $this->valid;
-
-        /* function test_input($data) {
-          $data = trim($data);
-          $data = stripslashes($data);
-          $data = htmlspecialchars($data);
-          return $data;
-          } */
     }
-    
+
+    function clear($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+
     function getRoom() {
         return $this->room;
     }

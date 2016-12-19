@@ -9,7 +9,7 @@ $roomValidator = new RoomValidator();
 
 if (!empty($_POST)) {
 
-    $room = new Room(null, $_POST['expanse'], $_POST['name'], $_POST['floor'], $_POST['rent'], null);
+    $room = new Room(null, $roomValidator->clear($_POST['expanse']), $roomValidator->clear($_POST['name']), $roomValidator->clear($_POST['floor']), $roomValidator->clear($_POST['rent']), null);
     $roomValidator = new RoomValidator($room);
 
     if ($roomValidator->isValid()) {
