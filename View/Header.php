@@ -1,5 +1,6 @@
 <?php 
-    include '../Validator/login_pruefen.inc.php';
+ob_start();
+    include_once '../Validator/login_pruefen.inc.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

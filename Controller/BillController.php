@@ -1,6 +1,6 @@
 <?php
 
-include_once '../model/Bill.php';
+include_once '../Model/Bill.php';
 include_once '../DAO/BillDAO.php';
 include_once '../DAO/dBConnect.php';
 
@@ -45,19 +45,19 @@ class BillController {
     }
     
     public function selectHNBillTable(){
-        return $this->db->selectHNBillTable();
+        return $this->db->selectHNBillTable($_SESSION['hirerId']);
     }
     
     public function selectRoomBillTable(){
-        return $this->db->selectRoomBillTable();
+        return $this->db->selectRoomBillTable($_SESSION['hirerId']);
     }
     
     public function selectYearBillTable(){
-        return $this->db->selectYearBillTable();
+        return $this->db->selectYearBillTable($_SESSION['hirerId']);
     }
     
     public function selectBillTablePdfGenerator(){
-        return $this->db->selectBillTablePdfGenerator();
+        return $this->db->selectBillTablePdfGenerator($_SESSION['hirerId']);
     }
     
     public function deleteBillById($id){

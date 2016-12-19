@@ -1,7 +1,7 @@
 <?php
 
 include_once "AbstractDAO.php";
-include_once '../model/Renter.php';
+include_once '../Model/Renter.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -20,7 +20,7 @@ class RenterDAO extends AbstractDAO {
      * @param Renter $renter
      */
     public function insertRenter(Renter $renter) {
-        $insert = "INSERT INTO `mydb`.`mieter` (`Name`, `Vorname`, `Telefon`, `Strasse`, `Ort`, `PLZ`, `Vertragsstart`, `Wohnung_idWohnung`) "
+        $insert = "INSERT INTO `ateam`.`mieter` (`Name`, `Vorname`, `Telefon`, `Strasse`, `Ort`, `PLZ`, `Vertragsstart`, `Wohnung_idWohnung`) "
                 . "VALUES ('" . $renter->getName() . "', '" . $renter->getFirstname() . "', '" . $renter->getPhone() . "', '" . $renter->getStreet() . "',"
                 . " '" . $renter->getPlace() . "','" . $renter->getPlz() . "', '" . $renter->getStartDate() . "', '".$renter->getRoomId(). "' );";
         var_dump($insert);
@@ -33,7 +33,7 @@ class RenterDAO extends AbstractDAO {
      * @param Renter $renter
      */
     public function updateRenter(Renter $renter) {
-        $sql = "UPDATE `mydb`.`mieter` SET `Name`='" . $renter->getName() . "', `Vorname`='" . $renter->getFirstname() . "', "
+        $sql = "UPDATE `ateam`.`mieter` SET `Name`='" . $renter->getName() . "', `Vorname`='" . $renter->getFirstname() . "', "
                 . "`Telefon`='" . $renter->getPhone() . "', `Strasse`='" . $renter->getStreet() . "', `Ort`='" . $renter->getPlace() . "', "
                 . "`PLZ`='" . $renter->getPlz() . "', `Vertragsstart`='" . $renter->getStartDate() . "', `Wohnung_idWohnung`='" . $renter->getRoomId() . "' "
                 . "WHERE `idMieter`='" . $renter->getRenterId() . "';";
@@ -46,7 +46,7 @@ class RenterDAO extends AbstractDAO {
      * @return \Renter
      */
     public function selectRenterById($id) {
-        $sql = "SELECT * FROM mydb.mieter WHERE mydb.mieter.idMieter = " . $id . ";";
+        $sql = "SELECT * FROM ateam.mieter WHERE ateam.mieter.idMieter = " . $id . ";";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
         $renter = null;
         while ($row = $result->fetch_object()) {
@@ -60,20 +60,20 @@ class RenterDAO extends AbstractDAO {
      * @param type $id
      */
     public function deleteRenterById($id){
-        $sql = "DELETE FROM `mydb`.`mieter` WHERE `idMieter` = ".$id.";";
+        $sql = "DELETE FROM `ateam`.`mieter` WHERE `idMieter` = ".$id.";";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
     }
     
     public function deleteRenterByRoomId($id){
-        $sql = "DELETE FROM `mydb`.`mieter` WHERE `Wohnung_idWohnung` = ".$id.";";
+        $sql = "DELETE FROM `ateam`.`mieter` WHERE `Wohnung_idWohnung` = ".$id.";";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
     }
     
     public function selectRenterTable($hirerID){
         $c = 0;
         $arr = array();
-        $sql = "SELECT idMieter, Name, Vorname, Telefon, Strasse, Ort, PLZ, Vertragsstart FROM `mydb`.`mieter`"
-                . " inner join `mydb`.`wohnung` on `wohnung`.`idWohnung`=`mieter`.`Wohnung_idWohnung` "
+        $sql = "SELECT idMieter, Name, Vorname, Telefon, Strasse, Ort, PLZ, Vertragsstart FROM `ateam`.`mieter`"
+                . " inner join `ateam`.`wohnung` on `wohnung`.`idWohnung`=`mieter`.`Wohnung_idWohnung` "
                 . "where `wohnung`.`Vermieter_idVermieter` =  ".$hirerID.";";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
         if ($result->num_rows > 0) {
@@ -91,8 +91,8 @@ class RenterDAO extends AbstractDAO {
     public function selectRoomRenterTable($hirerID){
         $c = 0;
         $arr = array();
-        $sql = "SELECT * FROM mydb.wohnung "
-                . "inner join mydb.mieter on mydb.wohnung.idWohnung = mydb.mieter.Wohnung_idWohnung "
+        $sql = "SELECT * FROM ateam.wohnung "
+                . "inner join ateam.mieter on ateam.wohnung.idWohnung = ateam.mieter.Wohnung_idWohnung "
                 . "where `wohnung`.`Vermieter_idVermieter` =  ".$hirerID.";";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
         if ($result->num_rows > 0) {

@@ -1,6 +1,6 @@
 <?php
 
-include_once '../model/Renter.php';
+include_once '../Model/Renter.php';
 include_once '../DAO/RenterDAO.php';
 include_once '../DAO/dBConnect.php';
 

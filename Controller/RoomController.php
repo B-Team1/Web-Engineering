@@ -1,6 +1,6 @@
 <?php
 
-include_once '../model/Room.php';
+include_once '../Model/Room.php';
 include_once '../DAO/RoomDAO.php';
 include_once '../DAO/dBConnect.php';
 include_once '../Controller/BillController.php';
@@ -38,7 +38,7 @@ class RoomController {
     }
     
     public function selectRoomTable(){
-        return $this->db->selectRoomTable();
+        return $this->db->selectRoomTable($_SESSION['hirerId']);
     }
     
     /**

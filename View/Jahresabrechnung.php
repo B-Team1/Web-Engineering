@@ -1,4 +1,4 @@
-    <?php 
+<?php
     include_once "Header.php"; 
     include_once '../Controller/BillController.php';
     ?>
@@ -38,7 +38,7 @@
                                 ?>
                             </tbody>
                         </table>
-                        <a href='../Pdf/PdfGenerator.php'<button>PDF erzeugen</button></a>
+                        <a href='../Pdf/PdfGenerator.php' target="_blank"><button>PDF erzeugen</button></a>
                     </div>
                 </div>
             </div>

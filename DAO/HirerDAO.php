@@ -1,6 +1,6 @@
 <?php
 include_once "AbstractDAO.php";
-include_once '../model/Hirer.php';
+include_once '../Model/Hirer.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -20,7 +20,7 @@ class HirerDAO extends AbstractDAO {
     public function insertHirer(Hirer $hirer) {
         $t = $hirer->getPassword();
         $password = password_hash($hirer->getPassword(), PASSWORD_DEFAULT);
-        $insert = "INSERT INTO `mydb`.`vermieter` (`EMail`, `Passwort`) VALUES ('" . $hirer->getEmail() . "', '" . $password . "');";
+        $insert = "INSERT INTO `ateam`.`vermieter` (`EMail`, `Passwort`) VALUES ('" . $hirer->getEmail() . "', '" . $password . "');";
         mysqli_query($this->link, $insert) or die(mysqli_error($this->link));
     }
 
@@ -30,7 +30,7 @@ class HirerDAO extends AbstractDAO {
      */
     public function updateHirer(Hirer $hirer) {
         $password = password_hash($hirer->getPassword(), PASSWORD_DEFAULT);
-        $insert = "UPDATE `mydb`.`vermieter` SET `EMail`='" . $hirer->getEmail() . "', `Passwort`='" . $password . "' WHERE `idVermieter`='3';";
+        $insert = "UPDATE `ateam`.`vermieter` SET `EMail`='" . $hirer->getEmail() . "', `Passwort`='" . $password . "' WHERE `idVermieter`='3';";
         mysqli_query($this->link, $insert) or die(mysqli_error($this->link));
     }
     
@@ -41,7 +41,7 @@ class HirerDAO extends AbstractDAO {
      */
     public function checkLogin(Hirer $hirer){
         
-        $sql = "SELECT * FROM mydb.vermieter where mydb.vermieter.EMail = '" . $hirer->getEmail() . "';";
+        $sql = "SELECT * FROM ateam.vermieter where ateam.vermieter.EMail = '" . $hirer->getEmail() . "';";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
         $fa = mysqli_fetch_assoc($result);
         
@@ -59,7 +59,7 @@ class HirerDAO extends AbstractDAO {
      * @return boolean
      */
     public function checkHirerByMail(Hirer $hirer){
-        $sql = "SELECT * FROM mydb.vermieter where mydb.vermieter.EMail = '" . $hirer->getEmail() . "';";
+        $sql = "SELECT * FROM ateam.vermieter where ateam.vermieter.EMail = '" . $hirer->getEmail() . "';";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
         
         if(mysqli_num_rows($result) >= 1){
@@ -75,7 +75,7 @@ class HirerDAO extends AbstractDAO {
      * @return \Hirer
      */
     public function getHirerByMail(Hirer $hirer){
-        $sql = "SELECT * FROM mydb.vermieter where mydb.vermieter.EMail = '" . $hirer->getEmail() . "';";
+        $sql = "SELECT * FROM ateam.vermieter where ateam.vermieter.EMail = '" . $hirer->getEmail() . "';";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
         
         if ($result->num_rows > 0) {

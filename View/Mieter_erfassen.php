@@ -2,18 +2,19 @@
 include_once "Header.php";
 include_once '../Controller/RenterController.php';
 include_once '../Controller/RoomController.php';
+include_once '../Validator/RenterValidator.php';
 include_once '../Model/Renter.php';
 
-//$renterValidator = new RenterValidator();
+$renterValidator = new RenterValidator();
 $rc = new RenterController();
 $roomc = new RoomController();
 $new = true;
 if (!empty($_POST)) {
     $renter =new Renter (null, $_POST['name'],$_POST['vorname'],$_POST['phone'],$_POST['street'],$_POST['city'],$_POST['plz'],$_POST['contractstart'],$_POST['apartment']);
-    //$renterValidator = new RenterValidator($renter);
-    //if ($billValidator->isValid()) {
+    $renterValidator = new RenterValidator($renter);
+    if ($renterValidator->isValid()) {
         $rc->insertRenter($renter);
-    //}
+    }
 }
 
 

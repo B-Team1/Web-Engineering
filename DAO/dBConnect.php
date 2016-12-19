@@ -35,7 +35,7 @@ class DBConnect {
      * externe Instanzierung verbieten
      */
     protected function __construct() {
-        $iniFile = "../config/config.ini";
+        $iniFile = "../Config/config.ini";
         $databaseConfig = parse_ini_file($iniFile, true)["database"];
         $this->user = $databaseConfig ["db_user"];
         $this->password = $databaseConfig ["db_password"];
