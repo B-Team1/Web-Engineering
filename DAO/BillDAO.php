@@ -15,7 +15,7 @@ class BillDAO extends AbstractDAO {
      * @param Bill $bill
      */
     public function insertBill(Bill $bill) {
-        $insert = "INSERT INTO `mydb`.`rechnungen` (`Betrag`, `ZahlbarBis`, `Datum`, `Wohnung_idWohnung`, `Status_idStatus`, `Kostenart_idKostenart`, `Beschreibung`) 
+        $insert = "INSERT INTO `ateam`.`rechnungen` (`Betrag`, `ZahlbarBis`, `Datum`, `Wohnung_idWohnung`, `Status_idStatus`, `Kostenart_idKostenart`, `Beschreibung`) 
             VALUES ('" . $bill->getAmout() . "', '" . $bill->getPayableUntill() . "', '" . $bill->getDate() . "',"
                 . " '" . $bill->getRoomId() . "', '" . $bill->getStatusId() . "', '" . $bill->getCostTypeId() . "', '" . $bill->getDescripton() . "');";
         mysqli_query($this->link, $insert) or die(mysqli_error($this->link));
@@ -26,7 +26,7 @@ class BillDAO extends AbstractDAO {
      * @param Bill $bill
      */
     public function updateBill(Bill $bill) {
-        $sql = "UPDATE `mydb`.`rechnungen` SET `Betrag`='" . $bill->getAmout() . "', `ZahlbarBis`='" . $bill->getPayableUntill() . "', "
+        $sql = "UPDATE `ateam`.`rechnungen` SET `Betrag`='" . $bill->getAmout() . "', `ZahlbarBis`='" . $bill->getPayableUntill() . "', "
                 . "`Datum`='" . $bill->getDate() . "', `Wohnung_idWohnung`='" . $bill->getRoomId() . "', "
                 . "`Status_idStatus`='" . $bill->getStatusId() . "', `Kostenart_idKostenart`='" . $bill->getCostTypeId() . "', `Beschreibung`='" . $bill->getDescripton() . "' WHERE `idRechnungen`='" . $bill->getBillId() . "';";
         mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
@@ -37,7 +37,7 @@ class BillDAO extends AbstractDAO {
      * @return Bill Array
      */
     public function selectAllBills() {
-        $sql = "SELECT * FROM mydb.rechnungen;";
+        $sql = "SELECT * FROM ateam.rechnungen;";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
         $arr = array();
         $c = 0;
@@ -59,7 +59,7 @@ class BillDAO extends AbstractDAO {
      * @return \Bill
      */
     public function selectBillById($id) {
-        $sql = "SELECT * FROM mydb.rechnungen WHERE mydb.rechnungen.idRechnungen = " . $id . ";";
+        $sql = "SELECT * FROM ateam.rechnungen WHERE ateam.rechnungen.idRechnungen = " . $id . ";";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
         $bill = null;
          while ($row = $result->fetch_assoc()) {
@@ -74,9 +74,9 @@ class BillDAO extends AbstractDAO {
      * @return Array
      */
     public function selectAdditionalAndHeadingCotsIncRenter() {
-        $sql = "SELECT Datum, Name, Vorname, mydb.rechnungen.Beschreibung, Betrag, ZahlbarBis, Status_idStatus FROM mydb.rechnungen 
-                inner join mydb.mieter on mydb.mieter.Wohnung_idWohnung = mydb.rechnungen.Wohnung_idWohnung
-                where mydb.rechnungen.Kostenart_idKostenart = 2;";
+        $sql = "SELECT Datum, Name, Vorname, ateam.rechnungen.Beschreibung, Betrag, ZahlbarBis, Status_idStatus FROM ateam.rechnungen 
+                inner join ateam.mieter on ateam.mieter.Wohnung_idWohnung = ateam.rechnungen.Wohnung_idWohnung
+                where ateam.rechnungen.Kostenart_idKostenart = 2;";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
         $arr = array();
         $c = 0;
@@ -93,7 +93,7 @@ class BillDAO extends AbstractDAO {
      * @param type $id
      */
     public function deleteBillById($id){
-        $sql = "DELETE FROM `mydb`.`rechnungen` WHERE `idRechnungen` = ".$id.";";
+        $sql = "DELETE FROM `ateam`.`rechnungen` WHERE `idRechnungen` = ".$id.";";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
     }
     
@@ -102,7 +102,7 @@ class BillDAO extends AbstractDAO {
      * @param type $id
      */
     public function deleteBillByRoomId($id){
-        $sql = "DELETE FROM `mydb`.`rechnungen` WHERE `Wohnung_idWohnung` = ".$id.";";
+        $sql = "DELETE FROM `ateam`.`rechnungen` WHERE `Wohnung_idWohnung` = ".$id.";";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
     }
 
@@ -113,10 +113,10 @@ public function selectHNBillTable($hirerID) {
         $c = 0;
         $arr = array();
         $sql = "SELECT idRechnungen,kostenart.idKostenart, Datum, mieter.Name, Betrag, ZahlbarBis, status.Beschreibung "
-                . "FROM mydb.rechnungen inner join mydb.status on mydb.rechnungen.Status_idStatus = mydb.status.idStatus "
-                . "inner join mydb.kostenart on mydb.rechnungen.Kostenart_idKostenart = mydb.kostenart.idKostenart "
-                . "inner join mydb.wohnung on mydb.rechnungen.Wohnung_idWohnung = mydb.wohnung.idWohnung "
-                . "inner join mydb.mieter on mydb.wohnung.idWohnung = mydb.mieter.Wohnung_idWohnung "
+                . "FROM ateam.rechnungen inner join ateam.status on ateam.rechnungen.Status_idStatus = ateam.status.idStatus "
+                . "inner join ateam.kostenart on ateam.rechnungen.Kostenart_idKostenart = ateam.kostenart.idKostenart "
+                . "inner join ateam.wohnung on ateam.rechnungen.Wohnung_idWohnung = ateam.wohnung.idWohnung "
+                . "inner join ateam.mieter on ateam.wohnung.idWohnung = ateam.mieter.Wohnung_idWohnung "
                 . "where kostenart.idKostenart = 2 and wohnung.Vermieter_idVermieter = ".$hirerID.";";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
         if ($result->num_rows > 0) {
@@ -135,10 +135,10 @@ public function selectRoomBillTable($hirerID) {
         $c = 0;
         $arr = array();
         $sql = "SELECT idRechnungen,kostenart.idKostenart, Datum, mieter.Name, Betrag, ZahlbarBis, status.Beschreibung "
-                . "FROM mydb.rechnungen inner join mydb.status on mydb.rechnungen.Status_idStatus = mydb.status.idStatus "
-                . "inner join mydb.kostenart on mydb.rechnungen.Kostenart_idKostenart = mydb.kostenart.idKostenart "
-                . "inner join mydb.wohnung on mydb.rechnungen.Wohnung_idWohnung = mydb.wohnung.idWohnung "
-                . "inner join mydb.mieter on mydb.wohnung.idWohnung = mydb.mieter.Wohnung_idWohnung "
+                . "FROM ateam.rechnungen inner join ateam.status on ateam.rechnungen.Status_idStatus = ateam.status.idStatus "
+                . "inner join ateam.kostenart on ateam.rechnungen.Kostenart_idKostenart = ateam.kostenart.idKostenart "
+                . "inner join ateam.wohnung on ateam.rechnungen.Wohnung_idWohnung = ateam.wohnung.idWohnung "
+                . "inner join ateam.mieter on ateam.wohnung.idWohnung = ateam.mieter.Wohnung_idWohnung "
                 . "where kostenart.idKostenart = 1 and wohnung.Vermieter_idVermieter = ".$hirerID.";";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
         if ($result->num_rows > 0) {
@@ -157,10 +157,10 @@ public function selectYearBillTable($hirerID) {
         $c = 0;
         $arr = array();
         $sql = "SELECT idRechnungen,kostenart.idKostenart, Datum, mieter.Name, Betrag, ZahlbarBis, status.Beschreibung "
-                . "FROM mydb.rechnungen inner join mydb.status on mydb.rechnungen.Status_idStatus = mydb.status.idStatus "
-                . "inner join mydb.kostenart on mydb.rechnungen.Kostenart_idKostenart = mydb.kostenart.idKostenart "
-                . "inner join mydb.wohnung on mydb.rechnungen.Wohnung_idWohnung = mydb.wohnung.idWohnung "
-                . "inner join mydb.mieter on mydb.wohnung.idWohnung = mydb.mieter.Wohnung_idWohnung"
+                . "FROM ateam.rechnungen inner join ateam.status on ateam.rechnungen.Status_idStatus = ateam.status.idStatus "
+                . "inner join ateam.kostenart on ateam.rechnungen.Kostenart_idKostenart = ateam.kostenart.idKostenart "
+                . "inner join ateam.wohnung on ateam.rechnungen.Wohnung_idWohnung = ateam.wohnung.idWohnung "
+                . "inner join ateam.mieter on ateam.wohnung.idWohnung = ateam.mieter.Wohnung_idWohnung"
                 . " where wohnung.Vermieter_idVermieter = ". $hirerID .";";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
         if ($result->num_rows > 0) {
@@ -180,10 +180,10 @@ public function selectBillTablePdfGenerator($hirerID) {
         $arr = array();
         $sql = "Select mieter.Name, mieter.Vorname, rechnungen.Datum, kostenart.Beschreibung as KBeschreibung, rechnungen.ZahlbarBis, rechnungen.Betrag,"
                 . " status.Beschreibung from rechnungen "
-                . "inner join mydb.kostenart on mydb.rechnungen.Kostenart_idKostenart = mydb.kostenart.idKostenart "
-                . "inner join mydb.status on mydb.rechnungen.Status_idStatus = mydb.status.idStatus "
-                . "inner join mydb.wohnung on mydb.rechnungen.Wohnung_idWohnung = mydb.wohnung.idWohnung "
-                . "inner join mydb.mieter on mydb.wohnung.idWohnung = mydb.mieter.Wohnung_idWohnung "
+                . "inner join ateam.kostenart on ateam.rechnungen.Kostenart_idKostenart = ateam.kostenart.idKostenart "
+                . "inner join ateam.status on ateam.rechnungen.Status_idStatus = ateam.status.idStatus "
+                . "inner join ateam.wohnung on ateam.rechnungen.Wohnung_idWohnung = ateam.wohnung.idWohnung "
+                . "inner join ateam.mieter on ateam.wohnung.idWohnung = ateam.mieter.Wohnung_idWohnung "
                 . " where wohnung.Vermieter_idVermieter = ". $hirerID .";";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
         if ($result->num_rows > 0) {
