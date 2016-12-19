@@ -3,7 +3,7 @@
 </div>
 <div class="form-group">
     <label for="name">Wohnungsname: *</label>
-    <input type='hidden' name='wohnungID' id='wohnungID' value="<?php if (isset($_POST['wohnungID'])){ echo $_POST['wohnungID']; }elseif(isset($roomID)) { echo $roomID; }?>"/>;
+    <input type='hidden' name='wohnungID' id='wohnungID' value="<?php if (isset($_POST['wohnungID'])){ echo $_POST['wohnungID']; }elseif(isset($roomID)) { echo $roomID; }?>"/>
     <input type="text" name="name" id="name" class="form-control" value="<?php if (isset($_POST['name'])){ echo $_POST['name']; }elseif(isset($roomName)) { echo $roomName; }?>"
         
            required oninvalid="this.setCustomValidity('Geben Sie bitte den Namen der Wohnung ein!')" oninput="setCustomValidity('')"/>

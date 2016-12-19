@@ -1,4 +1,4 @@
-    <?php 
+<?php
     include_once "Header.php"; 
     include_once '../Controller/BillController.php';
     ?>

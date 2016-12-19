@@ -1,4 +1,6 @@
 <?php
+ob_start();
+session_start();
 include_once "Login_Header.php";
 require_once  '../Controller/HirerController.php';
 
@@ -6,7 +8,7 @@ require_once  '../Controller/HirerController.php';
 
 $loginErr = "";
 
-session_start();
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['email']) AND isset($_POST['password'])) {
@@ -29,12 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 session_unset();
 session_destroy();
 unset($_SESSION); // Session-Array löschen
-// Session-Cookie löschen 
-if (ini_get("session.use_cookies")) {
-    $params = session_get_cookie_params();
-    setcookie(session_name(), '', time() - 42000, $params["path"], $params["domain"], $params["secure"], $params["httponly"]
-    );
-}
+
 ?>
 </head>
 <body>
@@ -65,7 +62,7 @@ if (ini_get("session.use_cookies")) {
                             </div>
                     </form>
                     <p>
-                        <a href="login_erfassen.php">Registieren </a>
+                        <a href="Login_erfassen.php">Registieren </a>
                     </p>
                     <p>
                         <a href="mailto:marco.loosli@students.fhnw.ch?subject=Passwort vergessen&body=Guten Tag, leider habe ich mein Passwort vergessen. Ich bitte Sie mir ein neues Passwort auf diese Mail-Adresse zu senden.">Passwort vergessen</a>    
