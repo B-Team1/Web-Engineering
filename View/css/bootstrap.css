@@ -12,12 +12,17 @@ html {
 body {
   margin: 0;
 }
+
+footer {
+  position: fixed; 
+  left: 0px;
+  bottom: 0px;
+}
 article,
 aside,
 details,
 figcaption,
 figure,
-footer,
 header,
 hgroup,
 main,

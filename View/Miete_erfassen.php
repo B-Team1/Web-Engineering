@@ -21,7 +21,7 @@ if (!empty($_POST)) {
 ?>
 
 </head>
-<body>
+<body onload="setRent1()">
     <div class="brand">Online-Verwaltungstool</div>
     <?php include_once "Navigation.php"; ?>
     <div class="container">

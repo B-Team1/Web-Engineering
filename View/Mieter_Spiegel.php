@@ -17,8 +17,8 @@ include_once '../Controller/RenterController.php';
                         <thead>
                             <tr>
                                 <th class="sortierbar vorsortiert+">Wohnung</th>
-                                <th class="sortierbar">Fläche m2</th>
-                                <th class="sortierbar">Miete</th>
+                                <th class="sortierbar">Fläche m²</th>
+                                <th class="sortierbar">Miete [Fr.]</th>
                                 <th class="sortierbar">Name</th>
                                 <th class="sortierbar">Vorname</th>
                                 <th class="sortierbar">Telefon</th>

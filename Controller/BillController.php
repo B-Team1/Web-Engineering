@@ -68,7 +68,7 @@ class BillController {
         $this->db->deleteBillByRoomId($id);
     }
     
-    public function updateBild($bill){
+    public function updateBill($bill){
         $this->db->updateBill($bill);
     }
 }

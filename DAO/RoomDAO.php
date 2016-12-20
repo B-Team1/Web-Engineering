@@ -28,6 +28,7 @@ class RoomDAO extends AbstractDAO{
      * @param Room $room
      */
     public function updateRoom(Room $room) {
+        $room->getRent();
         $sql = "UPDATE `ateam`.`wohnung` SET `Bezeichnung`='" . mysqli_real_escape_string($this->link, $room->getDescription()) . "', `Fläche`='" . mysqli_real_escape_string($this->link, $room->getArea()) . "', "
                 . "`Stockwerk`='" . mysqli_real_escape_string($this->link, $room->getFloor()) . "', `Mietzins`='" . mysqli_real_escape_string($this->link, $room->getRent()) . "', "
                 . "`vermieter_idVermieter`='" . mysqli_real_escape_string($this->link, $room->getHirerId()) . "' WHERE `idWohnung`='" . $room->getRoomId() . "';";
@@ -36,8 +37,8 @@ class RoomDAO extends AbstractDAO{
     
     /**
      * 
-     * @param int $id
-     * @return Array
+     * @param type $id
+     * @return \Room
      */
     public function selectRoomById($id){
         $sql = "SELECT * FROM ateam.wohnung WHERE ateam.wohnung.idWohnung = ".$id.";";
@@ -68,13 +69,13 @@ class RoomDAO extends AbstractDAO{
     public function selectRoomTable($hirerID){
         $c = 0;
         $arr = array();
-        $sql = "SELECT idWohnung, Bezeichnung, Name, Strasse, Fläche FROM ateam.wohnung"
+        $sql = "SELECT idWohnung, Bezeichnung, Name, Strasse, Fläche, Mietzins FROM ateam.wohnung"
                 . " left join ateam.mieter on ateam.mieter.wohnung_idWohnung = ateam.wohnung.idWohnung where wohnung.vermieter_idVermieter =  ".$hirerID.";";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
         if ($result->num_rows > 0) {
             // output data of each row
             while ($row = $result->fetch_assoc()) {
-                $arr1 = array($row["idWohnung"], $row["Bezeichnung"], $row["Name"], $row["Strasse"], $row["Fläche"]);
+                $arr1 = array($row["idWohnung"], $row["Bezeichnung"], $row["Name"], $row["Strasse"], $row["Fläche"], $row["Mietzins"]);
                 
                 $arr[$c] = $arr1;
                 $c++;

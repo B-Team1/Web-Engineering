@@ -36,8 +36,8 @@
            style="width: 270px" />                               
 </div>   
 <div class="form-group">
-    <label for="amount">Betrag: *</label>
-    <input type="number" name="amount" id="amount" class="form-control" value="<?php if (isset($_POST['amount'])){ echo $_POST['amount']; }elseif(isset($amount)) { echo $amount; }?>"
+    <label for="amount">Betrag [Fr.]: *</label>
+    <input type="number" name="amount" id="amount" class="form-control" required value="<?php if (isset($_POST['amount'])){ echo $_POST['amount']; }elseif(isset($amount)) { echo $amount; }?>"
            size="80" style="width:270px"  pattern="[0-9]" step="any" oninvalid="this.setCustomValidity('Geben Sie bitte den Betrag ein!')" oninput="setCustomValidity('')"/>
     <?php if (!empty($billValidator->getAmountError())): ?>
         <span class="help-inline"><?php echo $billValidator->getAmountError(); ?></span>

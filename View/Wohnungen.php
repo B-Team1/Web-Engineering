@@ -19,7 +19,8 @@ include_once '../Controller/RoomController.php';
                                 <th class="sortierbar vorsortiert+">Wohnung</th>
                                 <th class="sortierbar">Mieter</th>
                                 <th class="sortierbar">Adresse</th>
-                                <th class="sortierbar">Fläche m2</th>
+                                <th class="sortierbar">Fläche [m²]</th>
+                                <th class="sortierbar">Mietzins [Fr.]</th>
                                 <th></th>
                                 <th></th>
                             </tr>

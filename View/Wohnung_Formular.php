@@ -12,7 +12,7 @@
     <?php endif; ?>
 </div>
 <div class="form-group">
-    <label for="expanse">Fläche [m^2]: *</label>
+    <label for="expanse">Fläche [m²]: *</label>
     <input type="number" name="expanse" id="expanse" class="form-control" value="<?php if (isset($_POST['expanse'])){ echo $_POST['expanse']; }elseif(isset($roomExpanse)){ echo $roomExpanse;}?>"
            required pattern="[0-9]" step="any" oninvalid="this.setCustomValidity('Geben Sie bitte die Fläche als Zahl ein!')" oninput="setCustomValidity('')"/>
     <?php if (!empty($roomValidator->getAreaError())): ?>

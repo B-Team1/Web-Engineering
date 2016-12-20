@@ -55,7 +55,7 @@ function FancyTable($header, $data)
         $this->Cell($w[2],6,number_format($b[2]),'LR',0,'R',$fill);
         $this->Cell($w[3],6,$Name,'LR',0,'C',$fill);
         $this->Cell($w[4],6,$VName,'LR',0,'C',$fill);
-        $this->Cell($w[5],6,$b[5],'LR',0,'R',$fill);
+        $this->Cell($w[5],6,$b[5],'LR',0,'C',$fill);
         $this->Cell($w[6],6,$b[6],'LR',0,'C',$fill);
         $this->Ln();
         $fill = !$fill;

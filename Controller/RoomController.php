@@ -51,6 +51,7 @@ class RoomController {
     /**
      * 
      * @param type $id
+     * @return type
      */
     public function selectRoomById($id){
         return $this->db->selectRoomById($id);

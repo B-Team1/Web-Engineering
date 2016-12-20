@@ -41,7 +41,7 @@ if (!isset($_POST['submit'])) {
         <div class="row">
             <div class="box">
                 <div class="col-lg-12">
-                    <h4>Rechnung x bearbeiten:</h4>
+                    <h4>Rechnung bearbeiten:</h4>
                     <div class="col-lg-4">
                         <form action="Rechnung_bearbeiten.php" action="<?php htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
 

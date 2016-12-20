@@ -18,7 +18,7 @@ include_once '../Controller/BillController.php';
                             <thead>
                                 <th>Rechnungsdatum</th>
                                 <th>Mieter</th>
-                                <th>Betrag</th>
+                                <th>Betrag [Fr.]</th>
                                 <th>Bezahlen bis</th>
                                 <th>Status</th>
                                 <th></th>

@@ -1,3 +1,23 @@
+<script type="text/javascript">
+function setRent(){
+    var xmlhttp = new XMLHttpRequest();
+    e = document.getElementById("apartment");
+    id = e.options[e.selectedIndex].value;
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("amount").value = this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "UpdateRent.php?&id=" + id, true);
+        xmlhttp.send();
+}
+function setRent1() {
+    if(document.readyState!= "complete") {
+        window.setTimeout(100);
+    }
+    setRent();
+}
+</script>
 <div class="row">
     <label>* = Pflichtfelder</label>
 </div>
@@ -13,20 +33,21 @@
 </div>
 <div class="form-group">
     <label for="apartment">Wohnung: *</label>
-    <select name="apartment" id="apartment" class="form-control" style="width: 270px" required>
+    <select name="apartment" id="apartment" class="form-control" style="width: 270px" required onchange="setRent()">
 
         <?php
         $sql = $rc->selectRoomsByHirer();
 
-        for ($i = 0; $i < count($sql); $i++) {
+        for ($i = 0; $i < count($sql); $i++) {         
             $b = $sql[$i];
             if ($b[0] == $wohnungID){
                 $selected = "selected";
             }else{
                 $selected = '';
             }
-        echo '<option value="'.$b[0].'" '.$selected.'>'.$b[1].'</option>';
+        echo '<option value="'.$b[0].'" '.$selected.' >'.$b[1].'</option>';
         }
+        
         ?>
 
     </select>
@@ -37,14 +58,14 @@
            style="width: 270px" />   
 </div>
 <div class="form-group">
-    <label for="amount">Betrag:</label>
-    <input type="number" name="amount" id="amount" class="form-control" value="<?php if (isset($_POST['amount'])){ echo $_POST['amount']; }elseif(isset($amount)) { echo $amount; } ?>"
+    <label for="amount">Betrag [Fr.]: *</label>
+    <input  type="number" name="amount" id="amount" class="form-control" value="<?php if (isset($_POST['amount'])){ echo $_POST['amount']; }elseif(isset($amount)) { echo $amount; } ?>"
            style="width:270px" required pattern="[0-9]" step="any" oninvalid="this.setCustomValidity('Geben Sie bitte den Betrag ein!')" oninput="setCustomValidity('')"/>
 <?php if (!empty($billValidator->getAmountError())): ?>
         <span class="help-inline"><?php echo $billValidator->getAmountError(); ?></span>
            <?php endif; ?>     
 </div>
-<div class="form-group">
+<div class="form-group" >
     <label for="datetopay">Zahlbar bis: *</label>
     <input type="date" name="datetopay" id="datetopay" class="form-control" value="<?php if (isset($_POST['datetopay'])){ echo $_POST['datetopay']; }elseif(isset($datetopay)) { echo $datetopay;}  ?>" 
            style="width:270px" required oninvalid="this.setCustomValidity('Wählen Sie bitte das Enddatum aus!')" oninput="setCustomValidity('')"/>

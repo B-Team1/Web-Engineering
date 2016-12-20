@@ -17,7 +17,7 @@
                                 <tr>
                                     <th class="sortierbar vorsortiert+">Rechnungsdatum</th>
                                     <th class="sortierbar">Mieter</th>
-                                    <th class="sortierbar">Betrag</th>
+                                    <th class="sortierbar">Betrag [Fr.]</th>
                                     <th class="sortierbar">Bezahlen bis</th>
                                     <th class="sortierbar">Status</th> 
                                 </tr>
