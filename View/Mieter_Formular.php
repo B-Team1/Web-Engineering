@@ -66,6 +66,20 @@
     <?php endif; ?>
 
         <?php
+        if (isset($_POST['apartment'])){
+        $roomReload = $roomc->selectRoomById($_POST['apartment']); 
+        echo '<option value="'.$_POST['apartment'].'" selected >'.$roomReload->getDescription().'</option>'; 
+        $sql= $roomc->selectFreeRooms();
+            if (is_null($sql)){
+                
+            }else{
+            for ($i = 0; $i < count($sql); $i++) {
+            $b = $sql[$i];
+            if($b[0]!=$_POST['apartment']){
+            echo '<option value="'.$b[0].'" >'.$b[1].'</option>';
+            }
+            }
+        }}else{
         if ($new==true){
         $sql= $roomc->selectFreeRooms();
         for ($i = 0; $i < count($sql); $i++) {
@@ -89,8 +103,12 @@
             }
         echo '<option value="'.$renterRoomID.'" selected >'.$roomDescription.'</option>';    
         }
+        }
         ?>
-    </select>                                
+    </select>
+    <?php
+    echo $new;
+    ?>
 </div>
 
 
