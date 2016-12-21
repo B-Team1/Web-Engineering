@@ -106,9 +106,6 @@
         }
         ?>
     </select>
-    <?php
-    echo $new;
-    ?>
 </div>
 
 
