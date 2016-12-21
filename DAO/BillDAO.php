@@ -160,8 +160,8 @@ public function selectYearBillTable($hirerID) {
                 . "FROM ateam.rechnungen inner join ateam.status on ateam.rechnungen.status_idStatus = ateam.status.idStatus "
                 . "inner join ateam.kostenart on ateam.rechnungen.kostenart_idKostenart = ateam.kostenart.idKostenart "
                 . "inner join ateam.wohnung on ateam.rechnungen.wohnung_idWohnung = ateam.wohnung.idWohnung "
-                . "inner join ateam.mieter on ateam.wohnung.idWohnung = ateam.mieter.wohnung_idWohnung"
-                . " where wohnung.vermieter_idVermieter = ". $hirerID .";";
+                . "left join ateam.mieter on ateam.wohnung.idWohnung = ateam.mieter.wohnung_idWohnung"
+                . " where wohnung.vermieter_idVermieter = ". $hirerID ." and Year(ateam.rechnungen.Datum) = ". date("Y") .";";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
         if ($result->num_rows > 0) {
             // output data of each row
@@ -178,23 +178,24 @@ public function selectYearBillTable($hirerID) {
 public function selectBillTablePdfGenerator($hirerID) {
         $c = 0;
         $arr = array();
-        $sql = "Select mieter.Name, mieter.Vorname, rechnungen.Datum, kostenart.Beschreibung as KBeschreibung, rechnungen.ZahlbarBis, rechnungen.Betrag,"
+        $sql = "Select mieter.Name, wohnung.Bezeichnung as Wohnungsname, rechnungen.Datum, kostenart.Beschreibung as KBeschreibung, rechnungen.ZahlbarBis, rechnungen.Betrag,"
                 . " status.Beschreibung from rechnungen "
                 . "inner join ateam.kostenart on ateam.rechnungen.kostenart_idKostenart = ateam.kostenart.idKostenart "
                 . "inner join ateam.status on ateam.rechnungen.status_idStatus = ateam.status.idStatus "
                 . "inner join ateam.wohnung on ateam.rechnungen.wohnung_idWohnung = ateam.wohnung.idWohnung "
-                . "inner join ateam.mieter on ateam.wohnung.idWohnung = ateam.mieter.wohnung_idWohnung "
-                . " where wohnung.vermieter_idVermieter = ". $hirerID .";";
+                . "left join ateam.mieter on ateam.wohnung.idWohnung = ateam.mieter.wohnung_idWohnung "
+                . " where wohnung.vermieter_idVermieter = ". $hirerID ." and Year(ateam.rechnungen.Datum) = ". date("Y") .";";
         $result = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
         if ($result->num_rows > 0) {
             // output data of each row
             while ($row = $result->fetch_assoc()) {
-                $arr1 = array($row["Name"],$row["Vorname"], $row["Datum"], $row["KBeschreibung"], $row["ZahlbarBis"], $row["Betrag"],$row["Beschreibung"]);
+                $arr1 = array($row["Name"],$row["Wohnungsname"], $row["Datum"], $row["KBeschreibung"], $row["ZahlbarBis"], $row["Betrag"],$row["Beschreibung"]);
                 $arr[$c] = $arr1;
                 $c++;
             }
         }
         return $arr;
-    }        
+    }   
+        
 }
 

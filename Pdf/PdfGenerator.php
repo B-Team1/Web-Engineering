@@ -68,7 +68,7 @@ function FancyTable($header, $data)
 
 $pdf = new PdfGenerator();
 // Column headings
-$header = array('Mieter-Name', 'Mieter-Vorname', 'Rechnungsdatum', 'Kostenart', 'Zahlbar bis', 'Betrag', 'Status');
+$header = array('Mieter-Name', 'Wohnung', 'Rechnungsdatum', 'Kostenart', 'Zahlbar bis', 'Betrag', 'Status');
 // Data loading
 $data = $pdf->LoadData();
 $pdf->SetFont('Arial','',14);
